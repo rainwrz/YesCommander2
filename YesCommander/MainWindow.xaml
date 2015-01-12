@@ -1,0 +1,262 @@
+﻿<metro:Window x:Class="YesCommander.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:metro="http://schemas.codeplex.com/elysium"
+        xmlns:params ="http://schemas.codeplex.com/elysium/params"
+        RenderOptions.BitmapScalingMode="NearestNeighbor"
+        xmlns:custom="clr-namespace:YesCommander.CustomControls" 
+        xmlns:component="clr-namespace:YesCommander.CustomControls.Components" 
+        Title="YesCommander" Height="580" Width="1050" MinHeight="580" MinWidth="1020"  ResizeMode="CanResizeWithGrip" Icon="/Resources/icon32.ico"
+        WindowStartupLocation="CenterScreen" params:Design.Theme="Dark" Loaded="Loaded_1" Closing="Window_Closing"
+        params:Manager.Theme="Dark">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Name="about" Margin="10,0" Source="/Resources/help-icon.png" Stretch="None"  MouseEnter="tag_MouseEnter" MouseLeave="tag_MouseLeave" HorizontalAlignment="Right"/>
+        <StackPanel Orientation="Horizontal" Margin="4,0" HorizontalAlignment="Left">
+            <RadioButton Name="radioFollowers" Content="随从一览" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
+            <RadioButton Name="radioMissions" Content="任务模拟" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
+            <RadioButton Name="radioAnalysis" Content="数据分析" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.RowSpan="2" Name="questPanel" Visibility="Visible" Margin="8,-8,0,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4" HorizontalAlignment="Center">
+                <TextBlock Name="titleHighMaul" Text="团队本任务" FontSize="18" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                <TextBlock Name="titleRing" Text="橙戒任务" FontSize="15" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                <TextBlock Name="titleElse" Text="其他三人任务" FontSize="15" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                <Image Name="missionWindowImage" Source="/Resources/icon32.ico" MouseDown="missionWindow_MouseDown" Stretch="None" MouseEnter="titleBlock_MouseEnter" MouseLeave="titleBlock_MouseLeave"/>
+            </StackPanel>
+            <ComboBox Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Bottom"
+                      Name="maxNumberOfPartyComboBox" Width="200" Height="30" Margin="0,4,60,0" HorizontalAlignment="Right" SelectionChanged="maxNumberOfPartyComboBox_SelectionChanged"/>
+            <Image Grid.Row="1" Source="/Resources/gear-bonus-divider_2.jpg" Stretch="None"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="10,4,0,4"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="component:TinyImage">
+                        <Setter Property="Margin" Value="4,4,0,4"/>
+                        <Setter Property="Width" Value="18"/>
+                        <Setter Property="Height" Value="18"/>
+                    </Style>
+                </StackPanel.Resources>
+                <component:ImageComboBox x:Name="missionsComboBox" Margin="8,4" Width="200" HorizontalAlignment="Left" SelectionChanged="ComboBox_SelectionChanged"/>
+                <TextBlock Text="装等要求:"/>
+                <TextBlock Name="textItemLevel" Foreground="LimeGreen"/>
+                <TextBlock Text="任务时间:"/>
+                <TextBlock Name="textMissionTime" />
+                <TextBlock Text="技能要求:"/>
+                <StackPanel Name="abilityPanel"  Orientation="Horizontal" Margin="0,0" VerticalAlignment="Center">
+                    <component:TinyImage x:Name="ability1"/>
+                    <component:TinyImage x:Name="ability2"/>
+                    <component:TinyImage x:Name="ability3"/>
+                    <component:TinyImage x:Name="ability4"/>
+                    <component:TinyImage x:Name="ability5"/>
+                    <component:TinyImage x:Name="ability6"/>
+                </StackPanel>
+                <TextBlock Text="场景:"/>
+                <component:TinyImage x:Name="trait"/>
+                <TextBlock Text="奖励:"/>
+                <TextBlock Name="textReward" Foreground="LimeGreen"/>
+                <TextBlock Text="基础胜率:"/>
+                <TextBlock Name="textBasicChance"/>
+                <TextBlock Text="备注:"/>
+                <TextBlock Name="textRemark"/>
+            </StackPanel>
+
+            <Grid Name="titleGrid" Grid.Row="3" VerticalAlignment="Center" Width="{Binding ElementName=questPanel, Path=ActualWidth}" HorizontalAlignment="Left" Margin="4" Visibility="Hidden">
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="4"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="成功率" />
+                <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用655装等(不影响无装等要求任务)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
+                <CheckBox Name="checkboxUsingFavorite" Grid.Column="2" Content="仅使用偏好随从" VerticalAlignment="Center" Checked="checkboxUsingFavorite_Checked" Unchecked="checkboxUsingFavorite_Checked" 
+                          Margin="4,0"/>
+                <TextBlock Grid.Column="3" Text="注意：括号中的红色数字表示不满足装等要求" Foreground="Red"/>
+                <TextBlock Grid.Column="4" Text="团队buff" HorizontalAlignment="Center" />
+                <TextBlock Grid.Column="5" Text="缺少技能" />
+                <TextBlock Grid.Column="6" Text="耗时" />
+            </Grid>
+            <ScrollViewer Grid.Row="5" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0.8">
+                <StackPanel Name="partyPanel" Grid.Row="4" Margin="0,8" HorizontalAlignment="Left" Width="{Binding ElementName=titleGrid, Path=Width}">
+                    <StackPanel.Resources>
+                        <Style TargetType="custom:Party">
+                            <Setter Property="Margin" Value="4,4,0,4"/>
+                        </Style>
+                    </StackPanel.Resources>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        
+        <Grid Name="followerPanel" Grid.Row="1" Visibility="Hidden" Margin="8,-8,0,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Name="titleGrid2" Margin="4" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal"  HorizontalAlignment="Center">
+                    <TextBlock Name="titleAll" Text="全部" FontSize="22" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleAllFavorite_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Name="titleFavorite" Text="偏好" FontSize="18" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleAllFavorite_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Name="titleShow" Text="展示" FontSize="18" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleAllFavorite_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                </StackPanel>
+                <Image Grid.Row="1" Source="/Resources/gear-bonus-divider_1.jpg" Stretch="None" Width="140"/>
+                <Grid Name="suggestinoTitle" Margin="0,4,50,0" Grid.Row="2" Visibility="Collapsed" Width="800" HorizontalAlignment="Right">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <Button Name="simulateButton" Content="推荐偏好" Click="simulateButton_Click" Width="80" Height="30" IsEnabled="False" Margin="8,4"/>
+                        <Button Name="simulateMyButton" Content="计算概率" Click="simulateMyButton_Click" Width="80" Height="30" IsEnabled="False" Margin="8,4"/>
+                    </StackPanel>
+                    <ComboBox Name="solutionComboBox" Grid.Row="0" Grid.Column="5" Margin="4" Visibility="Collapsed" SelectionChanged="solutionComboBox_SelectionChanged"/>
+
+                    <CheckBox Name="highMaulQuestCheckBox" Content="悬槌堡任务" VerticalContentAlignment="Center" Grid.Column="0" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="blackFoundryQuestCheckBox" Content="黑石铸造厂任务" VerticalContentAlignment="Center" Grid.Column="1" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="ringQuestStage1CheckBox" Content="消磨之石任务" VerticalContentAlignment="Center" Grid.Column="2" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="ringQuestStage2CheckBox" Content="元素符文任务" VerticalContentAlignment="Center" Grid.Column="3" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="equipment645CheckBox" Content="645装备任务" VerticalContentAlignment="Center" Grid.Column="4" Click="highMaulQuestCheckBox_Click"/>
+
+                    <TextBlock Name="textHighmaulQuest" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap"/>
+                    <TextBlock Name="textBlackFoundryQuest" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
+                    <TextBlock Name="textQuestRing1" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap"/>
+                    <TextBlock Name="textQuestRing2" Grid.Row="1" Grid.Column="3" TextWrapping="Wrap"/>
+                    <TextBlock Name="textEquipment645" Grid.Row="1" Grid.Column="4"  TextWrapping="Wrap"/>
+                </Grid>
+                <Grid Grid.Row="3" Name="scrollTextTitle" VerticalAlignment="Center"  Width="892" Margin="-4,10,0,0" >
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="4"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="202"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="偏好"  Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Text="姓名" />
+                    <TextBlock Grid.Column="2" Text="种族" />
+                    <TextBlock Grid.Column="3" Text="职业" />
+                    <TextBlock Grid.Column="4" Text="等级" />
+                    <TextBlock Grid.Column="5" Text="装等" />
+                    <TextBlock Grid.Column="6" Text="技能" />
+                    <TextBlock Grid.Column="7" Text="可能习得" />
+                    <TextBlock Grid.Column="8" Text="特长" />
+                    <TextBlock Grid.Column="9" Text="冻结" />
+                </Grid>
+            </Grid>
+            <ScrollViewer Name="allScroll" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Visible" Margin="4" VerticalAlignment="Top">
+                <StackPanel Name="followerRows" Orientation="Vertical" VerticalAlignment="Center" Width="900" >
+                </StackPanel>
+            </ScrollViewer>
+            <ScrollViewer Name="favoriteScroll" Grid.Row="1" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Visible" Margin="4" VerticalAlignment="Top">
+                <StackPanel Name="favoriteRows" Orientation="Vertical" VerticalAlignment="Center" Width="900" >
+                </StackPanel>
+            </ScrollViewer>
+            <Grid Name="showGrid" Grid.Row="1" Visibility="Hidden" Margin="0,-10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="14"/>
+                    </Style>
+                </Grid.Resources>
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Name="toCommanderText" FontSize="30" Foreground="SkyBlue" Text="Yes, Commander! 尊贵的：" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Name="achievementText" FontSize="40" Foreground="Gold" Margin="0,0,0,15" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="2" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="一共拥有随从数："/>
+                <TextBlock Grid.Row="3" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="史诗随从数："/>
+                <TextBlock Grid.Row="4" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="精良随从数："/>
+                <TextBlock Grid.Row="5" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="优秀随从数："/>
+                <TextBlock Grid.Row="6" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="悬槌堡任务完成情况："/>
+                <TextBlock Grid.Row="7" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="黑石铸造厂任务完成情况："/>
+                <TextBlock Grid.Row="8" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒一阶任务完成情况："/>
+                <TextBlock Grid.Row="9" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒二阶任务完成情况："/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="totalFollowerText"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Name="epicFollowerText" Foreground="BlueViolet"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Name="blueFollowerText" Foreground="DodgerBlue"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Name="greenFollowerText" Foreground="Lime"/>
+                <TextBlock Grid.Row="6" Grid.Column="1" Name="showHighmaulText"/>
+                <TextBlock Grid.Row="7" Grid.Column="1" Name="showBlackFoundryText"/>
+                <TextBlock Grid.Row="8" Grid.Column="1" Name="showRing1Text"/>
+                <TextBlock Grid.Row="9" Grid.Column="1" Name="showRing2Text"/>
+            </Grid>
+            
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="8" HorizontalAlignment="Center">
+                <Button Click="readButton_Click"  Width="90" Margin="8" Content="Read"/>
+                <Button Click="InputButton_Click"  Width="90" Margin="8" Content="Input"/>
+                <Image Name="followerImage" Margin="8" Source="/Resources/icon32.ico" Visibility="Hidden"
+                   MouseDown="followerWindow_MouseDown" Stretch="None" MouseEnter="titleBlock_MouseEnter" MouseLeave="titleBlock_MouseLeave"/>
+            </StackPanel>
+        </Grid>
+        <custom:AnalysisControl x:Name="analysisPanel" Grid.Row="1" Margin="8,-8,0,8" Visibility="Hidden"/>
+    </Grid>
+</metro:Window>

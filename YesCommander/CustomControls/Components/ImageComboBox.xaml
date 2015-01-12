@@ -1,0 +1,33 @@
+﻿<ComboBox x:Class="YesCommander.CustomControls.Components.ImageComboBox"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:local="clr-namespace:YesCommander.CustomControls.Components"
+          xmlns:converter="clr-namespace:YesCommander.Converter"
+          Style="{DynamicResource CustomComboBoxStyle}"
+          ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Transparent" Height="30"
+          IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="Id">
+    <ComboBox.Resources>
+        <converter:IsImageComboBoxItemHighlightColorSetConverter x:Key="IsImageComboBoxItemHighlightColorSetConverter" />
+    </ComboBox.Resources>
+    <ComboBox.ItemTemplate>
+        <DataTemplate DataType="{x:Type local:ImageComboBoxItem}">
+            <Grid Background="{Binding Path=HighlightColor, Mode=TwoWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="idText" Text="{Binding Path=Id, Mode=OneTime}" Grid.Column="0" VerticalAlignment="Center"  Margin="2,0,4,0" Foreground="White" FontSize="13"/>
+                <Image Grid.Column="1" Source="{Binding Path=Image, Mode=OneTime}" Margin="0,0,4,0" VerticalAlignment="Center" MaxHeight="15" MaxWidth="15" />
+                <TextBlock x:Name="nameText" Text="{Binding Path=Name, Mode=OneTime}" Grid.Column="2" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Foreground="White" FontSize="13"/>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=HighlightColor,Mode=OneWay,
+                                Converter={StaticResource IsImageComboBoxItemHighlightColorSetConverter}}"
+                             Value="True">
+                    <Setter TargetName="nameText" Property="Foreground" Value="White" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </ComboBox.ItemTemplate>
+</ComboBox>

@@ -1,0 +1,248 @@
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\bin\Release\YesCommander.exe.config
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\bin\Release\YesCommander.exe
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\bin\Release\YesCommander.pdb
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\bin\Release\Elysium.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\bin\Release\Elysium.Notifications.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\bin\Release\Microsoft.Windows.Shell.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\Party.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\MainWindow.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\MissionGrid.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\Party.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\App.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.cache
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.lref
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\MainWindow.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\MissionGrid.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander.g.resources
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander.Properties.Resources.resources
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander.csproj.GenerateResource.Cache
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander.exe
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Release\YesCommander.pdb
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Release\YesCommander.exe.config
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander.exe
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander.pdb
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Release\YesCommander.exe
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Release\YesCommander.pdb
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Release\Elysium.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Release\Elysium.Notifications.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Release\Microsoft.Windows.Shell.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\Party.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\MainWindow.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\Party.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\App.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.cache
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.lref
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\MainWindow.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander.g.resources
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander.Properties.Resources.resources
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\YesCommander.csproj.GenerateResource.Cache
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Release\YesCommander.exe.config
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander.exe
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander.pdb
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Release\YesCommander.exe
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Release\YesCommander.pdb
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Release\Elysium.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Release\Elysium.Notifications.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Release\Microsoft.Windows.Shell.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\Party.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\MainWindow.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\Party.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\App.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.cache
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.lref
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\MainWindow.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander.g.resources
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander.Properties.Resources.resources
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\YesCommander.csproj.GenerateResource.Cache
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\bin\Release\YesCommander.exe.config
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.exe
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.pdb
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\bin\Release\YesCommander.exe
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\bin\Release\YesCommander.pdb
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\bin\Release\Elysium.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\bin\Release\Elysium.Notifications.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\bin\Release\Microsoft.Windows.Shell.dll
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Party.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\MainWindow.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Party.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\App.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.cache
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.lref
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\MainWindow.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.g.resources
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.Properties.Resources.resources
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.csproj.GenerateResource.Cache
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerPanel.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerPanel.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerHead.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerHead.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerImageFull.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerImageFull.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Release\YesCommander.exe.config
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.exe
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.pdb
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Release\YesCommander.exe
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Release\YesCommander.pdb
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Release\Elysium.dll
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Release\Elysium.Notifications.dll
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Release\Microsoft.Windows.Shell.dll
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerHead.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerImageFull.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerPanel.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImage.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImageToolTip.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AllFollowersByClass.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerHead.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerImageFull.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerPanel.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImage.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImageToolTip.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\MainWindow.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Party.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\App.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.lref
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\MainWindow.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Party.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.g.resources
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.Properties.Resources.resources
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.csproj.GenerateResource.Cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\PartyMember.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\PartyMember.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\bin\Release\YesCommander.exe.config
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.exe
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.pdb
+C:\Users\wrz\Desktop\YesCommander\YesCommander\bin\Release\YesCommander.exe
+C:\Users\wrz\Desktop\YesCommander\YesCommander\bin\Release\YesCommander.pdb
+C:\Users\wrz\Desktop\YesCommander\YesCommander\bin\Release\Elysium.dll
+C:\Users\wrz\Desktop\YesCommander\YesCommander\bin\Release\Elysium.Notifications.dll
+C:\Users\wrz\Desktop\YesCommander\YesCommander\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\wrz\Desktop\YesCommander\YesCommander\bin\Release\Microsoft.Windows.Shell.dll
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerHead.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerImageFull.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerPanel.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImage.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImageToolTip.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\BaseToolTip.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerHead.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerImageFull.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\FollowerPanel.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\PartyMember.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImage.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\TinyImageToolTip.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\ExceptionDialog.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\MainWindow.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Party.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\App.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.cache
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander_MarkupCompile.lref
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\PartyMember.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\followerFromDatabasexaml.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\FollowerRow.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\InputWindow.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\MainWindow.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\MissionGrid.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Party.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.g.resources
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.Properties.Resources.resources
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\YesCommander.csproj.GenerateResource.Cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\ImageComboBox.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\ImageComboBox.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\Themes\Generic.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Release\App.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\App.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\ImageComboBox.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\ImageComboBox.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\Themes\Generic.baml

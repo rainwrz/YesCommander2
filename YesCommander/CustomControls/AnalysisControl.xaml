@@ -1,0 +1,227 @@
+﻿<UserControl x:Class="YesCommander.CustomControls.AnalysisControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://schemas.codeplex.com/elysium"
+             xmlns:params ="http://schemas.codeplex.com/elysium/params"
+             xmlns:components ="clr-namespace:YesCommander.CustomControls.Components" 
+             RenderOptions.BitmapScalingMode="NearestNeighbor"
+             mc:Ignorable="d" Loaded="UserControl_Loaded"
+             d:DesignHeight="450" d:DesignWidth="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4" HorizontalAlignment="Center">
+            <Image Name="missionWindowImage" Source="/Resources/icon32.ico" Stretch="None"/>
+            <TextBlock Name="classAnalysis" Text="职业分析" FontSize="18" Foreground="#ffe8ce" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter" MouseDown="headTitleBlock_MouseDown"
+                       VerticalAlignment="Bottom" Margin="2" />
+            <TextBlock Name="abilityAnalysis" Text="技能分析" FontSize="15" Foreground="#ffe8ce" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter" MouseDown="headTitleBlock_MouseDown"
+                       VerticalAlignment="Bottom" Margin="2" />
+            <TextBlock Name="traitAnalysis" Text="特长分析" FontSize="15" Foreground="#ffe8ce" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter" MouseDown="headTitleBlock_MouseDown"
+                       VerticalAlignment="Bottom" Margin="2" />
+            <TextBlock Name="raceAnalysis" Text="种族分析" FontSize="15" Foreground="#ffe8ce" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter" MouseDown="headTitleBlock_MouseDown"
+                       VerticalAlignment="Bottom" Margin="2" />
+        </StackPanel>
+        <TextBlock Name="classString" Grid.Row="1" Margin="0,8,0,4" TextWrapping="Wrap" Text="选择任意一个或者两个技能组合，查看可拥有此组合的职业天赋。" Height="30"
+                   HorizontalAlignment="Center" TextAlignment="Center" Foreground="#ffe8ce" Visibility="Collapsed"/>
+        
+        <StackPanel Name="abilityCheckBoxPanel" Grid.Row="2" Margin="0,2" Orientation="Horizontal" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+            <components:AbilityCheckBox/>
+        </StackPanel>
+
+        <StackPanel Name="traitCheckBoxPanel" Grid.Row="2" Margin="0,2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+        </StackPanel>
+
+        <StackPanel Name="raceRadioPanel" Grid.Row="2" Margin="0,2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+            <RadioButton Content="侏儒" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="人类" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="矮人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="暗夜精灵" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="德莱尼" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="狼人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="兽人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="被遗忘者" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="牛头人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="巨魔" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="血精灵" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="地精" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="熊猫人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <RadioButton Content="其他" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+        </StackPanel>
+
+        <StackPanel Name="classPanel" Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="10,4,0,4"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="components:TinyImage">
+                    <Setter Property="Margin" Value="4,4,0,4"/>
+                    <Setter Property="Width" Value="18"/>
+                    <Setter Property="Height" Value="18"/>
+                </Style>
+            </StackPanel.Resources>
+            <ComboBox Name="classComboBox" Margin="8,4" Width="120" HorizontalAlignment="Left" SelectionChanged="ComboBox_SelectionChanged"/>
+            <TextBlock Text="此天赋职业可以习得以下技能（任意俩组合）:"/>
+            <StackPanel Name="abilityPanel"  Orientation="Horizontal" Margin="0,0" VerticalAlignment="Center">
+                <components:TinyImage x:Name="ability1"/>
+                <components:TinyImage x:Name="ability2"/>
+                <components:TinyImage x:Name="ability3"/>
+                <components:TinyImage x:Name="ability4"/>
+                <components:TinyImage x:Name="ability5"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Name="titleMy" Text="麾下" FontSize="22" Foreground="BlueViolet" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Center"
+                       MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+            <TextBlock Name="titleAli" Text="联盟" FontSize="18" Foreground="DodgerBlue" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Center"
+                       MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+            <TextBlock Name="titleHrd" Grid.Column="1" Text="部落" FontSize="18" Foreground="Red" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Center"
+                       MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+        </StackPanel>
+        <Image Grid.Row="4" Source="/Resources/gear-bonus-divider_2.jpg" Stretch="None" Width="150" Margin="0,0,0,4"/>
+
+        <Grid Grid.Row="5" Name="myScroll">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid VerticalAlignment="Center"  Width="892" Margin="-4,0,0,0" >
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="4"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="202"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="偏好"  Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="姓名" />
+                <TextBlock Grid.Column="2" Text="种族" />
+                <TextBlock Grid.Column="3" Text="职业" />
+                <TextBlock Grid.Column="4" Text="等级" />
+                <TextBlock Grid.Column="5" Text="装等" />
+                <TextBlock Grid.Column="6" Text="技能" />
+                <TextBlock Grid.Column="7" Text="可能习得" />
+                <TextBlock Grid.Column="8" Text="特长" />
+                <TextBlock Grid.Column="9" Text="冻结" />
+            </Grid>
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0,4">
+                <StackPanel Name="myPanel"/>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="5"  Name="aliScroll" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Width="952" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="4"/>
+                        <Setter Property="FontSize" Value="12"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                </Grid.Resources>
+                <TextBlock Text="英文名" Grid.Column="1"/>
+                <TextBlock Text="简体名" Grid.Column="2"/>
+                <TextBlock Text="繁体名" Grid.Column="3"/>
+                <TextBlock Text="种族" Grid.Column="4" />
+                <TextBlock Text="职业天赋" Grid.Column="5" />
+                <TextBlock Text="始等级" Grid.Column="6" />
+                <TextBlock Text="始技能" Grid.Column="7" />
+                <TextBlock Text="始特长" Grid.Column="8" />
+                <TextBlock Text="已拥有" Grid.Column="9" />
+            </Grid>
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0,4,0,8">
+                <StackPanel Name="aliPanel" />
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="5"  Name="hrdScroll" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Width="952" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="4"/>
+                        <Setter Property="FontSize" Value="12"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                </Grid.Resources>
+                <TextBlock Text="英文名" Grid.Column="1"/>
+                <TextBlock Text="简体名" Grid.Column="2"/>
+                <TextBlock Text="繁体名" Grid.Column="3"/>
+                <TextBlock Text="种族" Grid.Column="4" />
+                <TextBlock Text="职业天赋" Grid.Column="5" />
+                <TextBlock Text="始等级" Grid.Column="6" />
+                <TextBlock Text="始技能" Grid.Column="7" />
+                <TextBlock Text="始特长" Grid.Column="8" />
+                <TextBlock Text="已拥有" Grid.Column="9" />
+            </Grid>
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0,4,0,8">
+                <StackPanel Name="hrdPanel" />
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</UserControl>

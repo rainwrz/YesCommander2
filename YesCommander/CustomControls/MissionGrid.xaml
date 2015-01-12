@@ -1,0 +1,17 @@
+﻿<metro:Window x:Class="YesCommander.CustomControls.MissionGrid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:metro="http://schemas.codeplex.com/elysium"
+        xmlns:params ="http://schemas.codeplex.com/elysium/params"
+        RenderOptions.BitmapScalingMode="NearestNeighbor"
+        xmlns:custom="clr-namespace:YesCommander" Closing="Window_Closing" 
+        Title="所有任务" Height="680" Width="1200"  ResizeMode="CanResize" Icon="/Resources/icon32.ico"
+        WindowStartupLocation="CenterOwner" params:Design.Theme="Dark"  Topmost="False"
+        params:Manager.Theme="Dark">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <DataGrid Name="missionGrid" Margin="2" ItemsSource="{Binding}"/>
+    </Grid>
+</metro:Window>

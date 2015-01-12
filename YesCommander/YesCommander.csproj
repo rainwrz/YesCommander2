@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B49AD603-5EA9-4195-ABD0-D969F2863B89}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YesCommander</RootNamespace>
+    <AssemblyName>YesCommander</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elysium, Version=2.0.976.4, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\Elysium.dll</HintPath>
+    </Reference>
+    <Reference Include="Elysium.Notifications, Version=2.0.62.4, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\Elysium.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="CustomControls\AnalysisControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\BaseToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\AbilityCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\FollowerHead.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\FollowerImageFull.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\FollowerPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\ImageComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\PartyMember.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\TinyImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\TinyImageToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ExceptionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\followerFromDatabasexaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\FollowerRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\InputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Exceptions.cs" />
+    <Compile Include="Classes\Follower.cs" />
+    <Compile Include="Classes\Globals.cs" />
+    <Compile Include="Classes\LoadData.cs" />
+    <Compile Include="Classes\MessagePacket.cs" />
+    <Compile Include="Classes\Mission.cs" />
+    <Compile Include="Classes\Missions.cs" />
+    <Compile Include="Classes\Solution.cs" />
+    <Compile Include="Converter\IsImageComboBoxItemHighlightColorSetConverter.cs" />
+    <Compile Include="CustomControls\AnalysisControl.xaml.cs">
+      <DependentUpon>AnalysisControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\BaseToolTip.xaml.cs">
+      <DependentUpon>BaseToolTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\AbilityCheckBox.xaml.cs">
+      <DependentUpon>AbilityCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\FollowerHead.xaml.cs">
+      <DependentUpon>FollowerHead.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\FollowerImageFull.xaml.cs">
+      <DependentUpon>FollowerImageFull.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\FollowerPanel.xaml.cs">
+      <DependentUpon>FollowerPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\ImageComboBox.xaml.cs">
+      <DependentUpon>ImageComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\ImageComboBoxItem.cs" />
+    <Compile Include="CustomControls\Components\PartyMember.xaml.cs">
+      <DependentUpon>PartyMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\TinyImage.xaml.cs">
+      <DependentUpon>TinyImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\TinyImageToolTip.xaml.cs">
+      <DependentUpon>TinyImageToolTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ExceptionDialog.xaml.cs">
+      <DependentUpon>ExceptionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\followerFromDatabasexaml.xaml.cs">
+      <DependentUpon>followerFromDatabasexaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\FollowerRow.xaml.cs">
+      <DependentUpon>FollowerRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\InputWindow.xaml.cs">
+      <DependentUpon>InputWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="CustomControls\MissionGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Party.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomControls\MissionGrid.xaml.cs">
+      <DependentUpon>MissionGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Party.xaml.cs">
+      <DependentUpon>Party.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Beastslayer.jpg" />
+    <Resource Include="Resources\CaveDweller.jpg" />
+    <Resource Include="Resources\ColdBlooded.jpg" />
+    <Resource Include="Resources\Demonslayer.jpg" />
+    <Resource Include="Resources\Furyslayer.jpg" />
+    <Resource Include="Resources\Gronnslayer.jpg" />
+    <Resource Include="Resources\GuerillaFighter.jpg" />
+    <Resource Include="Resources\Marshwalker.jpg" />
+    <Resource Include="Resources\Mountaineer.jpg" />
+    <Resource Include="Resources\Naturalist.jpg" />
+    <Resource Include="Resources\Ogreslayer.jpg" />
+    <Resource Include="Resources\Orcslayer.jpg" />
+    <Resource Include="Resources\Plainsrunner.jpg" />
+    <Resource Include="Resources\Primalslayer.jpg" />
+    <Resource Include="Resources\Talonslayer.jpg" />
+    <Resource Include="Resources\Voidslayer.jpg" />
+    <Resource Include="Resources\Wastelander.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ability_warrior_savageblow.jpg" />
+    <Resource Include="Resources\achievement_boss_twinorcbrutes.jpg" />
+    <Resource Include="Resources\spell_deathknight_armyofthedead.jpg" />
+    <Resource Include="Resources\spell_fire_selfdestruct.jpg" />
+    <Resource Include="Resources\spell_holy_borrowedtime.jpg" />
+    <Resource Include="Resources\spell_nature_reincarnation.jpg" />
+    <Resource Include="Resources\spell_shadow_shadowbolt.jpg" />
+    <Resource Include="Resources\spell_shadow_shadowwordpain.jpg" />
+    <Resource Include="Resources\spell_shaman_earthquake.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AllyOfArgus.jpg" />
+    <Resource Include="Resources\BrewAficionado.jpg" />
+    <Resource Include="Resources\BurstOfPower.jpg" />
+    <Resource Include="Resources\CanineCompanion.jpg" />
+    <Resource Include="Resources\ChildOfDraenon.jpg" />
+    <Resource Include="Resources\ChildOfTheMoon.jpg" />
+    <Resource Include="Resources\CombatExperience.jpg" />
+    <Resource Include="Resources\Dancer.jpg" />
+    <Resource Include="Resources\DeathFascination.jpg" />
+    <Resource Include="Resources\Dwarvenborn.jpg" />
+    <Resource Include="Resources\Economist.jpg" />
+    <Resource Include="Resources\Elvenkind.jpg" />
+    <Resource Include="Resources\EpicMount.jpg" />
+    <Resource Include="Resources\GnomeLover.jpg" />
+    <Resource Include="Resources\HighStamina.jpg" />
+    <Resource Include="Resources\Humanist.jpg" />
+    <Resource Include="Resources\LoneWolf.jpg" />
+    <Resource Include="Resources\Totemist.jpg" />
+    <Resource Include="Resources\VoodooZealot.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon16.ico" />
+    <Resource Include="Resources\icon48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Town.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\alchemy.jpg" />
+    <Resource Include="Resources\angler.jpg" />
+    <Resource Include="Resources\blacksmithing.jpg" />
+    <Resource Include="Resources\Bodyguard.jpg" />
+    <Resource Include="Resources\Enchanting.jpg" />
+    <Resource Include="Resources\engineering.jpg" />
+    <Resource Include="Resources\Evergreen.jpg" />
+    <Resource Include="Resources\ExtraTraining.jpg" />
+    <Resource Include="Resources\FastLearner.jpg" />
+    <Resource Include="Resources\HearthstonePro.jpg" />
+    <Resource Include="Resources\herbalism.jpg" />
+    <Resource Include="Resources\imageBorder.png" />
+    <Resource Include="Resources\Inscription.jpg" />
+    <Resource Include="Resources\Jewelcrafting.jpg" />
+    <Resource Include="Resources\leatherworking.jpg" />
+    <Resource Include="Resources\Mining.jpg" />
+    <Resource Include="Resources\Scavenger.jpg" />
+    <Resource Include="Resources\Skinning.jpg" />
+    <Resource Include="Resources\Tailoring.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gear-bonus-divider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gear-bonus-divider_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gear-bonus-divider_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\help-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\archstone.jpg" />
+    <Resource Include="Resources\runestone.jpg" />
+    <Resource Include="Resources\Treasures.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Small\Ali\Abu%27gar.png" />
+    <Resource Include="Resources\Images\Small\Ali\Adelaide_Kane.png" />
+    <Resource Include="Resources\Images\Small\Ali\Admiral_Taylor.png" />
+    <Resource Include="Resources\Images\Small\Ali\Aerik_Matthews.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ahm.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ailsa_Thundersong.png" />
+    <Resource Include="Resources\Images\Small\Ali\Aknor_Steelbringer.png" />
+    <Resource Include="Resources\Images\Small\Ali\Alasdair_Whitepeak.png" />
+    <Resource Include="Resources\Images\Small\Ali\Alessia_D%27Nara.png" />
+    <Resource Include="Resources\Images\Small\Ali\Amie_Chambers.png" />
+    <Resource Include="Resources\Images\Small\Ali\Anaeli.png" />
+    <Resource Include="Resources\Images\Small\Ali\Antone_Sula.png" />
+    <Resource Include="Resources\Images\Small\Ali\Apprentice_Artificer_Andren.png" />
+    <Resource Include="Resources\Images\Small\Ali\Araspeth.png" />
+    <Resource Include="Resources\Images\Small\Ali\Archibald_Arlison.png" />
+    <Resource Include="Resources\Images\Small\Ali\Arctic_Whitemace.png" />
+    <Resource Include="Resources\Images\Small\Ali\Arebia_Wintercall.png" />
+    <Resource Include="Resources\Images\Small\Ali\Artificer_Romuul.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ashlen_Swordbreaker.png" />
+    <Resource Include="Resources\Images\Small\Ali\Audra_Stoneshield.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bastiana_Moran.png" />
+    <Resource Include="Resources\Images\Small\Ali\Becky_Dawson.png" />
+    <Resource Include="Resources\Images\Small\Ali\Belouran.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bemora.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bernhard_Hammerdown.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bitterwalker_Pikrea.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bloodrose.png" />
+    <Resource Include="Resources\Images\Small\Ali\Blook.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bodrin_Bloodhowl.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bren%27rethor_Swiftquiver.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bridgette_Hicks.png" />
+    <Resource Include="Resources\Images\Small\Ali\Brogan_Threepints.png" />
+    <Resource Include="Resources\Images\Small\Ali\Brother_Boshi.png" />
+    <Resource Include="Resources\Images\Small\Ali\Brula_Brandykeg.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bruma_Swiftstone.png" />
+    <Resource Include="Resources\Images\Small\Ali\Bryan_Schnau.png" />
+    <Resource Include="Resources\Images\Small\Ali\Burghy_Blackheart.png" />
+    <Resource Include="Resources\Images\Small\Ali\Caelvana_Duskwalker.png" />
+    <Resource Include="Resources\Images\Small\Ali\Caerania_the_Tempering.png" />
+    <Resource Include="Resources\Images\Small\Ali\Caeris_Felwalker.png" />
+    <Resource Include="Resources\Images\Small\Ali\Caleb_Weber.png" />
+    <Resource Include="Resources\Images\Small\Ali\Catherine_Magruder.png" />
+    <Resource Include="Resources\Images\Small\Ali\Celadina.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ciarra_Neil.png" />
+    <Resource Include="Resources\Images\Small\Ali\Cinad_Darksummit.png" />
+    <Resource Include="Resources\Images\Small\Ali\Claire_the_Fox.png" />
+    <Resource Include="Resources\Images\Small\Ali\Cleric_Maluuf.png" />
+    <Resource Include="Resources\Images\Small\Ali\Clever_Ashyo.png" />
+    <Resource Include="Resources\Images\Small\Ali\Colm_Breakstorm.png" />
+    <Resource Include="Resources\Images\Small\Ali\Conall_Rainsinger.png" />
+    <Resource Include="Resources\Images\Small\Ali\Corene_Caldwell.png" />
+    <Resource Include="Resources\Images\Small\Ali\Croman.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dagg.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dag_Stonecircle.png" />
+    <Resource Include="Resources\Images\Small\Ali\Daleera_Moonfang.png" />
+    <Resource Include="Resources\Images\Small\Ali\Danaeris_Amberstar.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dana_Crockett.png" />
+    <Resource Include="Resources\Images\Small\Ali\Daniel_Montoy.png" />
+    <Resource Include="Resources\Images\Small\Ali\Daven_Kessler.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dawnseeker_Rukaryx.png" />
+    <Resource Include="Resources\Images\Small\Ali\Defender_Illona.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dekland_Strange.png" />
+    <Resource Include="Resources\Images\Small\Ali\Delaras_Moonshadow.png" />
+    <Resource Include="Resources\Images\Small\Ali\Delma_Ironsafe.png" />
+    <Resource Include="Resources\Images\Small\Ali\Delvar_Ironfist.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dessee_Crashcrank.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dilben_Ironshot.png" />
+    <Resource Include="Resources\Images\Small\Ali\Doc_Lightspanner.png" />
+    <Resource Include="Resources\Images\Small\Ali\Doc_Schweitzer.png" />
+    <Resource Include="Resources\Images\Small\Ali\Domnall_Icecrag.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dordra_Talusfall.png" />
+    <Resource Include="Resources\Images\Small\Ali\Draeken_Nightspear.png" />
+    <Resource Include="Resources\Images\Small\Ali\Dramnur_Doombrow.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ebba_Stormfist.png" />
+    <Resource Include="Resources\Images\Small\Ali\Edith_Shareflagon.png" />
+    <Resource Include="Resources\Images\Small\Ali\Edmund_Duskrend.png" />
+    <Resource Include="Resources\Images\Small\Ali\Eli_Cannon.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ellington_Moonheart.png" />
+    <Resource Include="Resources\Images\Small\Ali\Elva_Stonechapel.png" />
+    <Resource Include="Resources\Images\Small\Ali\Erohaan.png" />
+    <Resource Include="Resources\Images\Small\Ali\Esmund_Brightshield.png" />
+    <Resource Include="Resources\Images\Small\Ali\Eunna_Young.png" />
+    <Resource Include="Resources\Images\Small\Ali\Evanra_Cloudchant.png" />
+    <Resource Include="Resources\Images\Small\Ali\Faal.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fargo_Flintlocke.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fasani.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fen_Cinderpaw.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fern_Greenfoot.png" />
+    <Resource Include="Resources\Images\Small\Ali\Filmore_Patricks.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fingall_Flamehammer.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fink_Fastneedle.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fiona.png" />
+    <Resource Include="Resources\Images\Small\Ali\Flurga.png" />
+    <Resource Include="Resources\Images\Small\Ali\Fo_Sho_Knucklebump.png" />
+    <Resource Include="Resources\Images\Small\Ali\Frostlighter_Hanaa.png" />
+    <Resource Include="Resources\Images\Small\Ali\Gabriel_Bybee.png" />
+    <Resource Include="Resources\Images\Small\Ali\Galadran_Gath.png" />
+    <Resource Include="Resources\Images\Small\Ali\Galestriker_Halanai.png" />
+    <Resource Include="Resources\Images\Small\Ali\Garvan_Bitterstone.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ginnwin_Grindspinner.png" />
+    <Resource Include="Resources\Images\Small\Ali\Glirin.png" />
+    <Resource Include="Resources\Images\Small\Ali\Goldmane_the_Skinner.png" />
+    <Resource Include="Resources\Images\Small\Ali\Gorandir_Wildsong.png" />
+    <Resource Include="Resources\Images\Small\Ali\Grum_Boarsbane.png" />
+    <Resource Include="Resources\Images\Small\Ali\Gwinolen_Stormgrip.png" />
+    <Resource Include="Resources\Images\Small\Ali\Gwynlan_Rainglow.png" />
+    <Resource Include="Resources\Images\Small\Ali\Haagios.png" />
+    <Resource Include="Resources\Images\Small\Ali\Halsteth_Ravenwood.png" />
+    <Resource Include="Resources\Images\Small\Ali\Haomi.png" />
+    <Resource Include="Resources\Images\Small\Ali\Harry_Lawson.png" />
+    <Resource Include="Resources\Images\Small\Ali\Hereward_Stonecleave.png" />
+    <Resource Include="Resources\Images\Small\Ali\Herrathos_Starstaff.png" />
+    <Resource Include="Resources\Images\Small\Ali\Hester_Blackember.png" />
+    <Resource Include="Resources\Images\Small\Ali\Hestiah_Ravenwood.png" />
+    <Resource Include="Resources\Images\Small\Ali\Hildr_Helhammer.png" />
+    <Resource Include="Resources\Images\Small\Ali\Honora_Keystone.png" />
+    <Resource Include="Resources\Images\Small\Ali\Hulda_Shadowblade.png" />
+    <Resource Include="Resources\Images\Small\Ali\Humbolt_Briarblack.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ilaniel_Pine.png" />
+    <Resource Include="Resources\Images\Small\Ali\Illu%27mina.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ilspeth_Hollander.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ilyanna_Talongrasp.png" />
+    <Resource Include="Resources\Images\Small\Ali\Image_of_Archmage_Vargoth.png" />
+    <Resource Include="Resources\Images\Small\Ali\Imme_Ironheart.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ingrid_Darkplait.png" />
+    <Resource Include="Resources\Images\Small\Ali\Innes_Shieldshatter.png" />
+    <Resource Include="Resources\Images\Small\Ali\Isabella_Jean.png" />
+    <Resource Include="Resources\Images\Small\Ali\Iven_Page.png" />
+    <Resource Include="Resources\Images\Small\Ali\Jen%27thael_Darkcloak.png" />
+    <Resource Include="Resources\Images\Small\Ali\Jephet_Nighthowler.png" />
+    <Resource Include="Resources\Images\Small\Ali\Joachim_Demonsbane.png" />
+    <Resource Include="Resources\Images\Small\Ali\Justine_DeGroot.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kage_Satsuke.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kai_Earthwhisper.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kalandra_Starhelm.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kang_Bramblestaff.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kariel_Whisperwind.png" />
+    <Resource Include="Resources\Images\Small\Ali\Karyn_Whitmoor.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kathrena_Winterwisp.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kayt_Miccoats.png" />
+    <Resource Include="Resources\Images\Small\Ali\Keema.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ken-Ken.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kendall_Covington.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kihra.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kilandric_Hawkstrike.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kimzee_Pinchwhistle.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kinndy_Brightsocket.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kirandros_Galeheart.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kiruud_the_Relentless.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kitara_Mae.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kristian_Nairn.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kris_Rey.png" />
+    <Resource Include="Resources\Images\Small\Ali\Kymba_Quickwidget.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lamontague_Ford.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lantresor_of_the_Blade.png" />
+    <Resource Include="Resources\Images\Small\Ali\Larry_Copeland.png" />
+    <Resource Include="Resources\Images\Small\Ali\Leena.png" />
+    <Resource Include="Resources\Images\Small\Ali\Leena_Guant.png" />
+    <Resource Include="Resources\Images\Small\Ali\Leeroy_Jenkins.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lee_Olesky.png" />
+    <Resource Include="Resources\Images\Small\Ali\Len-Shu.png" />
+    <Resource Include="Resources\Images\Small\Ali\Leonard_Schrick.png" />
+    <Resource Include="Resources\Images\Small\Ali\Leorajh.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lightshielder_Baetrix.png" />
+    <Resource Include="Resources\Images\Small\Ali\Linda_Meier.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lin_Tenderpaw.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lleanya_Mourningsong.png" />
+    <Resource Include="Resources\Images\Small\Ali\Loranea.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lorcan_Flintedge.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lowping.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lucia_Nightbane.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lucretia_Ainsworth.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lukain_Chillborne.png" />
+    <Resource Include="Resources\Images\Small\Ali\Lylnleath_Featherfoot.png" />
+    <Resource Include="Resources\Images\Small\Ali\Maeve_Hopwash.png" />
+    <Resource Include="Resources\Images\Small\Ali\Magister_Serena.png" />
+    <Resource Include="Resources\Images\Small\Ali\Makaaria_the_Cursed.png" />
+    <Resource Include="Resources\Images\Small\Ali\Malden.png" />
+    <Resource Include="Resources\Images\Small\Ali\Margo_Steelfinger.png" />
+    <Resource Include="Resources\Images\Small\Ali\Marguun.png" />
+    <Resource Include="Resources\Images\Small\Ali\Master_Tengbai.png" />
+    <Resource Include="Resources\Images\Small\Ali\Matthew_Deyling.png" />
+    <Resource Include="Resources\Images\Small\Ali\Matthew_Younglove.png" />
+    <Resource Include="Resources\Images\Small\Ali\Maul_Dethwidget.png" />
+    <Resource Include="Resources\Images\Small\Ali\Meatball.png" />
+    <Resource Include="Resources\Images\Small\Ali\Miall.png" />
+    <Resource Include="Resources\Images\Small\Ali\Mia_Linn.png" />
+    <Resource Include="Resources\Images\Small\Ali\Miiraxa_the_Renewer.png" />
+    <Resource Include="Resources\Images\Small\Ali\Millhouse_Manastorm.png" />
+    <Resource Include="Resources\Images\Small\Ali\Mina_Harken.png" />
+    <Resource Include="Resources\Images\Small\Ali\Mina_Kunis.png" />
+    <Resource Include="Resources\Images\Small\Ali\Mirran_Lichbane.png" />
+    <Resource Include="Resources\Images\Small\Ali\Mizzy_Bobble.png" />
+    <Resource Include="Resources\Images\Small\Ali\Mysandra_Swiftarc.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nance_Doubleblade.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nat_Pagle.png" />
+    <Resource Include="Resources\Images\Small\Ali\Navea_the_Purifier.png" />
+    <Resource Include="Resources\Images\Small\Ali\Neve_Axeblow.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nevil_Darkstride.png" />
+    <Resource Include="Resources\Images\Small\Ali\Niall_Frostdrift.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nicholas_Divide.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nihil_Tel%27alara.png" />
+    <Resource Include="Resources\Images\Small\Ali\Noah_Munck.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nordaerin_Silverbeam.png" />
+    <Resource Include="Resources\Images\Small\Ali\Noreen_Trueflint.png" />
+    <Resource Include="Resources\Images\Small\Ali\Noxiia_Atoh.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nudan.png" />
+    <Resource Include="Resources\Images\Small\Ali\Nuria_Thornstorm.png" />
+    <Resource Include="Resources\Images\Small\Ali\Olren_Sternbeard.png" />
+    <Resource Include="Resources\Images\Small\Ali\Orrindis_Raindrinker.png" />
+    <Resource Include="Resources\Images\Small\Ali\Orvar.png" />
+    <Resource Include="Resources\Images\Small\Ali\Osgar_Smitehammer.png" />
+    <Resource Include="Resources\Images\Small\Ali\Peng_Stealthpaw.png" />
+    <Resource Include="Resources\Images\Small\Ali\Permelia.png" />
+    <Resource Include="Resources\Images\Small\Ali\Peter_Toulios.png" />
+    <Resource Include="Resources\Images\Small\Ali\Phylarch_the_Evergreen.png" />
+    <Resource Include="Resources\Images\Small\Ali\Pitfighter_Vaandaam.png" />
+    <Resource Include="Resources\Images\Small\Ali\Pleasure-Bot_8000.png" />
+    <Resource Include="Resources\Images\Small\Ali\Professor_Felblast.png" />
+    <Resource Include="Resources\Images\Small\Ali\Qiana_Moonshadow.png" />
+    <Resource Include="Resources\Images\Small\Ali\Raevyn_Sorrowblade.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ramall_Trueoak.png" />
+    <Resource Include="Resources\Images\Small\Ali\Randee_Wallyce.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rangari_Chel.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rangari_Erdanii.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rangari_Kaalya.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ranni_Flagdabble.png" />
+    <Resource Include="Resources\Images\Small\Ali\Raquel_Deyling.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rebecca_Stirling.png" />
+    <Resource Include="Resources\Images\Small\Ali\Reina_Morningchill.png" />
+    <Resource Include="Resources\Images\Small\Ali\Renthal_Bloodfang.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rin_Starsong.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rorin_Rivershade.png" />
+    <Resource Include="Resources\Images\Small\Ali\Roshene_Stonewhisper.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rulkan.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ruvan_Hornsby.png" />
+    <Resource Include="Resources\Images\Small\Ali\Rykki_Lyndgarf.png" />
+    <Resource Include="Resources\Images\Small\Ali\Sarah_Schnau.png" />
+    <Resource Include="Resources\Images\Small\Ali\Saul_Lee.png" />
+    <Resource Include="Resources\Images\Small\Ali\Scarletleaf.png" />
+    <Resource Include="Resources\Images\Small\Ali\Scrapsy_Fibblepop.png" />
+    <Resource Include="Resources\Images\Small\Ali\Seline_Keihl.png" />
+    <Resource Include="Resources\Images\Small\Ali\Selis.png" />
+    <Resource Include="Resources\Images\Small\Ali\Seona_Fireweaver.png" />
+    <Resource Include="Resources\Images\Small\Ali\Sever_Frostsprocket.png" />
+    <Resource Include="Resources\Images\Small\Ali\Shelly_Hamby.png" />
+    <Resource Include="Resources\Images\Small\Ali\Shieldmaster_Daeun.png" />
+    <Resource Include="Resources\Images\Small\Ali\Skip_Burnbright.png" />
+    <Resource Include="Resources\Images\Small\Ali\Songla.png" />
+    <Resource Include="Resources\Images\Small\Ali\Soulare_of_Andorhal.png" />
+    <Resource Include="Resources\Images\Small\Ali\Soulbinder_Tuulani.png" />
+    <Resource Include="Resources\Images\Small\Ali\Sprynt_Starkflange.png" />
+    <Resource Include="Resources\Images\Small\Ali\Stigander_Ironsnare.png" />
+    <Resource Include="Resources\Images\Small\Ali\Stormsinger_Taalos.png" />
+    <Resource Include="Resources\Images\Small\Ali\Su-Lai_Snowpetal.png" />
+    <Resource Include="Resources\Images\Small\Ali\Suna_Sunnie_Steelpaw.png" />
+    <Resource Include="Resources\Images\Small\Ali\Sylalleas_Frostwind.png" />
+    <Resource Include="Resources\Images\Small\Ali\Sylva_Darkhowl.png" />
+    <Resource Include="Resources\Images\Small\Ali\Syndee_Sparkblade.png" />
+    <Resource Include="Resources\Images\Small\Ali\Syverandin_Yewshade.png" />
+    <Resource Include="Resources\Images\Small\Ali\Talonpriest_Ishaal.png" />
+    <Resource Include="Resources\Images\Small\Ali\Talon_Guard_Kurekk.png" />
+    <Resource Include="Resources\Images\Small\Ali\Tavid_Blightsteel.png" />
+    <Resource Include="Resources\Images\Small\Ali\Tell%27machrim_Stormvigil.png" />
+    <Resource Include="Resources\Images\Small\Ali\Temura_Ence.png" />
+    <Resource Include="Resources\Images\Small\Ali\Tessa_Wybroff.png" />
+    <Resource Include="Resources\Images\Small\Ali\Thaal%27kos_Thundersong.png" />
+    <Resource Include="Resources\Images\Small\Ali\Thisalee_Crow.png" />
+    <Resource Include="Resources\Images\Small\Ali\Thurman_Belva.png" />
+    <Resource Include="Resources\Images\Small\Ali\Torin_Coalheart.png" />
+    <Resource Include="Resources\Images\Small\Ali\Tormmok.png" />
+    <Resource Include="Resources\Images\Small\Ali\Trapper_Huong.png" />
+    <Resource Include="Resources\Images\Small\Ali\Truman_Weaver.png" />
+    <Resource Include="Resources\Images\Small\Ali\Tylee_Hackspring.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ultan_Blackgorge.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ursila_Hudsen.png" />
+    <Resource Include="Resources\Images\Small\Ali\Verroak_Greenheart.png" />
+    <Resource Include="Resources\Images\Small\Ali\Vidar_Goldaim.png" />
+    <Resource Include="Resources\Images\Small\Ali\Vindicator_Heluun.png" />
+    <Resource Include="Resources\Images\Small\Ali\Vindicator_Onaala.png" />
+    <Resource Include="Resources\Images\Small\Ali\Voraatios_the_Benedictive.png" />
+    <Resource Include="Resources\Images\Small\Ali\Vulric_Fangborne.png" />
+    <Resource Include="Resources\Images\Small\Ali\Weldon_Barov.png" />
+    <Resource Include="Resources\Images\Small\Ali\Wolfgrimm_Blackmantle.png" />
+    <Resource Include="Resources\Images\Small\Ali\Xeranitas.png" />
+    <Resource Include="Resources\Images\Small\Ali\Xiao.png" />
+    <Resource Include="Resources\Images\Small\Ali\Yumanis_Oakengrip.png" />
+    <Resource Include="Resources\Images\Small\Ali\Yvette_Blackheart.png" />
+    <Resource Include="Resources\Images\Small\Ali\Zelena_Moonbreak.png" />
+    <Resource Include="Resources\Images\Small\Ali\Zian.png" />
+    <Resource Include="Resources\Images\Small\Ali\Ziri%27ak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Small\Hrd\Abigail_Wilson.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Abu%27gar.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Aeda_Brightdawn.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Aesin_Sunstalker.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ahaxxa.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ahm.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ahote.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Aila_Dourblade.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Aknor_Steelbringer.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Alexi_Barov.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Allison_Calla.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Annix_Strifesprocket.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Arachni_Bloodseeker.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Arcanist_Druk%27rog.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Arga_Demonbreak.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Argonis_Solheart.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Arienne_Black.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ariia.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ariiya_Sunblood.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Artemisia_Azuregaze.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Auriel_Brightsong.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Awarri_Blazecall.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Azereki_Ashenblade.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Baron_Deathshot.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Beezle_Boomsticks.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Benjamin_Gibb.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Besandran_Shatterfury.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Bim%27ini.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Blook.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Brakk_Shattershield.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Brother_Zuo.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Bruto.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Cacklebone.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Cadi_Grasshoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Calder_Gray.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Candice_Morey.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Charles_Norris.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Cheri.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Choluna.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Clever_Ashyo.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Coggeye_Aimbot.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Croman.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Cyril_Fogus.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Dagg.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Dark_Ranger_Velonara.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Dawnseeker_Rukaryx.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Dawn_Mercurus.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Deena_Feltalker.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Deneezo_Hailstrike.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Doc_Schweitzer.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ella_Driver.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Enoch_Fuller.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Enola.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Eula_Clay.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Faala.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Favra_Bearhide.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Fawne.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Fazerra.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Fo_Sho_Knucklebump.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Gaho.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Gakkiz_Blusterblast.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Garag_Earthtongue.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Gazra.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Genah_Brawnhoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Gerard_Loom.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Glaiveweaver_Xuan.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Goahn.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Goldmane_the_Skinner.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Gravewalker_Gie.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Gravy.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Greatmother_Geyah.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Grelwaz_Redknife.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Grinfel_Frostfinger.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Gronnstalker_Rokash.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Guardian_Atohi.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Hande_Shadereaver.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Hannya.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Haomi.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Hara%27len.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Harley_Soubrette.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Haumeja.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Hayli_Hallowsend.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Heallix_Skatterstorm.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Henry_Wall.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Herschel_Welch.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Heyzzle_Veinripp.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Humak_the_Verdant.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Image_of_Archmage_Vargoth.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Iye.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ja%27kala.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Jakama.png" />
+    <Resource Include="Resources\Images\Small\Hrd\John_Greer.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Jukke_Deathward.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ka%27la.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kaama_Arrowspring.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kaasa_Blighthoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kablouie_One-Eye.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kaiel.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kal%27gor_the_Honorable.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kaluaka.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kana%27tin.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kang_Bramblestaff.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kanuama.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Karga_Quickshot.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Karg_Bloodfury.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Karn_Steelhoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kaz%27hiki.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kaz_the_Shrieker.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kel%27rikor.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ken-Ken.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kenzi_Solo.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kerraelon_Sunhunger.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kew_Wyldheart.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kieu.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kil%27weh.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kilga_Mourningsong.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Killix_Zombroski.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kimzee_Pinchwhistle.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kral%27girz.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kuma_Thunderhide.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Kwahu_Fiendtamer.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lai.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lamontague_Ford.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lan%27Veros_Furybrand.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lantresor_of_the_Blade.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lara_Pearson.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lawrence_Sharp.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Layla.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lazrek.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Leeroy_Jenkins.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Len-Shu.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Leoneras_Sunrage.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Leorajh.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lin_Tenderpaw.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lok%27rig_Felthrall.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lokra.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lonan.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lono%27tai.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lucy_Keller.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lurst_Ragebreak.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Lusio.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Magister_Krelas.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Magister_Tuan.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Magistrix_Chillbreeze.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Magistrix_Soulblaze.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Magrum_Mistrunner.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Marara.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Marius_Sunshard.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Maska.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Matoclaw.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Matthew_Younglove.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Mau%27iti.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Meatball.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Merhean_Sunfall.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Millhouse_Manastorm.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Mograg.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Mojo%27kai.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Mokuja.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Morketh_Bladehowl.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Morticia_Crowley.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Motina.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Moxy_Mistbargain.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Muaha_Stonehide.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Mukkral_Blackvein.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Mulverick.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Murgtar.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Mychele_Morrowsong.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Myra_Hackenslash.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Naana.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Nadia_Darksun.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Natalie_Sparks.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Nathaniel_Beastbreaker.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Nat_Pagle.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Neejala.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Nerwalla_Malword.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Neth%27raza_Doomrend.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Noel_Harrison.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Nor%27gruk_Rotskull.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Nuan_Skydream.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Nuku%27te.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Olaf_Blightbearer.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Olin_Umberhide.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Olivia_Logan.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Omril_Keenedge.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Opheron.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Orgriz_Crookmaw.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Orin_Grimblade.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Orog.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Orrelleon_Searingstrike.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Pele%27zol.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Penny_Clobberbottom.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Phaedra_Heartbinder.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Phylarch_the_Evergreen.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Pikake.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Pinkee_Rizzo.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Pleasure-Bot_8000.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Priscilla_Shadowsun.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Professor_Felblast.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Qwilla_Bloodedge.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Raitea.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rakkaha.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rangiro.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Reena_Waterrites.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rendrol_Goreslash.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rike_Stillbreath.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rizei_Stormhoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rizza_Brassrokkit.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Robin_Fredericksen.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rok%27tar.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rongar.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Rumelda_Bloodslur.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ruthia_the_Unchaste.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Sa%27vi.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Sahale.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Salanar_Mourningsun.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Samantha_Thornton.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Seleria_Dawncaller.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Shade_Plagueheart.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Shadow_Hunter_Rala.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Shappa.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Shoka.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Simone_Baloy.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Singe_Starkblast.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Sister_Xue.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Skah.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Skalliz_Skullslice.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Soozee.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Soulare_of_Andorhal.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Soulbinder_Tuulani.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Spirit_of_Bony_Xuk.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Su%27tila.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Su-Lai_Snowpetal.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Sul%27aka.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Sulaka.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Sylvie_Fallensong.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tadi.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Taela_Shatterborne.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tak%27moa.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Talonpriest_Ishaal.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Talon_Guard_Kurekk.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tama_Skyhoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tapa_Swiftpaw.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tas%27ril_Imturematril.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tawa.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Temanu.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Theo%27drosh_Blindseyed.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tholo_Whitehoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tigar_Frosthoof.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tigowa.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tipa_Rimehorn.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tizare.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Toega.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ton%27raro.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tormmok.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Torwa_Rimeheart.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Tulgorz_Grogfist.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ulna_Thresher.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Unkala_Stormgrinder.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Utona_Wolfeye.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Va%27zik.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vaal%27kelthos_Dawngrief.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vala_Kaliraan.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vaz%27rek.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Veka%27kai.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Velandros_Sunblessing.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vella_A%27nar.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vera_Haelyn.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vera_Voidheart.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vivalia_Sundagger.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vivianne.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vol%27motu.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vol%27zaku.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Vyse_Jin%27kala.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Walsh_Atkins.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Weaponsmith_Na%27Shra.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Xen_Barleystrike.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Xiao.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Yaalo.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Yepa.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Yiska.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Yu%27un_Tigersbite.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zaelatha.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zance_Silverfury.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zap_Snaresizzle.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zelaztro.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zen%27kili.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zen%27taki.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zen%27tenbi.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zen%27tika.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Zen%27tiki.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Ziri%27ak.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

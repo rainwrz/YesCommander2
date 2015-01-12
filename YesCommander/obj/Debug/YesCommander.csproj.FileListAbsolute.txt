@@ -1,0 +1,150 @@
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\bin\Debug\YesCommander.exe.config
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander.csprojResolveAssemblyReference.cache
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\App.g.cs
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.cache
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\bin\Debug\YesCommander.exe
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\bin\Debug\YesCommander.pdb
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\bin\Debug\Elysium.dll
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\bin\Debug\Elysium.Notifications.dll
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\bin\Debug\Microsoft.Expression.Drawing.dll
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\bin\Debug\Microsoft.Windows.Shell.dll
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\MainWindow.baml
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\MainWindow.g.cs
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander.g.resources
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander.Properties.Resources.resources
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander.csproj.GenerateResource.Cache
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander.exe
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander.pdb
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\Party.baml
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\Party.g.cs
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\users\wrz\documents\visual studio 2012\Projects\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.lref
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Debug\MissionGrid.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Debug\MissionGrid.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Debug\YesCommander.exe.config
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander.exe
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander.pdb
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Debug\YesCommander.exe
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Debug\YesCommander.pdb
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Debug\Elysium.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Debug\Elysium.Notifications.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\bin\Debug\Microsoft.Windows.Shell.dll
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\AllFollowersByClass.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\ExceptionDialog.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\followerFromDatabasexaml.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\Party.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\AllFollowersByClass.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\ExceptionDialog.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\MainWindow.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\MissionGrid.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\Party.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\App.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.cache
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.lref
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\MainWindow.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\CustomControls\MissionGrid.baml
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander.g.resources
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander.Properties.Resources.resources
+C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Debug\YesCommander.csproj.GenerateResource.Cache
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Debug\YesCommander.exe.config
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander.exe
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander.pdb
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\AllFollowersByClass.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\ExceptionDialog.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\followerFromDatabasexaml.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\Party.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\AllFollowersByClass.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\ExceptionDialog.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\MissionGrid.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\Party.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\App.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.cache
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.lref
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Debug\YesCommander.exe
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Debug\YesCommander.pdb
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Debug\Elysium.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Debug\Elysium.Notifications.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\bin\Debug\Microsoft.Windows.Shell.dll
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\MainWindow.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\MainWindow.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\MissionGrid.baml
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander.g.resources
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander.Properties.Resources.resources
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\YesCommander.csproj.GenerateResource.Cache
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\InputWindow.g.cs
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Debug\CustomControls\InputWindow.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Debug\YesCommander.exe.config
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Debug\YesCommander.exe
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Debug\YesCommander.pdb
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Debug\Elysium.dll
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Debug\Elysium.Notifications.dll
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\FollowerHead.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\FollowerImageFull.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\FollowerPanel.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\TinyImage.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\TinyImageToolTip.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\ExceptionDialog.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\AllFollowersByClass.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\AnalysisControl.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\BaseToolTip.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\AbilityCheckBox.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\FollowerHead.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\FollowerImageFull.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\FollowerPanel.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\ImageComboBox.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\PartyMember.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\TinyImage.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\TinyImageToolTip.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\ExceptionDialog.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\followerFromDatabasexaml.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\InputWindow.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\MainWindow.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\MissionGrid.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Party.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\App.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander_Content.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander_MarkupCompile.lref
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\AllFollowersByClass.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\AnalysisControl.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\AbilityCheckBox.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\ImageComboBox.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Components\PartyMember.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\followerFromDatabasexaml.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\FollowerRow.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\InputWindow.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\MainWindow.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\MissionGrid.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\CustomControls\Party.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\Themes\Generic.baml
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander.g.resources
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander.Properties.Resources.resources
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander.csproj.GenerateResource.Cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander.exe
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander.pdb
+C:\Users\rainw\Desktop\YesCommander\YesCommander\obj\Debug\YesCommander.csprojResolveAssemblyReference.cache
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\rainw\Desktop\YesCommander\YesCommander\bin\Debug\Microsoft.Windows.Shell.dll

@@ -1,0 +1,38 @@
+﻿<Window x:Class="YesCommander.CustomControls.ExceptionDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen" MinWidth="530" Width="530" Title="{Binding Path=DialogTitle, Mode=OneTime}" SnapsToDevicePixels="True"
+        SizeToContent="Height" SizeChanged="Window_SizeChanged"
+        Loaded="ExceptionDialog_Loaded" >
+    <Grid Margin="0" Name="RootLayout">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Margin="0" Background="White">
+            <Image Source="{Binding Path=DialogImageSource, Mode=OneTime}" Height="48" Width="48" 
+                   Margin="25,25,10,25" VerticalAlignment="Top" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0" Margin="0" Background="White">
+            <TextBlock Text="{Binding Path=ExceptionMessage, Mode=OneTime}" Margin="0,0,10,0"
+                       TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+        </Grid>
+        <Expander Grid.Row="1" Grid.ColumnSpan="2" x:Name="expander" Margin="10,0,10,0"
+                  Header="{Binding Path=ExpanderTitle, Mode=OneWay}">
+            <Expander.Content>
+                <Grid Margin="0" x:Name="detailPanel" >
+                    <TextBox x:Name="detailText" Text="{Binding Path=ExceptionDetail, Mode=OneTime}" Background="Transparent"
+                             HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                             Width="{Binding Path=ActualWidth, ElementName=detailPanel}" 
+                             Height="{Binding Path=ActualHeight, ElementName=detailPanel}"
+                             TextWrapping="NoWrap" IsReadOnly="True"/>
+                </Grid>
+            </Expander.Content>
+        </Expander>
+    </Grid>
+</Window>
+
