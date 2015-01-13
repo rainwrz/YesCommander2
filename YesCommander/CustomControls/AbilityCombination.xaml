@@ -59,10 +59,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="序号" HorizontalAlignment="Left" Margin="4,4,0,4"/>
-                <TextBlock Grid.Column="1" Text="技能组合" />
+                <TextBlock Grid.Column="1" Text="技能" />
                 <TextBlock Grid.Column="2" Text="职业数量" />
-                <TextBlock Grid.Column="3" Text="联盟随从数量" />
-                <TextBlock Grid.Column="4" Text="部落随从数量" />
+                <TextBlock Grid.Column="3" Text="联盟随从数" />
+                <TextBlock Grid.Column="4" Text="部落随从数" />
                 <TextBlock Grid.Column="5" Text="已收集" />
                 <TextBlock Grid.Column="6" Text="潜力" />
             </Grid>

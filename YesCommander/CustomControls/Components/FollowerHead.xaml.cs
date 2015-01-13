@@ -37,7 +37,6 @@ namespace YesCommander.CustomControls.Components
                 if ( File.Exists( bigPath ) )
                 {
                     this.head.ToolTip = new FollowerImageFull( bigPath );
-                    ToolTipService.SetShowDuration( this.head, 60 );
                     ToolTipService.SetInitialShowDelay( this.head, 0 );
                 }
             }
@@ -56,7 +55,6 @@ namespace YesCommander.CustomControls.Components
             if ( File.Exists( bigPath ) )
             {
                 this.head.ToolTip = new FollowerImageFull( bigPath );
-                ToolTipService.SetShowDuration( this.head, 60 );
                 ToolTipService.SetInitialShowDelay( this.head, 0 );
             }
         }
