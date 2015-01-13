@@ -25,14 +25,15 @@ namespace YesCommander.Classes
         public static DataTable AllFollowersHrd;
         public static DataTable AliFollowerSkills;
         public static DataTable HrdFollowerSkills;
-
+        public static List<Follower> AliFollowers;
+        public static List<Follower> HrdFollowers;
+        public static List<AbilityCombinationModel> combinationModelList;
+        public static List<Follower> CurrentFollowers;
         public static void Initialize()
         {
             InitialImageSources();
-            AllFollowersAli = LoadData.LoadMissionFile( "Txts/ALI.txt" );
-            AllFollowersHrd = LoadData.LoadMissionFile( "Txts/HRD.txt" );
-            AliFollowerSkills = LoadData.LoadMissionFile( "Txts/AliSkill.txt" );
-            HrdFollowerSkills = LoadData.LoadMissionFile( "Txts/HrdSkill.txt" );
+            InitializeFollowerList();
+            InitializeCombination();
         }
 
         private static void InitialImageSources()
@@ -61,6 +62,115 @@ namespace YesCommander.Classes
             missionIcionList.Add( Follower.GetImageFromPicName( "runestone.jpg" ) );
         }
 
+        private static void InitializeFollowerList()
+        {
+            AllFollowersAli = LoadData.LoadMissionFile( "Txts/ALI.txt" );
+            AllFollowersHrd = LoadData.LoadMissionFile( "Txts/HRD.txt" );
+            AliFollowerSkills = LoadData.LoadMissionFile( "Txts/AliSkill.txt" );
+            HrdFollowerSkills = LoadData.LoadMissionFile( "Txts/HrdSkill.txt" );
+
+            DataRow currentRow;
+            List<int> abilityList = new List<int>();
+            List<int> traitList = new List<int>();
+            // Ali
+            AliFollowers = new List<Follower>();
+            foreach ( DataRow row in Globals.AllFollowersAli.Rows )
+            {
+                int quolaty;
+                switch ( row[ "初始品质" ].ToString() )
+                {
+                    case "史诗": quolaty = 4; break;
+                    case "精良": quolaty = 3; break;
+                    case "优秀": quolaty = 2; break;
+                    default: quolaty = 2; break;
+                }
+                abilityList = new List<int>();
+                currentRow = Globals.AliFollowerSkills.Rows.OfType<DataRow>().First( x => x[ "ID" ].ToString() == row[ "ID" ].ToString() );
+                if ( !string.IsNullOrEmpty( currentRow[ "应对ID" ].ToString() ) )
+                    abilityList.Add( Convert.ToInt16( currentRow[ "应对ID" ] ) );
+                traitList = new List<int>();
+                if ( !string.IsNullOrEmpty( currentRow[ "特长ID" ].ToString() ) )
+                    traitList.Add( Convert.ToInt16( currentRow[ "特长ID" ] ) );
+
+                AliFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
+                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,
+                    row[ "英文名字" ].ToString(), row[ "简体名字" ].ToString(), row[ "繁体名字" ].ToString() ) );
+            }
+            //Hrd
+            HrdFollowers = new List<Follower>();
+            foreach ( DataRow row in Globals.AllFollowersHrd.Rows )
+            {
+                int quolaty;
+                switch ( row[ "初始品质" ].ToString() )
+                {
+                    case "史诗": quolaty = 4; break;
+                    case "精良": quolaty = 3; break;
+                    case "优秀": quolaty = 2; break;
+                    default: quolaty = 2; break;
+                }
+                abilityList = new List<int>();
+                currentRow = Globals.HrdFollowerSkills.Rows.OfType<DataRow>().First( x => x[ "ID" ].ToString() == row[ "ID" ].ToString() );
+                if ( !string.IsNullOrEmpty( currentRow[ "应对ID" ].ToString() ) )
+                    abilityList.Add( Convert.ToInt16( currentRow[ "应对ID" ] ) );
+                traitList = new List<int>();
+                if ( !string.IsNullOrEmpty( currentRow[ "特长ID" ].ToString() ) )
+                    traitList.Add( Convert.ToInt16( currentRow[ "特长ID" ] ) );
+
+                HrdFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
+                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,
+                    row[ "英文名字" ].ToString(), row[ "简体名字" ].ToString(), row[ "繁体名字" ].ToString() ) );
+            }
+        }
+
+        private static void InitializeCombination()
+        {
+            combinationModelList = GetAllCombinations();
+        }
+
+        private static List<AbilityCombinationModel> GetAllCombinations()
+        {
+            List<AbilityCombinationModel> list = new List<AbilityCombinationModel>();
+
+            for ( int i = 0; i < 9; i++ )
+            {
+                Follower.Abilities ability1 = (Follower.Abilities)i;
+                for ( int j = i + 1; j< 9; j++ )
+                {
+                    Follower.Abilities ability2 = (Follower.Abilities)j;
+                    AbilityCombinationModel ac = new AbilityCombinationModel();
+                    ac.Ability1 = ability1;
+                    ac.Ability2 = ability2;
+                    AddClassesIntoModel( ac );
+                    list.Add( ac );
+                }
+            }
+
+            AbilityCombinationModel acs = new AbilityCombinationModel();
+            acs.Ability1 = Follower.Abilities.TimedBattle;
+            acs.Ability2 = Follower.Abilities.TimedBattle;
+            AddClassesIntoModel( acs );
+            list.Add( acs );
+            return list.OrderBy( x => x.ListOfClasses.Count ).ThenBy( y => y.NumberOfFollowersForAli ).ToList<AbilityCombinationModel>();
+        }
+
+        private static void AddClassesIntoModel( AbilityCombinationModel model )
+        {
+            for ( int j = 0; j < 34; j++ )
+            {
+                List<Follower.Abilities> classAbilities = Follower.GetAbilityFromClass( (Follower.Classes)j );
+                if ( classAbilities.Contains( model.Ability1 ) )
+                {
+                    classAbilities.Remove( model.Ability1 );
+                    if ( classAbilities.Contains( model.Ability2 ) )
+                    {
+                        model.ListOfClasses.Add( (Follower.Classes)j );
+                        model.NumberOfFollowersForAli += Globals.AliFollowers.Count( x => x.Class == (Follower.Classes)j );
+                        model.NumberOfFollowersForHrd += Globals.HrdFollowers.Count( x => x.Class == (Follower.Classes)j );
+                    }
+                }
+            }
+        }
+
         public static ImageSource GetFollowerHead( string followerNamePath )
         {
             if ( FollowerImageSourceSmall.ContainsKey( followerNamePath ) )
@@ -81,6 +191,14 @@ namespace YesCommander.Classes
                 FollowerImageSourceBig.Add( path, GetImageSource( path ) );
                 return FollowerImageSourceBig[ path ];
             }
+        }
+
+        public static string GetFollowerEnNameById( string id, bool isAli )
+        {
+            if ( isAli )
+                return Globals.AliFollowers.Find( x => x.ID == id ).NameEN;
+            else
+                return Globals.HrdFollowers.Find( x => x.ID == id ).NameEN;
         }
 
         private static ImageSource GetImageSource( string path )

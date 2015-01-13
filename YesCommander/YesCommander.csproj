@@ -67,6 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomControls\AbilityCombination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\AnalysisControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -76,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\Components\AbilityCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\combinationRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +139,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\AbilityCombinationModel.cs" />
     <Compile Include="Classes\Exceptions.cs" />
     <Compile Include="Classes\Follower.cs" />
     <Compile Include="Classes\Globals.cs" />
@@ -140,6 +149,9 @@
     <Compile Include="Classes\Missions.cs" />
     <Compile Include="Classes\Solution.cs" />
     <Compile Include="Converter\IsImageComboBoxItemHighlightColorSetConverter.cs" />
+    <Compile Include="CustomControls\AbilityCombination.xaml.cs">
+      <DependentUpon>AbilityCombination.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AnalysisControl.xaml.cs">
       <DependentUpon>AnalysisControl.xaml</DependentUpon>
     </Compile>
@@ -148,6 +160,9 @@
     </Compile>
     <Compile Include="CustomControls\Components\AbilityCheckBox.xaml.cs">
       <DependentUpon>AbilityCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\combinationRow.xaml.cs">
+      <DependentUpon>combinationRow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Components\FollowerHead.xaml.cs">
       <DependentUpon>FollowerHead.xaml</DependentUpon>

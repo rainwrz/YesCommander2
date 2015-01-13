@@ -26,23 +26,24 @@ namespace YesCommander.CustomControls.Components
             InitializeComponent();
         }
 
-        //public void Populate( Follower follower, string nameEn )
-        //{
-        //    this.head.Source = Follower.GetImageFromPicName( "ImagesSmall/" + nameEn.Replace( '"', '#' ).Replace( ' ', '_' ) + ".png" );
-        //    this.head.ToolTip = new FollowerPanel( follower, nameEn );
-        //    ToolTipService.SetShowDuration( this.head, 60000 );
-        //    ToolTipService.SetInitialShowDelay( this.head, 0 );
-        //}
 
-        public void PopulateFullImage( string nameEn )
+        public void PopulateFullImage( string nameEn, Follower follower=null )
         {
             this.PushImage( nameEn );
-            string bigPath = "Images/" + ( Globals.IsAlliance ? "Ali/" : "Hrd/" );
-            bigPath += this.GetPicName( nameEn );
-            if ( File.Exists( bigPath ) )
+            if ( follower == null )
             {
-                this.head.ToolTip = new FollowerImageFull( bigPath );
-                ToolTipService.SetShowDuration( this.head, 60000 );
+                string bigPath = "Images/" + ( Globals.IsAlliance ? "Ali/" : "Hrd/" );
+                bigPath += this.GetPicName( nameEn );
+                if ( File.Exists( bigPath ) )
+                {
+                    this.head.ToolTip = new FollowerImageFull( bigPath );
+                    ToolTipService.SetShowDuration( this.head, 60 );
+                    ToolTipService.SetInitialShowDelay( this.head, 0 );
+                }
+            }
+            else
+            {
+                this.head.ToolTip = new FollowerPanel( follower, nameEn );
                 ToolTipService.SetInitialShowDelay( this.head, 0 );
             }
         }
@@ -55,7 +56,7 @@ namespace YesCommander.CustomControls.Components
             if ( File.Exists( bigPath ) )
             {
                 this.head.ToolTip = new FollowerImageFull( bigPath );
-                ToolTipService.SetShowDuration( this.head, 60000 );
+                ToolTipService.SetShowDuration( this.head, 60 );
                 ToolTipService.SetInitialShowDelay( this.head, 0 );
             }
         }

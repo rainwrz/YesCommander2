@@ -48,19 +48,6 @@ namespace YesCommander.CustomControls
                     checkBox.image.SetUp( (Follower.Abilities)i );
             }
 
-            for ( int i = 13; i <= 25; i++ )
-                this.AddCheckboxToTraitPanel( i );
-            for ( int i = 1; i <= 2; i++ )
-                this.AddCheckboxToTraitPanel( i );
-            this.AddCheckboxToTraitPanel( 37 );
-            this.AddCheckboxToTraitPanel( 38 );
-
-
-
-            //for ( int i = 4; i <= 12; i++ )
-            //    this.AddCheckboxToTraitPanel( i );
-            //for ( int i = 27; i <= 34; i++ )
-            //    this.AddCheckboxToTraitPanel( i );
 
             List<string> itemSource = new List<string>();
             for ( int i = 0; i <= (int)Follower.Classes.ProtectionWarrior; i++ )
@@ -69,19 +56,25 @@ namespace YesCommander.CustomControls
             }
 
             this.classComboBox.ItemsSource = itemSource;
-            //new List<string> { 
-            //    "死亡骑士-鲜血", "死亡骑士-冰霜", "死亡骑士-邪恶", 
-            //    "德鲁伊-平衡", "德鲁伊-野性", "德鲁伊-恢复", "德鲁伊-守护",
-            //    "战士-武器", "战士-狂暴", "战士-防护", 
-            //    "术士-恶魔", "术士-痛苦", "术士-毁灭", 
-            //    "武僧-织雾", "武僧-酿酒", "武僧-踏风", 
-            //    "法师-奥术", "法师-火焰", "法师-冰霜", 
-            //    "牧师-神圣", "牧师-戒律", "牧师-暗影", 
-            //    "猎人-兽王", "猎人-生存", "猎人-射击", 
-            //    "潜行者-刺杀", "潜行者-战斗", "潜行者-敏锐", 
-            //    "萨满-元素", "萨满-增强", "萨满-恢复", 
-            //    "骑士-惩戒", "骑士-防护", "骑士-神圣" 
-            //};
+        }
+
+        public void AddTraitCheckBoxes()
+        {
+            this.traitCheckBoxPanel.Children.Clear();
+            //Add trait checkboxes into the trait panel
+            int bot = Globals.IsAlliance ? 13 : 20;
+            int top = Globals.IsAlliance ? 18 : 25;
+            for ( int i = bot; i <= top; i++ )
+                this.AddCheckboxToTraitPanel( i );
+
+            this.AddCheckboxToTraitPanel( 19 );
+            for ( int i = 1; i <= 2; i++ )
+                this.AddCheckboxToTraitPanel( i );
+            this.AddCheckboxToTraitPanel( 37 );
+            this.AddCheckboxToTraitPanel( 38 );
+            this.AddCheckboxToTraitPanel( 39 );
+            this.AddCheckboxToTraitPanel( 41 );
+            this.AddCheckboxToTraitPanel( 40 );
         }
 
         public void CheckBox_Checked( object sender, EventArgs e )
@@ -170,7 +163,7 @@ namespace YesCommander.CustomControls
                     {
                         this.traitCheckBoxPanel.Visibility = System.Windows.Visibility.Visible;
                         this.classString.Visibility = System.Windows.Visibility.Visible;
-                        this.classString.Text = "选择最多三个特长，查看拥有这些特长的随从。(目前只加入亲和类和能量爆发，耐力，看家护院。）";
+                        this.classString.Text = "选择最多三个特长，查看拥有这些特长的随从。";
                         this.TraitCheckBox_Checked( null, null );
                     }
                     break;

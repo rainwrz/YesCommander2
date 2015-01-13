@@ -77,6 +77,8 @@ namespace YesCommander.CustomControls
             double sucessChance = 100 * mission.TotalSucessChance;
             this.sucessChance.Text = sucessChance.ToString( "#,##0.##", new CultureInfo( "en-US" ) );
             this.sucessChance.Foreground = sucessChance >= 100 ? Brushes.Lime : Brushes.Red;
+            if ( this.sucessChance.Text == "100" )
+                this.sucessChance.Foreground = Brushes.Lime;
         }
 
         public void Clear()

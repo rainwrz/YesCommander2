@@ -19,6 +19,7 @@
             <RadioButton Name="radioFollowers" Content="随从一览" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
             <RadioButton Name="radioMissions" Content="任务模拟" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
             <RadioButton Name="radioAnalysis" Content="数据分析" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
+            <RadioButton Name="radioCombination" Content="检阅" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
         </StackPanel>
         <Grid Grid.Row="1" Grid.RowSpan="2" Name="questPanel" Visibility="Visible" Margin="8,-8,0,8">
             <Grid.RowDefinitions>
@@ -258,5 +259,6 @@
             </StackPanel>
         </Grid>
         <custom:AnalysisControl x:Name="analysisPanel" Grid.Row="1" Margin="8,-8,0,8" Visibility="Hidden"/>
+        <custom:AbilityCombination x:Name="combinationPanel" Grid.Row="1" Margin="8,-8,0,8" Visibility="Hidden"/>
     </Grid>
 </metro:Window>

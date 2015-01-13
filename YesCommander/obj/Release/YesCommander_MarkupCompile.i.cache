@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\wrz\Desktop\YesCommander\YesCommander\App.xaml
-18-636101341
+20913241693
 
-321199360378
+351029941135
 16432340446
-CustomControls\AnalysisControl.xaml;CustomControls\BaseToolTip.xaml;CustomControls\Components\AbilityCheckBox.xaml;CustomControls\Components\FollowerHead.xaml;CustomControls\Components\FollowerImageFull.xaml;CustomControls\Components\FollowerPanel.xaml;CustomControls\Components\ImageComboBox.xaml;CustomControls\Components\PartyMember.xaml;CustomControls\Components\TinyImage.xaml;CustomControls\Components\TinyImageToolTip.xaml;CustomControls\ExceptionDialog.xaml;CustomControls\followerFromDatabasexaml.xaml;CustomControls\FollowerRow.xaml;CustomControls\InputWindow.xaml;MainWindow.xaml;CustomControls\MissionGrid.xaml;CustomControls\Party.xaml;Themes\Generic.xaml;
+CustomControls\AbilityCombination.xaml;CustomControls\AnalysisControl.xaml;CustomControls\BaseToolTip.xaml;CustomControls\Components\AbilityCheckBox.xaml;CustomControls\Components\combinationRow.xaml;CustomControls\Components\FollowerHead.xaml;CustomControls\Components\FollowerImageFull.xaml;CustomControls\Components\FollowerPanel.xaml;CustomControls\Components\ImageComboBox.xaml;CustomControls\Components\PartyMember.xaml;CustomControls\Components\TinyImage.xaml;CustomControls\Components\TinyImageToolTip.xaml;CustomControls\ExceptionDialog.xaml;CustomControls\followerFromDatabasexaml.xaml;CustomControls\FollowerRow.xaml;CustomControls\InputWindow.xaml;MainWindow.xaml;CustomControls\MissionGrid.xaml;CustomControls\Party.xaml;Themes\Generic.xaml;
 
-False
+True
 

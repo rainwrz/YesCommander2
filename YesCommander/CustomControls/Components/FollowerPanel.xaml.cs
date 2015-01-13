@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -24,7 +25,7 @@ namespace YesCommander.CustomControls.Components
         {
             InitializeComponent();
             this.Clear();
-            //this.Populate( follower, nameEn );
+            this.Populate( follower, nameEn );
         }
 
         private void UserControl_Loaded( object sender, RoutedEventArgs e )
@@ -34,12 +35,28 @@ namespace YesCommander.CustomControls.Components
 
         public void Populate( Follower follower, string nameEn )
         {
-            this.bigImage.Source = Follower.GetImageFromPicName( "ImagesBig/" + nameEn.Replace( '"', '#' ).Replace( ' ', '_' ) + ".png" );
-            this.smallImage.Source = Follower.GetImageFromPicName( "ImagesSmall/" + nameEn.Replace( '"', '#' ).Replace( ' ', '_' ) + ".png" );
             this.name.Text = follower.Name;
+            if ( follower.Quolaty == 4 )
+                this.name.Foreground = Brushes.BlueViolet;
+            else if ( follower.Quolaty == 3 )
+                this.name.Foreground = Brushes.DodgerBlue;
+            else if ( follower.Quolaty == 2 )
+                this.name.Foreground = Brushes.Lime;
+
             this.race.Text = follower.Race.ToString();
-            this.level.Text = follower.Level.ToString();
-            this.ilevel.Text = follower.ItemLevel.ToString();
+            this.classText.Text = Follower.GetCNStringByClass( follower.Class );
+            this.race.Foreground = this.classText.Foreground = this.name.Foreground;
+
+            this.level.Text = "(" + ( follower.Level == 100 ? follower.ItemLevel.ToString() : follower.Level.ToString() ) + ")";
+            if ( follower.ItemLevel >= 645 )
+                this.level.Foreground = Brushes.BlueViolet;
+            else if ( follower.ItemLevel >= 630 )
+                this.level.Foreground = Brushes.DodgerBlue;
+            else
+                this.level.Foreground = Brushes.Lime;
+
+            if ( !follower.IsActive )
+                this.actived.Visibility = System.Windows.Visibility.Visible;
             foreach ( Follower.Abilities ability in follower.AbilityCollection )
             {
                 Image image = new Image();
@@ -51,23 +68,39 @@ namespace YesCommander.CustomControls.Components
                 Image image = new Image();
                 image.Source = Globals.TraitImageSource[ trait ]; //Follower.GetImageFromFromTrait( trait );
                 this.tratiPanel.Children.Add( image );
-            };
+            }
+
+            string bigPath = "Images/" + ( Globals.IsAlliance ? "Ali/" : "Hrd/" );
+            bigPath += this.GetPicName( nameEn );
+            if ( File.Exists( bigPath ) )
+            {
+                this.bigImage.PopulateImage( bigPath );
+                this.bigImage.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
+        private string GetPicName( string originalName )
+        {
+            return originalName.Contains( "Schweitzer" ) ? "Doc_Schweitzer.png" :
+                originalName.Contains( "Steelpaw" ) ? "Suna_Sunnie_Steelpaw.png" :
+                originalName.Contains( "the Fox" ) ? "Claire_the_Fox.png" :
+                   originalName.Replace( ' ', '_' ) + ".png";
         }
 
         public void Clear()
         {
-            this.bigImage.Source = null;
-            this.smallImage.Source = null;
             this.name.Text = string.Empty;
             this.race.Text = string.Empty;
             this.level.Text = string.Empty;
-            this.ilevel.Text = string.Empty;
+            this.classText.Text = string.Empty;
+            this.actived.Visibility = System.Windows.Visibility.Collapsed;
             foreach ( Image image in this.abilityPanel.Children )
                 image.Source = null;
             this.abilityPanel.Children.Clear();
             foreach ( Image image in this.tratiPanel.Children )
                 image.Source = null;
             this.tratiPanel.Children.Clear();
+            this.bigImage.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }

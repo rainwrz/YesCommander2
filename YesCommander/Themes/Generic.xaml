@@ -164,8 +164,8 @@
                                 <Condition Property="IsEditable" Value="False" />
                                 <Condition Property="IsEnabled" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
-                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            <!--<Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>-->
+                            <!--<Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>-->
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -243,7 +243,7 @@
                                         <Condition Property="IsEditable" Value="True" />
                                         <Condition Property="IsEnabled" Value="False" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                                    <!--<Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/> -->
                                 </MultiTrigger>
                                 <!--
                                 <Trigger SourceName="Popup" Property="Popup.HasDropShadow" Value="true">

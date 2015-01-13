@@ -1,0 +1,10 @@
+## Author: adug
+## Interface: 60000
+## Title: FollowerExport
+## Version: 1.1.0
+## Notes: 输出随从信息
+## SavedVariables: DisplayID_Bool
+## SavedVariablesPerCharacter: SavedFollowerString
+FollowerExport.lua
+Frame.xml
+

@@ -246,3 +246,7 @@ C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\App.baml
 C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\ImageComboBox.g.cs
 C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\ImageComboBox.baml
 C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\Themes\Generic.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AbilityCombination.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\AbilityCombination.g.cs
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\combinationRow.baml
+C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\CustomControls\Components\combinationRow.g.cs
