@@ -30,16 +30,16 @@
             </Style>
         </Grid.Resources>
         <component:FollowerImageFull x:Name="bigImage" Grid.Row="0" Height="360" Width="360"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Name="name" Text="aaaa"/>
             <TextBlock Name="level" />
             <TextBlock Name="actived" Text="冻结" Visibility="Collapsed" Foreground="Red"/>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Name="race"  Text="NE"/>
             <TextBlock Name="classText" Text="PALADIN"/>
         </StackPanel>
-        <StackPanel Name="abilityPanel"  Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Margin="4"/>
-        <StackPanel Name="tratiPanel" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="4" Margin="4"/>
+        <StackPanel Name="abilityPanel"  Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="4"/>
+        <StackPanel Name="tratiPanel" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="4"/>
     </Grid>
 </UserControl>
