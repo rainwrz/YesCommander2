@@ -75,7 +75,7 @@ namespace YesCommander.Classes
                 //if ( theMission.FollowersNeed == 3 )
                 List<Mission> missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
                 var data = from temp in missions.AsEnumerable()
-                           where temp.TotalSucessChance >= 1
+                           where Math.Round( temp.TotalSucessChance, 6 ) >= 1
                            select temp;
                 List<Mission> missions2 = new List<Mission>();
                 foreach ( Mission mission in data )
@@ -149,7 +149,7 @@ namespace YesCommander.Classes
                 //if ( theMission.FollowersNeed == 3 )
                 List<Mission> missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
                 var data = from temp in missions.AsEnumerable()
-                           where temp.TotalSucessChance >= 1
+                           where Math.Round( temp.TotalSucessChance, 6 ) >= 1
                            select temp;
                 if ( data.Count() == 0 )
                     uncompleteIDs.Add( i );
@@ -223,7 +223,7 @@ namespace YesCommander.Classes
                 //if ( theMission.FollowersNeed == 3 )
                 List<Mission> missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
                 var data = from temp in missions.AsEnumerable()
-                           where temp.TotalSucessChance >= 1
+                           where Math.Round( temp.TotalSucessChance, 6 ) >= 1
                            select temp;
                 List<Mission> missions2 = new List<Mission>();
                 foreach ( Mission mission in data )

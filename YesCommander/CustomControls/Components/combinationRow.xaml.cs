@@ -52,26 +52,32 @@ namespace YesCommander.CustomControls.Components
                         abilities.Remove( model.Ability1 );
                         if ( abilities.Contains( model.Ability2 ) )
                         {
-                            FollowerHead head = new FollowerHead();
-                            head.Margin = new Thickness( 4, 0, 0, 0 );
-                            head.PopulateFullImage( Globals.GetFollowerEnNameById( follower.ID, Globals.IsAlliance ), follower );
-                            this.collectedPanel.Children.Add( head );
+                            this.PlaceFollower( this.collectedPanel, follower );
                         }
                     }
                 }
                 else
                 {
-                    if ( ( follower.AbilityCollection[ 0 ] == model.Ability1 && Follower.GetAbilityFromClass( follower.Class ).Contains( model.Ability2 ) )
-                        || follower.AbilityCollection[ 0 ] == model.Ability2 && Follower.GetAbilityFromClass( follower.Class ).Contains( model.Ability1 ) )
+                    if ( follower.AbilityCollection[ 0 ] == model.Ability1 || follower.AbilityCollection[ 0 ] == model.Ability2)
                     {
-                        FollowerHead head = new FollowerHead();
-                        head.Margin = new Thickness( 4, 0, 0, 0 );
-                        head.PopulateFullImage( Globals.GetFollowerEnNameById( follower.ID, Globals.IsAlliance ), follower );
-                        this.possiblePanel.Children.Add( head );
+                        List<Follower.Abilities> abilities = Follower.GetAbilityFromClass( follower.Class );
+
+                        abilities.Remove( follower.AbilityCollection[ 0 ] );
+                        if ( ( follower.AbilityCollection[ 0 ] == model.Ability1 && abilities.Contains( model.Ability2 ) ) ||
+                            ( follower.AbilityCollection[ 0 ] == model.Ability2 && abilities.Contains( model.Ability1 ) ) )
+                            this.PlaceFollower( this.possiblePanel, follower );
                     }
                 }
             }
             this.numberText.Foreground = this.collectedPanel.Children.Count > 0 ? Brushes.Lime : Brushes.Red;
+        }
+
+        private void PlaceFollower( StackPanel panel, Follower follower )
+        {
+            FollowerHead head = new FollowerHead();
+            head.Margin = new Thickness( 4, 0, 0, 0 );
+            head.PopulateFullImage( Globals.GetFollowerEnNameById( follower.ID, Globals.IsAlliance ), follower );
+            panel.Children.Add( head );
         }
 
         public void Clear()
