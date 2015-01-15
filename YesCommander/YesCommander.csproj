@@ -147,6 +147,7 @@
     <Compile Include="Classes\MessagePacket.cs" />
     <Compile Include="Classes\Mission.cs" />
     <Compile Include="Classes\Missions.cs" />
+    <Compile Include="Classes\SingleSolution.cs" />
     <Compile Include="Classes\Solution.cs" />
     <Compile Include="Converter\IsImageComboBoxItemHighlightColorSetConverter.cs" />
     <Compile Include="CustomControls\AbilityCombination.xaml.cs">

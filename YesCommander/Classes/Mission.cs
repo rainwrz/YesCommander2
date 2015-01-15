@@ -135,7 +135,9 @@ namespace YesCommander.Classes
                             foreach ( Follower follower in this.AssignedFollowers )
                             {
                                 if ( follower.TraitCollection.Contains( Follower.Traits.Dancer ) )
-                                    dancerNumber++;
+                                    foreach ( Follower.Traits t in follower.TraitCollection )
+                                        if ( t == Follower.Traits.Dancer )
+                                            dancerNumber++;
                             }
                             if ( dancerNumber > 0 )
                             {
@@ -160,7 +162,9 @@ namespace YesCommander.Classes
                     foreach ( Follower follower in this.AssignedFollowers )
                     {
                         if ( follower.TraitCollection.Contains( Follower.Traits.Dancer ) )
-                            dancerNumber++;
+                            foreach ( Follower.Traits t in follower.TraitCollection )
+                                if ( t == Follower.Traits.Dancer )
+                                    dancerNumber++;
                     }
                     if ( dancerNumber > 0 )
                     {

@@ -81,7 +81,7 @@ namespace YesCommander.Classes
                 foreach ( Mission mission in data )
                     missions2.Add( mission );
 
-                dic.Add( i, missions2 );
+                this.dic.Add( i, missions2 );
             }
             foreach ( KeyValuePair<int, List<Mission>> pair in dic )
             {
@@ -110,6 +110,10 @@ namespace YesCommander.Classes
                             select temp;
             foreach ( KeyValuePair<int, List<Mission>> pair in orderList )
                 orderedList.Add( new KeyValuePair<int, List<Mission>>( pair.Key, pair.Value ) );
+
+
+            //test
+            //this.CalculateAllSolutions();
         }
 
         public void CalculateBasicDataSimple( Missions allMissions, List<Follower> allFollowers )
@@ -154,6 +158,7 @@ namespace YesCommander.Classes
                 if ( data.Count() == 0 )
                     uncompleteIDs.Add( i );
             }
+
         }
 
         public void ListAllPossiblities()
@@ -316,6 +321,29 @@ namespace YesCommander.Classes
 
             returnValuie.Add( data.First() );
             return returnValuie;
+        }
+
+        private void CalculateAllSolutions()
+        {
+            Dictionary<int, List<Mission>> diction1 = new Dictionary<int, List<Mission>>();
+            foreach ( KeyValuePair<int, List<Mission>> pair in this.dic )
+                diction1.Add( pair.Key,pair.Value );
+
+
+
+
+            foreach ( int id in this.missionIDs )
+            {
+                Dictionary<int, List<Mission>> tempdiction = new Dictionary<int, List<Mission>>();
+                if ( this.uncompleteIDs.Contains( id ) )
+                    continue;
+
+                foreach ( Mission mission in diction1[id] )
+                {
+                    tempdiction.Add( id,  );
+                }
+            }
+
         }
     }
 }
