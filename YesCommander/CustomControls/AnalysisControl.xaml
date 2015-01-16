@@ -29,7 +29,8 @@
             <TextBlock Name="raceAnalysis" Text="种族分析" FontSize="15" Foreground="#ffe8ce" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter" MouseDown="headTitleBlock_MouseDown"
                        VerticalAlignment="Bottom" Margin="2" />
         </StackPanel>
-        <TextBlock Name="classString" Grid.Row="1" Margin="0,8,0,4" TextWrapping="Wrap" Text="选择任意一个或者两个技能组合，查看可拥有此组合的职业天赋。" Height="30"
+        <StackPanel Name="specIconPanel" Grid.Row="1" Margin="0,8,0,4" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Collapsed"/>
+        <TextBlock Name="classString" Grid.Row="1" Margin="0,8,0,4" TextWrapping="Wrap" 
                    HorizontalAlignment="Center" TextAlignment="Center" Foreground="#ffe8ce" Visibility="Collapsed"/>
         
         <StackPanel Name="abilityCheckBoxPanel" Grid.Row="2" Margin="0,2" Orientation="Horizontal" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
@@ -49,20 +50,46 @@
         </StackPanel>
 
         <StackPanel Name="raceRadioPanel" Grid.Row="2" Margin="0,2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
-            <RadioButton Content="侏儒" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="人类" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="矮人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="暗夜精灵" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="德莱尼" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="狼人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="兽人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="被遗忘者" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="牛头人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="巨魔" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="血精灵" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="地精" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="熊猫人" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
-            <RadioButton Content="其他" Margin="4,0" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property="Margin" Value="8,0,0,0"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="Image">
+                    <Setter Property="Stretch" Value="Uniform"/>
+                    <Setter Property="Width" Value="18"/>
+                    <Setter Property="Height" Value="18"/>
+                    <Setter Property="Margin" Value="2,0,4,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton Name="侏儒"  Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="人类" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="矮人"  Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="暗夜精灵" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="德莱尼" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="狼人" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="兽人" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="被遗忘者" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="牛头人" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="巨魔" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="血精灵" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="地精" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name="熊猫人" Checked="RadioButton_Checked"/>
+            <Image/>
+            <RadioButton Name ="其他" Content="其他" Foreground="LightSkyBlue" Checked="RadioButton_Checked"/>
+            <Image/>
         </StackPanel>
 
         <StackPanel Name="classPanel" Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -77,7 +104,7 @@
                     <Setter Property="Height" Value="18"/>
                 </Style>
             </StackPanel.Resources>
-            <ComboBox Name="classComboBox" Margin="8,4" Width="120" HorizontalAlignment="Left" SelectionChanged="ComboBox_SelectionChanged"/>
+            <components:ImageComboBox x:Name="classComboBox" Margin="8,4" Width="150" HorizontalAlignment="Left" SelectionChanged="ComboBox_SelectionChanged"/>
             <TextBlock Text="此天赋职业可以习得以下技能（任意俩组合）:"/>
             <StackPanel Name="abilityPanel"  Orientation="Horizontal" Margin="0,0" VerticalAlignment="Center">
                 <components:TinyImage x:Name="ability1"/>
@@ -155,7 +182,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="50"/>
@@ -172,7 +199,7 @@
                 <TextBlock Text="简体名" Grid.Column="2"/>
                 <TextBlock Text="繁体名" Grid.Column="3"/>
                 <TextBlock Text="种族" Grid.Column="4" />
-                <TextBlock Text="职业天赋" Grid.Column="5" />
+                <TextBlock Text="职业" Grid.Column="5" />
                 <TextBlock Text="始等级" Grid.Column="6" />
                 <TextBlock Text="始技能" Grid.Column="7" />
                 <TextBlock Text="始特长" Grid.Column="8" />
@@ -195,7 +222,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="50"/>
@@ -212,7 +239,7 @@
                 <TextBlock Text="简体名" Grid.Column="2"/>
                 <TextBlock Text="繁体名" Grid.Column="3"/>
                 <TextBlock Text="种族" Grid.Column="4" />
-                <TextBlock Text="职业天赋" Grid.Column="5" />
+                <TextBlock Text="职业" Grid.Column="5" />
                 <TextBlock Text="始等级" Grid.Column="6" />
                 <TextBlock Text="始技能" Grid.Column="7" />
                 <TextBlock Text="始特长" Grid.Column="8" />

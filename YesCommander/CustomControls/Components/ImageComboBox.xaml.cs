@@ -76,33 +76,39 @@ namespace YesCommander.CustomControls.Components
                     return;
                 }
 
-                if ( !( value is List<DataRow> ) )//&& !( value is TreeNodeObject[] ) && !( value is EXNameIndexPair<string>[] ) && !( value is List<TreeNodeObject> ) )
+                if ( !( value is List<DataRow> ) && !(value is List<ImageComboBoxItem>) )//&& !( value is TreeNodeObject[] ) && !( value is EXNameIndexPair<string>[] ) && !( value is List<TreeNodeObject> ) )
                 {
                     throw new NotSupportedException();
                 }
 
                 this.BeginInit();
 
-                List<ImageComboBoxItem> items = new List<ImageComboBoxItem>();
-
                 if ( value is List<DataRow> )
                 {
-                    List<DataRow> collection = value as List<DataRow>;
+                    List<ImageComboBoxItem> items = new List<ImageComboBoxItem>();
 
-                    if ( collection == null )
+                    if ( value is List<DataRow> )
                     {
-                        this.ItemsSource = null;
-                        return;
-                    }
+                        List<DataRow> collection = value as List<DataRow>;
 
-                    foreach ( DataRow row in collection )
-                    {
-                        items.Add( GenerateItem( row ) );
-                    }
+                        if ( collection == null )
+                        {
+                            this.ItemsSource = null;
+                            return;
+                        }
 
-                    this.ItemsSource = items;
+                        foreach ( DataRow row in collection )
+                        {
+                            items.Add( GenerateItem( row ) );
+                        }
+
+                        this.ItemsSource = items;
+                    }
                 }
-
+                else if ( value is List<ImageComboBoxItem> )
+                {
+                    this.ItemsSource = value;
+                }
                 this.EndInit();
 
             }
@@ -158,6 +164,17 @@ namespace YesCommander.CustomControls.Components
             {
                 return null;
             }
+        }
+
+        private ImageSource GenerateItemImage( int index )
+        {
+
+            if ( this.imageSourceList == null || this.imageSourceList.Count == 0 )
+            {
+                return null;
+            }
+
+            return this.imageSourceList[ index ];
         }
     }
 }

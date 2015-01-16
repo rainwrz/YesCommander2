@@ -340,7 +340,7 @@ namespace YesCommander.Classes
 
                 foreach ( Mission mission in diction1[id] )
                 {
-                    tempdiction.Add( id,  );
+                    //tempdiction.Add( id,  );
                 }
             }
 

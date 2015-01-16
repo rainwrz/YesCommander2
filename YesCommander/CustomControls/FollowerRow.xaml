@@ -40,8 +40,14 @@
         <CheckBox Name="isFavorit" Height="30" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="isFavorit_Checked" Unchecked="isFavorit_Unchecked"/>
         <component:FollowerHead x:Name="followerHead" Grid.Column="1" HorizontalAlignment="Right"/>
         <TextBlock Name="textName" Grid.Column="2" HorizontalAlignment="Left" Margin="2,0" />
-        <TextBlock Name="textRace" Grid.Column="3" />
-        <TextBlock Name="textClass" Grid.Column="4" />
+        <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Image Name="raceIcon" Margin="4,0"/>
+            <TextBlock Name="textRace"/>
+        </StackPanel>
+        <StackPanel Grid.Column="4" Orientation="Horizontal" Margin="20,0,0,0">
+            <component:SpecIcon x:Name="specIcon" Margin="4,0"/>
+            <TextBlock Name="textClass" />
+        </StackPanel>
         <TextBlock Name="textLevel" Grid.Column="5" Text="100" />
         <TextBlock Name="textItemLevel" Grid.Column="6"/>
         <StackPanel Name="abilities" Grid.Column="7" Orientation="Horizontal" HorizontalAlignment="Center">

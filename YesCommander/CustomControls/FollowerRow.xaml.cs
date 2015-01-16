@@ -67,6 +67,9 @@ namespace YesCommander.CustomControls
             this.textName.Text = string.Empty;
             this.textRace.Text = string.Empty;
             this.textClass.Text = string.Empty;
+            this.specIcon.Clear();
+            this.raceIcon.Source = null;
+            this.raceIcon.Visibility = System.Windows.Visibility.Collapsed;
             this.textLevel.Text = string.Empty;
             this.textItemLevel.Text = string.Empty;
             this.textIsFrozen.Text = string.Empty;
@@ -96,7 +99,18 @@ namespace YesCommander.CustomControls
             else if ( follower.Quolaty == 2 )
                 this.textName.Foreground = Brushes.Lime;
 
-            this.textRace.Text = follower.Race.ToString();
+            if ( (int)follower.Race >= 0 && (int)follower.Race <= 12 )
+            {
+                this.raceIcon.Visibility = System.Windows.Visibility.Visible;
+                this.raceIcon.Source = Globals.TraitImageSource[ Follower.GetTraitOfLoverByRace( follower.Race ) ];
+                TextBlock toolTip = new TextBlock();
+                toolTip.Text = follower.Race.ToString();
+                this.raceIcon.ToolTip =  toolTip;
+                ToolTipService.SetInitialShowDelay( this.raceIcon, 0 );
+            }
+            else
+                this.textRace.Text = follower.Race.ToString();
+            this.specIcon.IconIndex = (int)follower.Class;
             this.textClass.Text = Follower.GetCNStringByClass( follower.Class );
             this.textLevel.Text = follower.Level.ToString();
             this.textItemLevel.Text = follower.ItemLevel.ToString();

@@ -13,7 +13,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition Width="90"/>
-            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="40"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="50"/>
@@ -36,8 +36,11 @@
         <TextBlock Name="EN" Grid.Column="1"/>
         <TextBlock Name="CN" Grid.Column="2"/>
         <TextBlock Name="TranCN" Grid.Column="3"/>
+        <StackPanel Grid.Column="4" VerticalAlignment="Center"  Orientation="Horizontal">
+            <Image Name="raceImage" Height="18" Width="18" Margin="8,0,0,0"/>
         <TextBlock Name="race" Grid.Column="4" />
-        <TextBlock Name="className" Grid.Column="5" />
+        </StackPanel>
+        <component:SpecIcon x:Name="specIcon" Grid.Column="5" HorizontalAlignment="Center"/>
         <TextBlock Name="level" Grid.Column="6" HorizontalAlignment="Center"/>
         <component:TinyImage x:Name="abilityImage" Grid.Column="7"/>
         <component:TinyImage x:Name="traitImage" Grid.Column="8"/>

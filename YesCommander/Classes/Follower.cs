@@ -534,7 +534,7 @@ namespace YesCommander.Classes
                 case Traits.LoneWolf: return "提高独自执行任务的成功率。";
                 case Traits.Scavenger: return "使完成任务后获得的要塞物资提高200%";
                 case Traits.ExtraTraining: return "使所有追随者完成任务所获得的经验值提高35%";
-                case Traits.CombatExperience: return "提高完成任务后获得奖励宝藏的几率。";
+                case Traits.CombatExperience: return "提高任务的成功率。";
                 case Traits.EpicMount: return "任务时间缩短50%";
                 case Traits.Angler: return "有了纳特的知识，你在德拉诺的钓鱼技术使你能够不用鱼饵就钓到大鱼。";
                 case Traits.Evergreen: return "被指派到伐木场时，可使你的伐木场更加高效环保地生产木材。";
@@ -754,6 +754,30 @@ namespace YesCommander.Classes
                 default: return Races.error;
             }
         }
+
+        public static Traits GetTraitOfLoverByRace( Races races )
+        {
+            switch ( races )
+            {
+                case Races.侏儒: return Traits.GnomeLover;
+                case Races.人类: return Traits.Humanist;
+                case Races.矮人: return Traits.Dwarvenborn;
+                case Races.暗夜精灵: return Traits.ChildOfTheMoon;
+                case Races.德莱尼: return Traits.AllyOfArgus;
+                case Races.狼人: return Traits.CanineCompanion;
+
+                case Races.熊猫人: return Traits.BrewAficionado;
+
+                case Races.兽人: return Traits.ChildOfDraenon;
+                case Races.被遗忘者: return Traits.DeathFascination;
+                case Races.牛头人: return Traits.Totemist;
+                case Races.巨魔: return Traits.VoodooZealot;
+                case Races.血精灵: return Traits.Elvenkind;
+                case Races.地精: return Traits.Economist;
+                default: return Traits.Unknow;
+            }
+        }
+
         public static ImageSource GetImageFromFromTrait( Traits trait )
         {
             if ( trait == Traits.Unknow )
@@ -777,7 +801,7 @@ namespace YesCommander.Classes
             RestorationDruid,
             BeastMasterHunter,
             MarksmanshipHunter,
-            SurvivalHunter,
+            SurvivalHunter,//9
             ArcaneMage,
             FireMage,
             FrostMage,
@@ -787,7 +811,7 @@ namespace YesCommander.Classes
             HolyPaladin,
             ProtectionPaladin,
             RetributionPaladin,
-            DisciplinePriest,
+            DisciplinePriest,//19
             HolyPriest,
             ShadowPriest,
             AssassinationRogue,
@@ -797,11 +821,11 @@ namespace YesCommander.Classes
             EnhancementShaman,
             RestorationShaman,
             AfflictionWarlock,
-            DemonologyWarlock,
+            DemonologyWarlock,//29
             DestructionWarlock,
             ArmsWarrior,
             FuryWarrior,
-            ProtectionWarrior
+            ProtectionWarrior//33
         }
         public static Classes GetClassBySpec( int spec )
         {
@@ -948,43 +972,43 @@ namespace YesCommander.Classes
         {
             switch ( str )
             {
-                case "死亡骑士-鲜血": return Classes.BloodDeathKnight;
-                case "死亡骑士-冰霜": return Classes.FrostDeathKnight;
-                case "死亡骑士-邪恶": return Classes.UnHolyDeathKnight;
-                case "德鲁伊-平衡": return Classes.BalanceDruid;
-                case "德鲁伊-野性": return Classes.FeralDruid;
-                case "德鲁伊-恢复": return Classes.RestorationDruid;
-                case "德鲁伊-守护": return Classes.GuardianDruid;
-                case "战士-武器": return Classes.ArmsWarrior;
-                case "战士-狂暴": return Classes.FuryWarrior;
-                case "战士-防护": return Classes.ProtectionWarrior;
-                case "术士-恶魔": return Classes.DemonologyWarlock;
-                case "术士-痛苦": return Classes.AfflictionWarlock;
-                case "术士-毁灭": return Classes.DestructionWarlock;
-                case "武僧-织雾": return Classes.MistweaverMonk;
-                case "武僧-酿酒": return Classes.BrewmasterMonk;
-                case "武僧-踏风": return Classes.WindwalkerMonk;
-                case "法师-奥术": return Classes.ArcaneMage;
-                case "法师-火焰": return Classes.FireMage;
-                case "法师-冰霜": return Classes.FrostMage;
-                case "牧师-神圣": return Classes.HolyPriest;
-                case "牧师-戒律": return Classes.DisciplinePriest;
-                case "牧师-暗影": return Classes.ShadowPriest;
-                case "猎人-兽王": return Classes.BeastMasterHunter;
-                case "猎人-生存": return Classes.SurvivalHunter;
-                case "猎人-射击": return Classes.MarksmanshipHunter;
-                case "潜行者-刺杀":
-                case "盗贼-刺杀": return Classes.AssassinationRogue;
-                case "潜行者-战斗":
-                case "盗贼-战斗": return Classes.CombatRogue;
-                case "潜行者-敏锐":
-                case "盗贼-敏锐": return Classes.SubtletyRogue;
-                case "萨满-元素": return Classes.ElementalShaman;
-                case "萨满-增强": return Classes.EnhancementShaman;
-                case "萨满-恢复": return Classes.RestorationShaman;
-                case "骑士-惩戒": return Classes.RetributionPaladin;
-                case "骑士-防护": return Classes.ProtectionPaladin;
-                case "骑士-神圣": return Classes.HolyPaladin;
+                case "鲜血-死亡骑士": return Classes.BloodDeathKnight;
+                case "冰霜-死亡骑士": return Classes.FrostDeathKnight;
+                case "邪恶-死亡骑士": return Classes.UnHolyDeathKnight;
+                case "平衡-德鲁伊": return Classes.BalanceDruid;
+                case "野性-德鲁伊": return Classes.FeralDruid;
+                case "恢复-德鲁伊": return Classes.RestorationDruid;
+                case "守护-德鲁伊": return Classes.GuardianDruid;
+                case "武器-战士": return Classes.ArmsWarrior;
+                case "狂暴-战士": return Classes.FuryWarrior;
+                case "防护-战士": return Classes.ProtectionWarrior;
+                case "恶魔-术士": return Classes.DemonologyWarlock;
+                case "痛苦-术士": return Classes.AfflictionWarlock;
+                case "毁灭-术士": return Classes.DestructionWarlock;
+                case "织雾-武僧": return Classes.MistweaverMonk;
+                case "酿酒-武僧": return Classes.BrewmasterMonk;
+                case "踏风-武僧": return Classes.WindwalkerMonk;
+                case "奥术-法师": return Classes.ArcaneMage;
+                case "火焰-法师": return Classes.FireMage;
+                case "冰霜-法师": return Classes.FrostMage;
+                case "神圣-牧师": return Classes.HolyPriest;
+                case "戒律-牧师": return Classes.DisciplinePriest;
+                case "暗影-牧师": return Classes.ShadowPriest;
+                case "兽王-猎人": return Classes.BeastMasterHunter;
+                case "生存-猎人": return Classes.SurvivalHunter;
+                case "射击-猎人": return Classes.MarksmanshipHunter;
+                case "刺杀-潜行者":
+                case "刺杀-盗贼": return Classes.AssassinationRogue;
+                case "战斗-潜行者":
+                case "战斗-盗贼": return Classes.CombatRogue;
+                case "敏锐-潜行者":
+                case "敏锐-盗贼": return Classes.SubtletyRogue;
+                case "元素-萨满": return Classes.ElementalShaman;
+                case "增强-萨满": return Classes.EnhancementShaman;
+                case "恢复-萨满": return Classes.RestorationShaman;
+                case "惩戒-圣骑士": return Classes.RetributionPaladin;
+                case "防护-圣骑士": return Classes.ProtectionPaladin;
+                case "神圣-圣骑士": return Classes.HolyPaladin;
                 default: return Classes.Unknown;
             }
         }
@@ -993,40 +1017,40 @@ namespace YesCommander.Classes
         {
             switch ( c )
             {
-                case Classes.BloodDeathKnight: return "死亡骑士-鲜血";
-                case Classes.FrostDeathKnight: return "死亡骑士-冰霜";
-                case Classes.UnHolyDeathKnight: return "死亡骑士-邪恶";
-                case Classes.BalanceDruid: return "德鲁伊-平衡";
-                case Classes.FeralDruid: return "德鲁伊-野性";
-                case Classes.RestorationDruid: return "德鲁伊-恢复";
-                case Classes.GuardianDruid: return "德鲁伊-守护";
-                case Classes.ArmsWarrior: return "战士-武器";
-                case Classes.FuryWarrior: return "战士-狂暴";
-                case Classes.ProtectionWarrior: return "战士-防护";
-                case Classes.DemonologyWarlock: return "术士-恶魔";
-                case Classes.AfflictionWarlock: return "术士-痛苦";
-                case Classes.DestructionWarlock: return "术士-毁灭";
-                case Classes.MistweaverMonk: return "武僧-织雾";
-                case Classes.BrewmasterMonk: return "武僧-酿酒";
-                case Classes.WindwalkerMonk: return "武僧-踏风";
-                case Classes.ArcaneMage: return "法师-奥术";
-                case Classes.FireMage: return "法师-火焰";
-                case Classes.FrostMage: return "法师-冰霜";
-                case Classes.HolyPriest: return "牧师-神圣";
-                case Classes.DisciplinePriest: return "牧师-戒律";
-                case Classes.ShadowPriest: return "牧师-暗影";
-                case Classes.BeastMasterHunter: return "猎人-兽王";
-                case Classes.SurvivalHunter: return "猎人-生存";
-                case Classes.MarksmanshipHunter: return "猎人-射击";
-                case Classes.AssassinationRogue: return "潜行者-刺杀";
-                case Classes.CombatRogue: return "潜行者-战斗";
-                case Classes.SubtletyRogue: return "潜行者-敏锐";
-                case Classes.ElementalShaman: return "萨满-元素";
-                case Classes.EnhancementShaman: return "萨满-增强";
-                case Classes.RestorationShaman: return "萨满-恢复";
-                case Classes.RetributionPaladin: return "骑士-惩戒";
-                case Classes.ProtectionPaladin: return "骑士-防护";
-                case Classes.HolyPaladin: return "骑士-神圣";
+                case Classes.BloodDeathKnight: return "鲜血-死亡骑士";
+                case Classes.FrostDeathKnight: return "冰霜-死亡骑士";
+                case Classes.UnHolyDeathKnight: return "邪恶-死亡骑士";
+                case Classes.BalanceDruid: return "平衡-德鲁伊";
+                case Classes.FeralDruid: return "野性-德鲁伊";
+                case Classes.RestorationDruid: return "恢复-德鲁伊";
+                case Classes.GuardianDruid: return "守护-德鲁伊";
+                case Classes.ArmsWarrior: return "武器-战士";
+                case Classes.FuryWarrior: return "狂暴-战士";
+                case Classes.ProtectionWarrior: return "防护-战士";
+                case Classes.DemonologyWarlock: return "恶魔-术士";
+                case Classes.AfflictionWarlock: return "痛苦-术士";
+                case Classes.DestructionWarlock: return "毁灭-术士";
+                case Classes.MistweaverMonk: return "织雾-武僧";
+                case Classes.BrewmasterMonk: return "酿酒-武僧";
+                case Classes.WindwalkerMonk: return "踏风-武僧";
+                case Classes.ArcaneMage: return "奥术-法师";
+                case Classes.FireMage: return "火焰-法师";
+                case Classes.FrostMage: return "冰霜-法师";
+                case Classes.HolyPriest: return "神圣-牧师";
+                case Classes.DisciplinePriest: return "戒律-牧师";
+                case Classes.ShadowPriest: return "暗影-牧师";
+                case Classes.BeastMasterHunter: return "兽王-猎人";
+                case Classes.SurvivalHunter: return "生存-猎人";
+                case Classes.MarksmanshipHunter: return "射击-猎人";
+                case Classes.AssassinationRogue: return "刺杀-潜行者";
+                case Classes.CombatRogue: return "战斗-潜行者";
+                case Classes.SubtletyRogue: return "敏锐-潜行者";
+                case Classes.ElementalShaman: return "元素-萨满";
+                case Classes.EnhancementShaman: return "增强-萨满";
+                case Classes.RestorationShaman: return "恢复-萨满";
+                case Classes.RetributionPaladin: return "惩戒-圣骑士";
+                case Classes.ProtectionPaladin: return "防护-圣骑士";
+                case Classes.HolyPaladin: return "神圣-圣骑士";
                 default: return Classes.Unknown.ToString();
             }
         }

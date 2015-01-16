@@ -27,7 +27,19 @@ namespace YesCommander.CustomControls
             this.CN.Text = follower.NameCN;
             this.EN.Text = follower.NameEN;
             this.TranCN.Text = follower.NameTCN;
-            this.race.Text = follower.Race.ToString();
+            if ( (int)follower.Race >= 0 && (int)follower.Race <= 12 )
+            {
+                this.raceImage.Visibility = System.Windows.Visibility.Visible;
+                this.raceImage.Source = Globals.TraitImageSource[ Follower.GetTraitOfLoverByRace( follower.Race ) ];
+                TextBlock toolTip = new TextBlock();
+                toolTip.Text = follower.Race.ToString();
+                this.raceImage.ToolTip = toolTip;
+                ToolTipService.SetInitialShowDelay( this.raceImage, 0 );
+            }
+            else
+            {
+                this.race.Text = follower.Race.ToString();
+            }
             this.level.Text = follower.Level.ToString();
             if ( ownedColor > 1 )
             {
@@ -54,8 +66,9 @@ namespace YesCommander.CustomControls
                 default:
                     color = Brushes.Lime; break;
             }
-            this.CN.Foreground = this.EN.Foreground = this.TranCN.Foreground = this.race.Foreground = this.className.Foreground = this.level.Foreground = color;
-            this.className.Text = Follower.GetCNStringByClass( follower.Class );
+            this.CN.Foreground = this.EN.Foreground = this.TranCN.Foreground = this.race.Foreground = this.level.Foreground = color;
+            //this.className.Text = Follower.GetCNStringByClass( follower.Class );
+            this.specIcon.IconIndex = (int)follower.Class;
             this.followerHead.PopulateFullImage( follower.NameEN, isAli );
         }
         public void Clear()
@@ -64,11 +77,12 @@ namespace YesCommander.CustomControls
             this.EN.Text = string.Empty;
             this.TranCN.Text = string.Empty;
             this.race.Text = string.Empty;
+            this.raceImage.Source = null;
+            this.raceImage.Visibility = System.Windows.Visibility.Collapsed;
             this.level.Text = string.Empty;
             this.owned.Text = string.Empty;
             this.abilityImage.ClearUp();
             this.traitImage.ClearUp();
-            this.className.Text = string.Empty;
             this.followerHead.Clear();
         }
     }

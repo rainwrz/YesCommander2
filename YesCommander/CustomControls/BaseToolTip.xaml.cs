@@ -34,6 +34,8 @@ namespace YesCommander.CustomControls
         public void Setup( string title, string content )
         {
             ( this.stackPanel1.Children[ 0 ] as TextBlock ).Text = title;
+            if ( title == string.Empty )
+                ( this.stackPanel1.Children[ 0 ] as TextBlock ).Visibility = System.Windows.Visibility.Collapsed;
             ( this.stackPanel1.Children[ 1 ] as TextBlock ).Text = content;
         }
     }

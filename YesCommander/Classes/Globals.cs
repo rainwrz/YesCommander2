@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.IO;
+using System.Windows;
 
 namespace YesCommander.Classes
 {
@@ -20,6 +21,7 @@ namespace YesCommander.Classes
         public static Dictionary<string, ImageSource> FollowerImageSourceBig;
         public static ImageBrush BorderBrush;
         public static List<ImageSource> missionIcionList;
+        public static List<ImageSource> specIcionList;
         public static bool IsAlliance = true;
         public static DataTable AllFollowersAli;
         public static DataTable AllFollowersHrd;
@@ -43,6 +45,7 @@ namespace YesCommander.Classes
             FollowerImageSourceSmall = new Dictionary<string, ImageSource>();
             FollowerImageSourceBig = new Dictionary<string, ImageSource>();
             missionIcionList = new List<ImageSource>();
+            specIcionList = new List<ImageSource>();
             for ( int i = 0; i < 9; i++ )
             {
                 Follower.Abilities ability = (Follower.Abilities)i;
@@ -60,6 +63,16 @@ namespace YesCommander.Classes
             missionIcionList.Add( Follower.GetImageFromPicName( "Treasures.jpg" ) );
             missionIcionList.Add( Follower.GetImageFromPicName( "archstone.jpg" ) );
             missionIcionList.Add( Follower.GetImageFromPicName( "runestone.jpg" ) );
+
+            int[] classIndexList = new int[] { 9, 0, 4, 2, 10, 8, 6, 1, 5, 7, 3 };
+            foreach ( int classIndex in classIndexList )
+            {
+                for ( int i = 0; i < ( classIndex == 0 ? 4 : 3 ); i++ )
+                {
+                    specIcionList.Add( new CroppedBitmap( new BitmapImage( new Uri(
+                        "pack://application:,,,/YesCommander;component/Resources/Specs-20.png", UriKind.RelativeOrAbsolute ) ), new Int32Rect( 20 * i, classIndex*20, 20, 20 ) ) );
+                }
+            }
         }
 
         private static void InitializeFollowerList()

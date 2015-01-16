@@ -49,13 +49,42 @@ namespace YesCommander.CustomControls
             }
 
 
-            List<string> itemSource = new List<string>();
+            //List<string> itemSource = new List<string>();
+            //for ( int i = 0; i <= (int)Follower.Classes.ProtectionWarrior; i++ )
+            //{
+            //    itemSource.Add( Follower.GetCNStringByClass( (Follower.Classes)i ) );
+            //}
+
+            List<ImageComboBoxItem> itemSource = new List<ImageComboBoxItem>();
             for ( int i = 0; i <= (int)Follower.Classes.ProtectionWarrior; i++ )
             {
-                itemSource.Add( Follower.GetCNStringByClass( (Follower.Classes)i ) );
-            }
+                ImageComboBoxItem item = new ImageComboBoxItem()
+                {
+                    Name = Follower.GetCNStringByClass( (Follower.Classes)i ),
+                    Id = string.Empty,
+                    Image = Globals.specIcionList[ i ],
+                    DataRowValue = null
+                };
+                itemSource.Add( item );
 
-            this.classComboBox.ItemsSource = itemSource;
+                this.specIconPanel.Children.Add( new SpecIcon( i ) );
+            }
+            this.classComboBox.DataSource = itemSource;
+
+            // radiobutton
+            string raceString = string.Empty;
+            for ( int i = 0; i < this.raceRadioPanel.Children.Count / 2; i++ )
+            {
+                raceString = ( this.raceRadioPanel.Children[ i * 2 ] as RadioButton ).Name.ToString();
+                if ( raceString != "其他" )
+                {
+                    ( this.raceRadioPanel.Children[ i * 2 + 1 ] as Image ).Source = Globals.TraitImageSource[ Follower.GetTraitOfLoverByRace( Follower.GetRaceByName( raceString ) ) ];
+                    TextBlock toolTip = new TextBlock();
+                    toolTip.Text = raceString;
+                    ( this.raceRadioPanel.Children[ i * 2 + 1 ] as Image ).ToolTip = toolTip;
+                    ToolTipService.SetInitialShowDelay( ( this.raceRadioPanel.Children[ i * 2 + 1 ] as Image ), 0 );
+                }
+            }
         }
 
         public void AddTraitCheckBoxes()
@@ -148,6 +177,7 @@ namespace YesCommander.CustomControls
             this.raceRadioPanel.Visibility = System.Windows.Visibility.Hidden;
             this.classPanel.Visibility = System.Windows.Visibility.Hidden;
             this.classString.Visibility = System.Windows.Visibility.Collapsed;
+            this.specIconPanel.Visibility = System.Windows.Visibility.Collapsed;
 
             ( sender as TextBlock ).FontSize = 18;
             switch ( ( sender as TextBlock ).Name )
@@ -155,7 +185,7 @@ namespace YesCommander.CustomControls
                 case "abilityAnalysis":
                     {
                         this.abilityCheckBoxPanel.Visibility = System.Windows.Visibility.Visible;
-                        this.classString.Visibility = System.Windows.Visibility.Visible;
+                        this.specIconPanel.Visibility = System.Windows.Visibility.Visible;
                         this.CheckBox_Checked( null, null );
                     }
                     break;
@@ -212,7 +242,7 @@ namespace YesCommander.CustomControls
 
         private void ComboBox_SelectionChanged( object sender, SelectionChangedEventArgs e )
         {
-            Follower.Classes currentClass = Follower.GetClassBySingleStr( this.classComboBox.SelectedItem.ToString() );
+            Follower.Classes currentClass = Follower.GetClassBySingleStr( ( this.classComboBox.SelectedItem as ImageComboBoxItem ).Name );
             int followerColor = 0;
             this.aliPanel.Children.Clear();
             foreach ( Follower follower in this.AliFollowers.FindAll( x => x.Class == currentClass ) )
@@ -334,13 +364,15 @@ namespace YesCommander.CustomControls
                     if ( isContain )
                     {
                         this.currentClasses.Add( (Follower.Classes)j );
-                        classString += Follower.GetCNStringByClass( (Follower.Classes)j ) + "  ";
+                        ( this.specIconPanel.Children[ j ] as SpecIcon ).IsDisplayed = true;
                     }
+                    else
+                        ( this.specIconPanel.Children[ j ] as SpecIcon ).IsDisplayed = false;
                 }
-                this.classString.Text = classString;
             }
             else
-                this.classString.Text = "选择任意一个或者两个技能组合，查看可拥有此组合的职业天赋。";
+                foreach ( SpecIcon icon in this.specIconPanel.Children )
+                    icon.IsDisplayed = false;
         }
 
         private void EnableOrDisbaleCheckBoxes( List<Follower.Traits> trait )
@@ -584,11 +616,11 @@ namespace YesCommander.CustomControls
         public void RunRaceFilter()
         {
             string raceString = string.Empty;
-            for ( int i = 0; i < this.raceRadioPanel.Children.Count; i++ )
+            for ( int i = 0; i < this.raceRadioPanel.Children.Count/2; i++ )
             {
-                if ( ( this.raceRadioPanel.Children[ i ] as RadioButton ).IsChecked == true )
+                if ( ( this.raceRadioPanel.Children[ i*2 ] as RadioButton ).IsChecked == true )
                 {
-                    raceString = ( this.raceRadioPanel.Children[ i ] as RadioButton ).Content.ToString();
+                    raceString = ( this.raceRadioPanel.Children[ i*2 ] as RadioButton ).Name.ToString();
                     break;
                 }
             }

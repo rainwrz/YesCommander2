@@ -107,6 +107,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\Components\RaceRadioBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\SpecIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\Components\TinyImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +188,12 @@
     <Compile Include="CustomControls\Components\ImageComboBoxItem.cs" />
     <Compile Include="CustomControls\Components\PartyMember.xaml.cs">
       <DependentUpon>PartyMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\RaceRadioBox.xaml.cs">
+      <DependentUpon>RaceRadioBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\SpecIcon.xaml.cs">
+      <DependentUpon>SpecIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Components\TinyImage.xaml.cs">
       <DependentUpon>TinyImage.xaml</DependentUpon>
@@ -939,6 +953,9 @@
     <Resource Include="Resources\Images\Small\Hrd\Zen%27tika.png" />
     <Resource Include="Resources\Images\Small\Hrd\Zen%27tiki.png" />
     <Resource Include="Resources\Images\Small\Hrd\Ziri%27ak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Specs-20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
