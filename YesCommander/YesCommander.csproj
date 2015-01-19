@@ -46,6 +46,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Externals\Elysium.Notifications.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Externals\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -155,7 +163,6 @@
     <Compile Include="Classes\MessagePacket.cs" />
     <Compile Include="Classes\Mission.cs" />
     <Compile Include="Classes\Missions.cs" />
-    <Compile Include="Classes\SingleSolution.cs" />
     <Compile Include="Classes\Solution.cs" />
     <Compile Include="Converter\IsImageComboBoxItemHighlightColorSetConverter.cs" />
     <Compile Include="CustomControls\AbilityCombination.xaml.cs">

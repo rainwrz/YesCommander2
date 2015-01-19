@@ -73,6 +73,9 @@ namespace YesCommander.CustomControls.Components
             //string nameEn = Globals.IsAlliance ? Globals.AllFollowersAli.Rows.OfType<DataRow>().First( x => x[ "ID" ].ToString() == follower.ID )[ "英文名字" ].ToString() :
             //    Globals.AllFollowersHrd.Rows.OfType<DataRow>().First( x => x[ "ID" ].ToString() == follower.ID )[ "英文名字" ].ToString();
             //this.head.PopulateFullImage( nameEn );
+
+            this.ToolTip = new FollowerPanel( follower, Globals.GetFollowerEnNameById( follower.ID, Globals.IsAlliance) );
+            ToolTipService.SetInitialShowDelay( this, 0 );
         }
 
         public void Clear()

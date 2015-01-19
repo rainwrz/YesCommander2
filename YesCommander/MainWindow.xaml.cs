@@ -45,32 +45,40 @@ namespace YesCommander
         public MainWindow()
         {
             InitializeComponent();
-            Globals.Initialize();
-
             this.maxNumberOfPartyComboBox.ItemsSource = new List<string>() { "最多显示1只队伍", "最多显示10只队伍", "最多显示20只队伍", "最多显示50只队伍", "最多显示100只队伍(降低性能)" };
             this.maxNumberOfPartyComboBox.SelectedIndex = 2;
-            this.Missions = new Missions();
-            //this.FillInMissions( this.Missions.HighmaulMissions );
-            this.missionsComboBox.ComboBoxImageList = Globals.missionIcionList;
-            this.currentMissions = this.Missions.HighmaulMissions;
-            this.FillInMissions( this.Missions.HighmaulMissionRows );
-            this.radioFollowers.IsChecked = true;
-            this.favoriteFollowers = new List<Follower>();
         }
 
         #region Events
         private void Loaded_1( object sender, RoutedEventArgs e )
         {
-            this.missionWindowImage.ToolTip = new BaseToolTip( "任务列表", "打开一个新的窗口，查看所有任务详情。" );
-            ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
-            Version version = Assembly.GetEntryAssembly().GetName().Version;
-            this.about.ToolTip = new BaseToolTip( "YesCommander", "作者：梧桐哟梧桐，当前版本："
-                + version.Major.ToString() + "." + version.Minor.ToString() + ( version.Build == 0 ? string.Empty : "." + version.Build.ToString() )
-                + "\r\n\r\n注意：此软件仅发布在NGA。下载地址仅限百度网盘，其他途径下载均有风险。"
-                + " \r\n\r\n熊猫酒仙联盟公会【月 神 之 怒】招募有识之士。共同迎战德拉诺之王。"
-                + " \r\n\r\n广告位招租。" );
-            ToolTipService.SetShowDuration( this.about, 60000 );
-            ToolTipService.SetInitialShowDelay( this.about, 0 );
+            try
+            {
+                Globals.Initialize();
+
+                this.Missions = new Missions();
+                //this.FillInMissions( this.Missions.HighmaulMissions );
+                this.missionsComboBox.ComboBoxImageList = Globals.missionIcionList;
+                this.currentMissions = this.Missions.HighmaulMissions;
+                this.FillInMissions( this.Missions.HighmaulMissionRows );
+                this.radioFollowers.IsChecked = true;
+                this.favoriteFollowers = new List<Follower>();
+
+                this.missionWindowImage.ToolTip = new BaseToolTip( "任务列表", "打开一个新的窗口，查看所有任务详情。" );
+                ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
+                Version version = Assembly.GetEntryAssembly().GetName().Version;
+                this.about.ToolTip = new BaseToolTip( "YesCommander", "作者：梧桐哟梧桐，当前版本："
+                    + version.Major.ToString() + "." + version.Minor.ToString() + ( version.Build == 0 ? string.Empty : "." + version.Build.ToString() )
+                    + "\r\n\r\n注意：此软件仅发布在NGA。下载地址仅限百度网盘，其他途径下载均有风险。"
+                    + " \r\n\r\n熊猫酒仙联盟公会【月 神 之 怒】招募有识之士。共同迎战德拉诺之王。"
+                    + " \r\n\r\n广告位招租。" );
+                ToolTipService.SetShowDuration( this.about, 60000 );
+                ToolTipService.SetInitialShowDelay( this.about, 0 );
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         private void RadioButton_Checked( object sender, RoutedEventArgs e )
@@ -699,7 +707,7 @@ namespace YesCommander
             if ( this.blackFoundryQuestCheckBox.IsChecked == true )
                 this.GenerateText( this.textBlackFoundryQuest, uncompleteIDs, 454, 457 );
             else
-                this.textEquipment645.Text = string.Empty;
+                this.textBlackFoundryQuest.Text = string.Empty;
         }
 
         private void GenerateText( TextBlock block, List<int> uncompleteIDs, int bottomNumber, int topNumber )
