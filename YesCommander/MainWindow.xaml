@@ -66,6 +66,7 @@
                     <component:TinyImage x:Name="ability4"/>
                     <component:TinyImage x:Name="ability5"/>
                     <component:TinyImage x:Name="ability6"/>
+                    <component:TinyImage x:Name="ability7"/>
                 </StackPanel>
                 <TextBlock Text="场景:"/>
                 <component:TinyImage x:Name="trait"/>

@@ -153,9 +153,10 @@ namespace YesCommander.CustomControls.Components
 
             int id = -1;
             id = Globals.FetchDatabaseInteger( row, "任务ID", -1 );
-            if ( id >= 313 && id <= 328 ||
-                ( id >= 454 && id <= 457 ) )
+            if ( id >= 313 && id <= 328 )
                 return this.imageSourceList[ 0 ];
+            else if ( id >= 454 && id <= 457 )
+                return this.imageSourceList[ 3 ];
             else if ( id >= 403 && id <= 407 )
                 return this.imageSourceList[ 1 ];
             else if ( id >= 408 && id <= 413 )
