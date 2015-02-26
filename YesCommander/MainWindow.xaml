@@ -96,7 +96,7 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="成功率" />
-                <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用655装等(不影响无装等要求任务)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
+                <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用675装等(不影响无装等要求任务)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
                 <CheckBox Name="checkboxUsingFavorite" Grid.Column="2" Content="仅使用偏好随从" VerticalAlignment="Center" Checked="checkboxUsingFavorite_Checked" Unchecked="checkboxUsingFavorite_Checked" 
                           Margin="4,0"/>
                 <TextBlock Grid.Column="3" Text="注意：括号中的红色数字表示不满足装等要求" Foreground="Red"/>

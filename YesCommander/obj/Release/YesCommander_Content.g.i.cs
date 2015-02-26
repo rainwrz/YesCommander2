@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/dlls/microsoft.windows.shell.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/small/hrd/harrison_jones.png")]
 
 

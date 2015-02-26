@@ -32,7 +32,10 @@ namespace YesCommander.CustomControls.Components
             this.followerIlevel.Text = "(" + follower.ItemLevel.ToString() + ")";
             if ( !follower.IsActive )
                 this.followerFrozen.Text = "(冻结)";
-            if ( follower.Quolaty == 4 )
+
+            if ( follower.Quolaty == 5 )
+                this.followerName.Foreground = Brushes.OrangeRed;
+            else if ( follower.Quolaty == 4 )
                 this.followerName.Foreground = Brushes.BlueViolet;
             else if ( follower.Quolaty == 3 )
                 this.followerName.Foreground = Brushes.DodgerBlue;

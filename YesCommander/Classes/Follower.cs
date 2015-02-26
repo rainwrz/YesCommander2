@@ -410,7 +410,16 @@ namespace YesCommander.Classes
             Tailoring,
             Skinning,//52
             Evergreen,
-            Angler
+            Angler,
+
+            TreasureHunter,//55
+            SpeedOfLight,//56
+            Mentor,//57
+            MasterAssassin,//58
+            BirdWatcher,
+            OgreBuddy,//60
+            MechanoAffictionado,
+            Wildling
         }
         public static string TraitToChinese( Traits trait )
         {
@@ -474,6 +483,15 @@ namespace YesCommander.Classes
                 case Traits.Bodyguard: return "看家护院";
                 case Traits.Dancer: return "动感舞王";
                 case Traits.HearthstonePro: return "炉石专家";
+                    
+                case Traits.TreasureHunter: return "财宝猎人";
+                case Traits.SpeedOfLight: return "光速";
+                case Traits.Mentor: return "导师";
+                case Traits.MasterAssassin: return "刺客大师";
+                case Traits.BirdWatcher: return "Bird Watcher";
+                case Traits.OgreBuddy: return "Ogre Buddy";
+                case Traits.MechanoAffictionado: return "Mechano Affictionado";
+                case Traits.Wildling: return "Wildling";
 
                 default: return "Unknow";
             }
@@ -532,7 +550,7 @@ namespace YesCommander.Classes
                 case Traits.HighStamina: return "提高持续时间超过7小时的任务的成功率。";
                 case Traits.BurstOfPower: return "提高持续时间少于7小时的任务的成功率。";
                 case Traits.LoneWolf: return "提高独自执行任务的成功率。";
-                case Traits.Scavenger: return "使完成任务后获得的要塞物资提高200%";
+                case Traits.Scavenger: return "使完成任务后获得的要塞物资提高100%";
                 case Traits.ExtraTraining: return "使所有追随者完成任务所获得的经验值提高35%";
                 case Traits.CombatExperience: return "提高任务的成功率。";
                 case Traits.EpicMount: return "任务时间缩短50%";
@@ -541,6 +559,14 @@ namespace YesCommander.Classes
                 case Traits.Bodyguard: return "指派到2级或3级兵营后可作为保镖陪伴你游历德拉诺。";
                 case Traits.Dancer: return "你轻盈的步伐能让你在危险区域的移动速度提升一些。";
                 case Traits.HearthstonePro: return "一位备受关注的战术大师小队成员的经验获取速度提高35%";
+                case Traits.TreasureHunter: return "使完成任务后获得的金币提高100%";
+                case Traits.SpeedOfLight: return "The Sun-touched Feather of Rukhmar infuses a follower with epic speed.";
+                case Traits.Mentor: return "Accompanying followers gain this follower's combat effectiveness.";
+                case Traits.MasterAssassin: return "Greatly increases success chance against all targets.";
+                case Traits.BirdWatcher: return "Increases success chance when on a mission with an arakkoa.";
+                case Traits.OgreBuddy: return "Increases success chance when on a mission with an ogre.";
+                case Traits.MechanoAffictionado: return "Increases success chance when on a mission with a construct or machine.";
+                case Traits.Wildling: return "Increases success chance when on a mission with a beastly companion.";
 
                 default: return "Unknow";
             }
@@ -591,7 +617,7 @@ namespace YesCommander.Classes
                 case 44: return Traits.Naturalist;
                 case 45: return Traits.CaveDweller;
                 case 46: return Traits.GuerillaFighter;
-                case 47: return Traits.Town;
+                //case 47: return Traits.Town;
                 case 48: return Traits.Marshwalker;
                 case 49: return Traits.Plainsrunner;
 
@@ -633,6 +659,15 @@ namespace YesCommander.Classes
                 case 231: return Traits.Bodyguard;
                 case 232: return Traits.Dancer;
                 case 236: return Traits.HearthstonePro;
+
+                case 47: return Traits.MasterAssassin;
+                case 248: return Traits.Mentor;
+                case 250: return Traits.SpeedOfLight;
+                case 252: return Traits.OgreBuddy;
+                case 253: return Traits.MechanoAffictionado;
+                case 254: return Traits.BirdWatcher;
+                case 255: return Traits.Wildling;
+                case 256: return Traits.TreasureHunter;
 
                 default: return Traits.Unknow;
             }
@@ -699,6 +734,15 @@ namespace YesCommander.Classes
                 case "Bodyguard": return Traits.Bodyguard;
                 case "Dancer": return Traits.Dancer;
                 case "HearthstonePro": return Traits.HearthstonePro;
+                    
+                case "MasterAssassin": return Traits.MasterAssassin;
+                case "Mentor": return Traits.Mentor;
+                case "SpeedOfLight": return Traits.SpeedOfLight;
+                case "OgreBuddy": return Traits.OgreBuddy;
+                case "MechanoAffictionado": return Traits.MechanoAffictionado;
+                case "BirdWatcher": return Traits.BirdWatcher;
+                case "Wildling": return Traits.Wildling;
+                case "TreasureHunter": return Traits.TreasureHunter;
 
                 default: return Traits.Unknow;
             }

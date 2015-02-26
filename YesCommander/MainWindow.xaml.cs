@@ -68,7 +68,7 @@ namespace YesCommander
                 ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
                 Version version = Assembly.GetEntryAssembly().GetName().Version;
                 this.about.ToolTip = new BaseToolTip( "YesCommander", "作者：梧桐哟梧桐，当前版本："
-                    + version.Major.ToString() + "." + version.Minor.ToString() + ( version.Build == 0 ? string.Empty : "." + version.Build.ToString()+"."+version.Revision.ToString() )
+                    + version.Major.ToString() + "." + version.Minor.ToString() + ( version.Build == 0 ? string.Empty : "." + version.Build.ToString() + ( version.Revision == 0 ? string.Empty : "." + version.Revision.ToString() ) )
                     + "\r\n\r\n注意：此软件仅发布在NGA。下载地址仅限百度网盘，其他途径下载均有风险。"
                     + " \r\n\r\n熊猫酒仙联盟公会【月 神 之 怒】招募有识之士。共同迎战德拉诺之王。"
                     + " \r\n\r\n广告位招租。" );

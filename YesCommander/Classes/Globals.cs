@@ -51,7 +51,7 @@ namespace YesCommander.Classes
                 Follower.Abilities ability = (Follower.Abilities)i;
                 AbilityImageSource.Add( ability, Follower.GetImageFromAbility( ability ) );
             }
-            for ( int i = 0; i < 55; i++ )
+            for ( int i = 0; i < 63; i++ )
             {
                 Follower.Traits trait = (Follower.Traits)i;
                 TraitImageSource.Add( trait, Follower.GetImageFromFromTrait( trait ) );
@@ -93,6 +93,7 @@ namespace YesCommander.Classes
                 int quolaty;
                 switch ( row[ "初始品质" ].ToString() )
                 {
+                    case "传奇": quolaty = 5; break;
                     case "史诗": quolaty = 4; break;
                     case "精良": quolaty = 3; break;
                     case "优秀": quolaty = 2; break;
@@ -117,6 +118,7 @@ namespace YesCommander.Classes
                 int quolaty;
                 switch ( row[ "初始品质" ].ToString() )
                 {
+                    case "传奇": quolaty = 5; break;
                     case "史诗": quolaty = 4; break;
                     case "精良": quolaty = 3; break;
                     case "优秀": quolaty = 2; break;

@@ -35,7 +35,7 @@ namespace YesCommander.Classes
         public double TotalSucessChance;
         public float BasicSucessChange;
         public List<Follower.Traits> partyBuffs;
-        public static readonly int MAXITEMLEVEL = 655;
+        public static readonly int MAXITEMLEVEL = 675;
 
         public Mission( string missionId, string missionName, string missionNameCN, int itemLevelNeed, int followersNeed, Dictionary<Follower.Abilities, int> abilities, Follower.Traits slayerNeed, string time, string reward, string remark, float basicSucessChange =0, bool isUsingMaxiLevel = false )
         {
@@ -209,6 +209,11 @@ namespace YesCommander.Classes
                 {
                     factorOfEpicMount *= 2;
                     this.partyBuffs.Add( Follower.Traits.EpicMount );
+                }
+                if ( follower.TraitCollection.Contains( Follower.Traits.SpeedOfLight ) )
+                {
+                    factorOfEpicMount *= 2;
+                    this.partyBuffs.Add( Follower.Traits.SpeedOfLight );
                 }
                 if ( follower.TraitCollection.Contains( Follower.Traits.HighStamina ) )
                     numberOfHighStamina++;

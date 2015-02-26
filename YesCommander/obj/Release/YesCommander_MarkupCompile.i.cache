@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\wrz\Desktop\YesCommander\YesCommander\obj\Release\
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\
 YesCommander
 none
 false
 TRACE
-C:\Users\wrz\Desktop\YesCommander\YesCommander\App.xaml
-20913241693
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\App.xaml
+22-866477798
 
-351029941135
-16432340446
-CustomControls\AbilityCombination.xaml;CustomControls\AnalysisControl.xaml;CustomControls\BaseToolTip.xaml;CustomControls\Components\AbilityCheckBox.xaml;CustomControls\Components\combinationRow.xaml;CustomControls\Components\FollowerHead.xaml;CustomControls\Components\FollowerImageFull.xaml;CustomControls\Components\FollowerPanel.xaml;CustomControls\Components\ImageComboBox.xaml;CustomControls\Components\PartyMember.xaml;CustomControls\Components\TinyImage.xaml;CustomControls\Components\TinyImageToolTip.xaml;CustomControls\ExceptionDialog.xaml;CustomControls\followerFromDatabasexaml.xaml;CustomControls\FollowerRow.xaml;CustomControls\InputWindow.xaml;MainWindow.xaml;CustomControls\MissionGrid.xaml;CustomControls\Party.xaml;Themes\Generic.xaml;
+37-2048942906
+18-2121990811
+CustomControls\AbilityCombination.xaml;CustomControls\AnalysisControl.xaml;CustomControls\BaseToolTip.xaml;CustomControls\Components\AbilityCheckBox.xaml;CustomControls\Components\combinationRow.xaml;CustomControls\Components\FollowerHead.xaml;CustomControls\Components\FollowerImageFull.xaml;CustomControls\Components\FollowerPanel.xaml;CustomControls\Components\ImageComboBox.xaml;CustomControls\Components\PartyMember.xaml;CustomControls\Components\RaceRadioBox.xaml;CustomControls\Components\SpecIcon.xaml;CustomControls\Components\TinyImage.xaml;CustomControls\Components\TinyImageToolTip.xaml;CustomControls\ExceptionDialog.xaml;CustomControls\followerFromDatabasexaml.xaml;CustomControls\FollowerRow.xaml;CustomControls\InputWindow.xaml;MainWindow.xaml;CustomControls\MissionGrid.xaml;CustomControls\Party.xaml;Themes\Generic.xaml;
 
-True
+False
 

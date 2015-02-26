@@ -722,6 +722,7 @@ namespace YesCommander.CustomControls
                 int quolaty;
                 switch ( row[ "初始品质" ].ToString() )
                 {
+                    case "传奇": quolaty = 5; break;
                     case "史诗": quolaty = 4; break;
                     case "精良": quolaty = 3; break;
                     case "优秀": quolaty = 2; break;
@@ -746,6 +747,7 @@ namespace YesCommander.CustomControls
                 int quolaty;
                 switch ( row[ "初始品质" ].ToString() )
                 {
+                    case "传奇": quolaty = 5; break;
                     case "史诗": quolaty = 4; break;
                     case "精良": quolaty = 3; break;
                     case "优秀": quolaty = 2; break;

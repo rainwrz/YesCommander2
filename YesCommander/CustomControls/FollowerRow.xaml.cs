@@ -92,7 +92,9 @@ namespace YesCommander.CustomControls
             this.Clear();
 
             this.textName.Text = follower.Name;
-            if ( follower.Quolaty == 4 )
+            if ( follower.Quolaty == 5 )
+                this.textName.Foreground = Brushes.OrangeRed;
+            else if ( follower.Quolaty == 4 )
                 this.textName.Foreground = Brushes.BlueViolet;
             else if ( follower.Quolaty == 3 )
                 this.textName.Foreground = Brushes.DodgerBlue;

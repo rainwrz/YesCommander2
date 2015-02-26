@@ -967,6 +967,26 @@
   <ItemGroup>
     <Resource Include="Resources\Treasures2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BirdWatcher.jpg" />
+    <Resource Include="Resources\MasterAssassin.jpg" />
+    <Resource Include="Resources\MechanoAffictionado.jpg" />
+    <Resource Include="Resources\Mentor.jpg" />
+    <Resource Include="Resources\OgreBuddy.jpg" />
+    <Resource Include="Resources\SpeedOfLight.jpg" />
+    <Resource Include="Resources\TreasureHunter.jpg" />
+    <Resource Include="Resources\Wildling.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Small\Ali\Fen_Tao.png" />
+    <Resource Include="Resources\Images\Small\Ali\Garona_Halforcen.png" />
+    <Resource Include="Resources\Images\Small\Ali\Harrison_Jones.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Small\Hrd\Fen_Tao.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Garona_Halforcen.png" />
+    <Resource Include="Resources\Images\Small\Hrd\Harrison_Jones.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

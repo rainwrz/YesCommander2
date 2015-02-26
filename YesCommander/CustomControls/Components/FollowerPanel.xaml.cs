@@ -36,7 +36,9 @@ namespace YesCommander.CustomControls.Components
         public void Populate( Follower follower, string nameEn )
         {
             this.name.Text = follower.Name;
-            if ( follower.Quolaty == 4 )
+            if ( follower.Quolaty == 5 )
+                this.name.Foreground = Brushes.OrangeRed;
+            else if ( follower.Quolaty == 4 )
                 this.name.Foreground = Brushes.BlueViolet;
             else if ( follower.Quolaty == 3 )
                 this.name.Foreground = Brushes.DodgerBlue;

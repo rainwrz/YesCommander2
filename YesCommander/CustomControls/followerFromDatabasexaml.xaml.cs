@@ -46,6 +46,7 @@ namespace YesCommander.CustomControls
                 this.owned.Text = "有";
                 switch ( ownedColor )
                 {
+                    case 5: this.owned.Foreground = Brushes.OrangeRed; break;
                     case 4: this.owned.Foreground = Brushes.BlueViolet; break;
                     case 3: this.owned.Foreground = Brushes.DodgerBlue; break;
                     case 2: this.owned.Foreground = Brushes.Lime; break;
@@ -60,6 +61,7 @@ namespace YesCommander.CustomControls
             Brush color;
             switch ( follower.Quolaty )
             {
+                case 5: color = Brushes.OrangeRed; break;
                 case 4: color = Brushes.BlueViolet; break;
                 case 3: color = Brushes.DodgerBlue; break;
                 case 2:
