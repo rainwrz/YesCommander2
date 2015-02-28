@@ -272,10 +272,10 @@ namespace YesCommander.Classes
             double result = 0;
             foreach ( Follower.Traits trait in Follower.FilteredRaceTrait( follower1 ) )
             {
-                if ( Follower.GetRaceMatchedByTrait( trait ) == follower2.Race || ( follower3 != null && Follower.GetRaceMatchedByTrait( trait ) == follower3.Race ) )
+                if ( Follower.GetRaceMatchedByTrait( trait ).Contains( follower2.Race ) || ( follower3 != null && Follower.GetRaceMatchedByTrait( trait ).Contains( follower3.Race ) ) )
                 {
                     result += this.SucessPerRaceLover;
-                    this.partyBuffs.Add( trait);
+                    this.partyBuffs.Add( trait );
                 }
             }
             return result;

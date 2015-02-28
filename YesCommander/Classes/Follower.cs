@@ -488,10 +488,10 @@ namespace YesCommander.Classes
                 case Traits.SpeedOfLight: return "光速";
                 case Traits.Mentor: return "导师";
                 case Traits.MasterAssassin: return "刺客大师";
-                case Traits.BirdWatcher: return "Bird Watcher";
-                case Traits.OgreBuddy: return "Ogre Buddy";
-                case Traits.MechanoAffictionado: return "Mechano Affictionado";
-                case Traits.Wildling: return "Wildling";
+                case Traits.BirdWatcher: return "鸟类学家";
+                case Traits.OgreBuddy: return "食人魔之友";
+                case Traits.MechanoAffictionado: return "机械狂人";
+                case Traits.Wildling: return "野外生存";
 
                 default: return "Unknow";
             }
@@ -563,10 +563,10 @@ namespace YesCommander.Classes
                 case Traits.SpeedOfLight: return "The Sun-touched Feather of Rukhmar infuses a follower with epic speed.";
                 case Traits.Mentor: return "Accompanying followers gain this follower's combat effectiveness.";
                 case Traits.MasterAssassin: return "Greatly increases success chance against all targets.";
-                case Traits.BirdWatcher: return "Increases success chance when on a mission with an arakkoa.";
-                case Traits.OgreBuddy: return "Increases success chance when on a mission with an ogre.";
-                case Traits.MechanoAffictionado: return "Increases success chance when on a mission with a construct or machine.";
-                case Traits.Wildling: return "Increases success chance when on a mission with a beastly companion.";
+                case Traits.BirdWatcher: return "提高与鸦人一起执行任务的成功率。";
+                case Traits.OgreBuddy: return "提高与食人魔一起执行任务的成功率。";
+                case Traits.MechanoAffictionado: return "提高与构造体或机械一起执行任务的成功率。";
+                case Traits.Wildling: return "提高与动物伙伴一起执行任务的成功率。";
 
                 default: return "Unknow";
             }
@@ -772,31 +772,43 @@ namespace YesCommander.Classes
                     trait == Traits.Totemist ||
                     trait == Traits.VoodooZealot ||
                     trait == Traits.Elvenkind ||
-                    trait == Traits.Economist )
+                    trait == Traits.Economist ||
+                    trait == Traits.Wildling ||
+                    trait == Traits.MechanoAffictionado ||
+                    trait == Traits.BirdWatcher ||
+                    trait == Traits.OgreBuddy
+                )
                 return true;
             else return false;
         }
-        public static Races GetRaceMatchedByTrait( Traits trait )
+        public static List<Races> GetRaceMatchedByTrait( Traits trait )
         {
+            List<Races> races = new List<Races>();
             switch ( trait )
             {
-                case Traits.GnomeLover: return Races.侏儒;
-                case Traits.Humanist: return Races.人类;
-                case Traits.Dwarvenborn: return Races.矮人;
-                case Traits.ChildOfTheMoon: return Races.暗夜精灵;
-                case Traits.AllyOfArgus: return Races.德莱尼;
-                case Traits.CanineCompanion: return Races.狼人;
+                case Traits.GnomeLover: races.Add( Races.侏儒 ); break;
+                case Traits.Humanist: races.Add( Races.人类 ); break;
+                case Traits.Dwarvenborn: races.Add( Races.矮人 ); break;
+                case Traits.ChildOfTheMoon: races.Add( Races.暗夜精灵 ); break;
+                case Traits.AllyOfArgus: races.Add( Races.德莱尼 ); break;
+                case Traits.CanineCompanion: races.Add( Races.狼人 ); break;
 
-                case Traits.BrewAficionado: return Races.熊猫人;
+                case Traits.BrewAficionado: races.Add( Races.熊猫人 ); break;
 
-                case Traits.ChildOfDraenon: return Races.兽人;
-                case Traits.DeathFascination: return Races.被遗忘者;
-                case Traits.Totemist: return Races.牛头人;
-                case Traits.VoodooZealot: return Races.巨魔;
-                case Traits.Elvenkind: return Races.血精灵;
-                case Traits.Economist: return Races.地精;
-                default: return Races.error;
+                case Traits.ChildOfDraenon: races.Add( Races.兽人 ); break;
+                case Traits.DeathFascination: races.Add( Races.被遗忘者 ); break;
+                case Traits.Totemist: races.Add( Races.牛头人 ); break;
+                case Traits.VoodooZealot: races.Add( Races.巨魔 ); break;
+                case Traits.Elvenkind: races.Add( Races.血精灵 ); break;
+                case Traits.Economist: races.Add( Races.地精 ); break;
+
+                case Traits.Wildling: races.Add( Races.刃牙虎人 ); races.Add( Races.豺狼人 ); break;
+                case Traits.MechanoAffictionado: races.Add( Races.机械 ); races.Add( Races.埃匹希斯守卫 ); break;
+                case Traits.BirdWatcher: races.Add( Races.高等鸦人 ); break;
+                case Traits.OgreBuddy: races.Add( Races.食人魔 ); races.Add( Races.独眼魔 ); break;
+                default: races.Add( Races.error ); break;
             }
+            return races;
         }
 
         public static Traits GetTraitOfLoverByRace( Races races )

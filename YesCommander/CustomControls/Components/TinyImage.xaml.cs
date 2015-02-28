@@ -41,9 +41,12 @@ namespace YesCommander.CustomControls.Components
 
         public void SetUp( Follower.Traits trait, bool isEnvirment )
         {
-            this.image.Source = Globals.TraitImageSource[ trait ];// Follower.GetImageFromFromTrait( trait );
-            this.ToolTip = new TinyImageToolTip( trait, isEnvirment );
-            ToolTipService.SetInitialShowDelay( this, 0 );
+            if ( Globals.TraitImageSource.ContainsKey( trait ) )
+            {
+                this.image.Source = Globals.TraitImageSource[ trait ];// Follower.GetImageFromFromTrait( trait );
+                this.ToolTip = new TinyImageToolTip( trait, isEnvirment );
+                ToolTipService.SetInitialShowDelay( this, 0 );
+            }
         }
 
         public void ClearUp()

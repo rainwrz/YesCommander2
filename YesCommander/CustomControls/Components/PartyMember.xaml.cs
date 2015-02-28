@@ -64,7 +64,7 @@ namespace YesCommander.CustomControls.Components
             {
                 if ( mission.partyBuffs.Contains( trait ) )
                 {
-                    if ( Follower.IsRaceLoverTrait( trait ) && !mission.AssignedFollowers.Exists( x => ( x.Name != follower.Name && Follower.GetRaceMatchedByTrait( trait ) == x.Race ) ) )
+                    if ( Follower.IsRaceLoverTrait( trait ) && !mission.AssignedFollowers.Exists( x => ( x.Name != follower.Name && Follower.GetRaceMatchedByTrait( trait ).Contains( x.Race ) ) ) )
                     {
                         continue;
                     }
