@@ -12,22 +12,30 @@ namespace YesCommander.Model
         public DataTable AllMissionsTable;
 
         public Dictionary<int, Mission> AllMissions;
+
         public Dictionary<int, Mission> HighmaulMissions;
         public Dictionary<int, Mission> RingMissions;
+        public Dictionary<int, Mission> TwoFollowerMissions;
         public Dictionary<int, Mission> OtherThreeFollowersMissions;
+
         public List<DataRow> HighmaulMissionRows;
         public List<DataRow> RingMissionRows;
+        public List<DataRow> TwoFollowerMissionRows;
         public List<DataRow> OtherThreeFollowersMissionRows;
 
         public Missions()
         {
             this.AllMissionsTable = new DataTable();
             this.AllMissions = new Dictionary<int, Mission>();
+
             this.HighmaulMissions = new Dictionary<int, Mission>();
             this.RingMissions = new Dictionary<int, Mission>();
+            this.TwoFollowerMissions = new Dictionary<int, Mission>();
             this.OtherThreeFollowersMissions = new Dictionary<int, Mission>();
+
             this.HighmaulMissionRows = new List<DataRow>();
             this.RingMissionRows = new List<DataRow>();
+            this.TwoFollowerMissionRows = new List<DataRow>();
             this.OtherThreeFollowersMissionRows = new List<DataRow>();
             this.AllMissionsTable = LoadData.LoadMissionFile( "Txts/missions.txt" );
 
@@ -54,6 +62,19 @@ namespace YesCommander.Model
                 this.AddMissions( row, this.AllMissions );
                 this.RingMissionRows.Add( row );
             }
+
+            data = from temp in this.AllMissionsTable.AsEnumerable()
+                   where
+                   temp.Field<string>( "随从数量" ) == "2" &&
+                   Convert.ToInt16( temp.Field<string>( "装等要求" ) ) >= 645
+                   select temp;
+            foreach ( DataRow row in data )
+            {
+                this.AddMissions( row, this.TwoFollowerMissions );
+                this.AddMissions( row, this.AllMissions );
+                this.TwoFollowerMissionRows.Add( row );
+            }
+
             data = from temp in this.AllMissionsTable.AsEnumerable()
                    where
                    temp.Field<string>( "任务名" ) != "Highmaul Raid" &&

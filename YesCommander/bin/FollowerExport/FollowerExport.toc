@@ -1,4 +1,4 @@
-﻿## Author: adug 梧桐
+﻿﻿## Author: adug 梧桐
 ## Interface: 60100
 ## Title: FollowerExport
 ## Version: 1.2.0
@@ -7,4 +7,3 @@
 ## SavedVariablesPerCharacter: SavedFollowerString
 FollowerExport.lua
 Frame.xml
-

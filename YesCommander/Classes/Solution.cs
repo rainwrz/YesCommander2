@@ -13,6 +13,7 @@ namespace YesCommander.Classes
         private bool isContainRingStage2;
         private bool isContainEquipment645;
         private bool isContainBlackFoundry;
+        private bool isContainTwoFollowerMissions;
         public List<int> uncompleteIDs;
         private Dictionary<int, List<Mission>> dic;
         private List<int> missionIDs;
@@ -26,13 +27,14 @@ namespace YesCommander.Classes
 
         public List<Follower> suggestedFollowers;
 
-        public Solution( bool isContainHighmaul, bool isContainRingStage1, bool isContainRingStage2, bool isContainEquipment645, bool isContainBlackFoundry )
+        public Solution( bool isContainHighmaul, bool isContainRingStage1, bool isContainRingStage2, bool isContainEquipment645, bool isContainBlackFoundry, bool isContainTwoFollowerMissions )
         {
             this.isContainHighmaul = isContainHighmaul;
             this.isContainRingStage1 = isContainRingStage1;
             this.isContainRingStage2 = isContainRingStage2;
             this.isContainEquipment645 = isContainEquipment645;
             this.isContainBlackFoundry = isContainBlackFoundry;
+            this.isContainTwoFollowerMissions = isContainTwoFollowerMissions;
         }
 
         public void CalculateBasicData( Missions allMissions, List<Follower> allFollowers )
@@ -68,12 +70,31 @@ namespace YesCommander.Classes
                 for ( int i = 454; i <= 457; i++ )
                     missionIDs.Add( i );
             }
+            if ( this.isContainTwoFollowerMissions )
+            {
+                missionIDs.Add( 379 );
+                missionIDs.Add( 381 );
+                missionIDs.Add( 391 );
+                for ( int i = 394; i <= 399; i++ )
+                    missionIDs.Add( i );
+                missionIDs.Add( 401 );
+                missionIDs.Add( 402 );
+                missionIDs.Add( 444 );
+                missionIDs.Add( 445 );
+                missionIDs.Add( 495 );
+                missionIDs.Add( 496 );
+                missionIDs.Add( 503 );
+            }
 
             foreach ( int i in missionIDs )
             {
                 Mission theMission = allMissions.AllMissions[ i ];
-                //if ( theMission.FollowersNeed == 3 )
-                List<Mission> missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
+                List<Mission> missions=null;
+                if ( theMission.FollowersNeed == 3 )
+                    missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
+                else if ( theMission.FollowersNeed == 2 )
+                    missions = this.AssignMissionForTwoFollowers( theMission, allFollowers );
+
                 var data = from temp in missions.AsEnumerable()
                            where Math.Round( temp.TotalSucessChance, 6 ) >= 1
                            select temp;
@@ -146,12 +167,31 @@ namespace YesCommander.Classes
                 for ( int i = 454; i <= 457; i++ )
                     missionIDs.Add( i );
             }
+            if ( this.isContainTwoFollowerMissions )
+            {
+                missionIDs.Add( 379 );
+                missionIDs.Add( 381 );
+                missionIDs.Add( 391 );
+                for ( int i = 394; i <= 399; i++ )
+                    missionIDs.Add( i );
+                missionIDs.Add( 401 );
+                missionIDs.Add( 402 );
+                missionIDs.Add( 444 );
+                missionIDs.Add( 445 );
+                missionIDs.Add( 495 );
+                missionIDs.Add( 496 );
+                missionIDs.Add( 503 );
+            }
+
 
             foreach ( int i in missionIDs )
             {
                 Mission theMission = allMissions.AllMissions[ i ];
-                //if ( theMission.FollowersNeed == 3 )
-                List<Mission> missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
+                List<Mission> missions = null;
+                if ( theMission.FollowersNeed == 3 )
+                    missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
+                else if ( theMission.FollowersNeed == 2 )
+                    missions = this.AssignMissionForTwoFollowers( theMission, allFollowers );
                 var data = from temp in missions.AsEnumerable()
                            where Math.Round( temp.TotalSucessChance, 6 ) >= 1
                            select temp;
@@ -174,7 +214,8 @@ namespace YesCommander.Classes
             cleanMissions.Add( pair.Key, result[ 0 ] );
             suggestedFollowers.Add( result[ 0 ].AssignedFollowers[ 0 ] );
             suggestedFollowers.Add( result[ 0 ].AssignedFollowers[ 1 ] );
-            suggestedFollowers.Add( result[ 0 ].AssignedFollowers[ 2 ] );
+            if ( result[ 0 ].AssignedFollowers.Count > 2 )
+                suggestedFollowers.Add( result[ 0 ].AssignedFollowers[ 2 ] );
 
             while ( number < this.orderedList.Count )
             {
@@ -257,11 +298,32 @@ namespace YesCommander.Classes
                             else
                             {
                                 Mission newMission = mission.Copy();
-                                newMission.IsUsingMaxiLevel = false;
+                                newMission.IsUsingMaxiLevel = true;
                                 newMission.AssignFollowers( new List<Follower>() { list[ i ], list[ j ], list[ k ] } );
                                 missions.Add( newMission );
                             }
                         }
+                    }
+                }
+            }
+            return missions;
+        }
+
+        private List<Mission> AssignMissionForTwoFollowers( Mission mission, List<Follower> list )
+        {
+            List<Mission> missions = new List<Mission>();
+            for ( int j = 0; j < list.Count; j++ )
+            {
+                for ( int k = 0; k < list.Count; k++ )
+                {
+                    if ( k <= j )
+                        continue;
+                    else
+                    {
+                        Mission newMission = mission.Copy();
+                        newMission.IsUsingMaxiLevel = true;
+                        newMission.AssignFollowers( new List<Follower>() { list[ j ], list[ k ] } );
+                        missions.Add( newMission );
                     }
                 }
             }
@@ -302,7 +364,8 @@ namespace YesCommander.Classes
                 returnValue++;
             if ( list.Exists( x => x.ID == mission.AssignedFollowers[ 1 ].ID ) )
                 returnValue++;
-            if ( list.Exists( x => x.ID == mission.AssignedFollowers[ 2 ].ID ) )
+
+            if ( mission.AssignedFollowers.Count > 2 && list.Exists( x => x.ID == mission.AssignedFollowers[ 2 ].ID ) )
                 returnValue++;
             return returnValue;
         }

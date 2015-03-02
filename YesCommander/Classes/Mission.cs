@@ -85,11 +85,23 @@ namespace YesCommander.Classes
             //stringLength = stringLength > 6 ? 6 : stringLength;
             //string stringValue = ( 1 / ( (float)this.TotalCounterAbilitiesNeed + 1 ) ).ToString().Substring( 0, stringLength );
             //this.SucessPerAbility = Convert.ToDouble( stringValue );
-            this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + (float)this.FollowersNeed / 3 );
-            this.SucessPerFollower = this.SucessPerAbility / 3;
-            this.SucessPerRaceLover = this.SucessPerAbility / 2;
-            this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility / 3;
-            this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
+            if ( this.MissionId == "503" )
+            {
+                this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + (float)this.FollowersNeed *2 / 3 );
+                this.SucessPerFollower = this.SucessPerAbility * 2 / 3;
+                this.SucessPerRaceLover = this.SucessPerAbility;
+                this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility * 2 / 3;
+                //this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
+                this.SucessPerItemLevel = 0;
+            }
+            else
+            {
+                this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + (float)this.FollowersNeed / 3 );
+                this.SucessPerFollower = this.SucessPerAbility / 3;
+                this.SucessPerRaceLover = this.SucessPerAbility / 2;
+                this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility / 3;
+                this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
+            }
         }
 
         public void AssignFollowers( List<Follower> followers )
@@ -202,7 +214,7 @@ namespace YesCommander.Classes
                         else
                         {
                             result += ( dancerNumber * 2 / 3 ) * this.SucessPerAbility;
-                            this.CounterAbilitiesLack.Add( pair.Key, pair.Value - followerRemain[ pair.Key ] - dancerNumber * 2 / 3 );
+                            this.CounterAbilitiesLack.Add( pair.Key, pair.Value - dancerNumber * 2 / 3 );
                         }
                     }
                     else

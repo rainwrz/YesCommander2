@@ -1,8 +1,8 @@
-<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
 	<!--<Script file="followerexport.lua" />-->
 	<Frame name="FollowExportFrame" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
 		<Size>
-			<AbsDimension x="800" y="600" />
+			<AbsDimension x="1000" y="600" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER">
@@ -35,26 +35,11 @@
 				</Scripts>
 			</Button>
 		</Frames>
-		<Frames>
-			<CheckButton name="DisplayID" inherits="ChatConfigCheckButtonTemplate">
-				<Size>
-					<AbsDimension x="30" y="30" />
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset x="20" y="-50" />
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>DisplayID_Changed()</OnClick>
-				</Scripts>
-			</CheckButton>			
-		</Frames>
 		<Layers>
 			<Layer level="OVERLAY">
-				<fontstring name="DisplayIDText" text="显示技能ID号" inherits="GameFontNormal">
+				<fontstring name="DisplayIDText" text="Ctrl+A全选，然后Ctrl+C复制进剪切板。找个文本文档复制下来吧。" inherits="GameFontNormal">
 					<Size>
-						<AbsDimension x="100" y="20" />
+						<AbsDimension x="800" y="20" />
 					</Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">

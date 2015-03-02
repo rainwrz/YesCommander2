@@ -64,8 +64,6 @@ namespace YesCommander
                 this.radioFollowers.IsChecked = true;
                 this.favoriteFollowers = new List<Follower>();
 
-                this.missionWindowImage.ToolTip = new BaseToolTip( "任务列表", "打开一个新的窗口，查看所有任务详情。" );
-                ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
                 Version version = Assembly.GetEntryAssembly().GetName().Version;
                 this.about.ToolTip = new BaseToolTip( "YesCommander", "作者：梧桐哟梧桐，当前版本："
                     + version.Major.ToString() + "." + version.Minor.ToString() + ( version.Build == 0 ? string.Empty : "." + version.Build.ToString() + ( version.Revision == 0 ? string.Empty : "." + version.Revision.ToString() ) )
@@ -74,6 +72,10 @@ namespace YesCommander
                     + " \r\n\r\n广告位招租。" );
                 ToolTipService.SetShowDuration( this.about, 60000 );
                 ToolTipService.SetInitialShowDelay( this.about, 0 );
+                this.missionWindowImage.ToolTip = new BaseToolTip( "任务列表", "打开一个新的窗口，查看所有任务详情。" );
+                ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
+                this.simulateButton.ToolTip = new BaseToolTip( "推荐偏好", "注意：1.6.5版本之后的推荐随从在模拟中默认使用675装等。此外，推荐只是提供一种可能的选取方案，并非一定为最少随从方案。请酌情参考。" );
+                ToolTipService.SetInitialShowDelay( this.simulateButton, 0 );
             }
             catch
             {
@@ -173,6 +175,10 @@ namespace YesCommander
                 case "titleRing":
                     this.currentMissions = this.Missions.RingMissions;
                     this.FillInMissions( this.Missions.RingMissionRows );
+                    break;
+                case "titleTwoFollowerMission":
+                    this.currentMissions = this.Missions.TwoFollowerMissions;
+                    this.FillInMissions( this.Missions.TwoFollowerMissionRows );
                     break;
                 case "titleElse":
                     this.currentMissions = this.Missions.OtherThreeFollowersMissions;
@@ -388,6 +394,8 @@ namespace YesCommander
                 hasCheck = true;
             else if ( this.equipment645CheckBox.IsChecked == true )
                 hasCheck = true;
+            else if ( this.twoFollowerQuestCheckBox.IsChecked == true )
+                hasCheck = true;
             this.simulateButton.IsEnabled = hasCheck;
             this.simulateMyButton.IsEnabled = hasCheck;
         }
@@ -448,7 +456,7 @@ namespace YesCommander
             if ( this.CurrentMission.FollowersNeed == 3 )
                 missions = this.AssignMissionForThreeFollowers( this.CurrentMission, isUsingFavorite );
             else if ( this.CurrentMission.FollowersNeed == 2 )
-                missions = this.AssignMissionForTwoFollowers( this.CurrentMission );
+                missions = this.AssignMissionForTwoFollowers( this.CurrentMission, isUsingFavorite );
             else if ( this.CurrentMission.FollowersNeed == 1 )
                 missions = this.AssignMissionForOneFollowers( this.CurrentMission );
             else
@@ -594,23 +602,21 @@ namespace YesCommander
             return missions;
         }
 
-        private List<Mission> AssignMissionForTwoFollowers( Mission mission )
+        private List<Mission> AssignMissionForTwoFollowers( Mission mission, bool isUsingFaverite = false )
         {
-            List<Follower> followers;
             List<Mission> missions = new List<Mission>();
-            for ( int j = 0; j < Globals.CurrentFollowers.Count; j++ )
+            List<Follower> list = isUsingFaverite ? this.favoriteFollowers : Globals.CurrentFollowers;
+            for ( int j = 0; j < list.Count; j++ )
             {
-                for ( int k = 0; k < Globals.CurrentFollowers.Count; k++ )
+                for ( int k = 0; k < list.Count; k++ )
                 {
                     if ( k <= j )
                         continue;
                     else
                     {
                         Mission newMission = mission.Copy();
-                        followers = new List<Follower>();
-                        followers.Add( Globals.CurrentFollowers[ j ] );
-                        followers.Add( Globals.CurrentFollowers[ k ] );
-                        newMission.AssignFollowers( followers );
+                        newMission.IsUsingMaxiLevel = this.checkboxMaxiLevel.IsChecked == true;
+                        newMission.AssignFollowers( new List<Follower>() { list[ j ], list[ k ] } );
                         missions.Add( newMission );
                     }
                 }
@@ -653,8 +659,9 @@ namespace YesCommander
             bool isContainRingStage1 = this.ringQuestStage1CheckBox.IsChecked == true;
             bool isContainRingStage2 = this.ringQuestStage2CheckBox.IsChecked == true;
             bool isContainEquipment645 = this.equipment645CheckBox.IsChecked == true;
+            bool isContainTwoFollowerMissions = this.twoFollowerQuestCheckBox.IsChecked == true;
 
-            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry );
+            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions );
             solution.CalculateBasicData( this.Missions, Globals.CurrentFollowers );
             solution.ListAllPossiblities();
             solution.ReduceRedundency( this.Missions );
@@ -676,8 +683,9 @@ namespace YesCommander
             bool isContainRingStage1 = this.ringQuestStage1CheckBox.IsChecked == true;
             bool isContainRingStage2 = this.ringQuestStage2CheckBox.IsChecked == true;
             bool isContainEquipment645 = this.equipment645CheckBox.IsChecked == true;
+            bool isContainTwoFollowerMissions = this.twoFollowerQuestCheckBox.IsChecked == true;
 
-            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry );
+            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions );
             solution.CalculateBasicDataSimple( this.Missions, this.favoriteFollowers );
             this.GenerateString( solution.uncompleteIDs );
         }
@@ -708,6 +716,26 @@ namespace YesCommander
                 this.GenerateText( this.textBlackFoundryQuest, uncompleteIDs, 454, 457 );
             else
                 this.textBlackFoundryQuest.Text = string.Empty;
+
+            if ( this.twoFollowerQuestCheckBox.IsChecked == true )
+            {
+                List<int> missionIDs = new List<int>();
+                missionIDs.Add( 379 );
+                missionIDs.Add( 381 );
+                missionIDs.Add( 391 );
+                for ( int i = 394; i <= 399; i++ )
+                    missionIDs.Add( i );
+                missionIDs.Add( 401 );
+                missionIDs.Add( 402 );
+                missionIDs.Add( 444 );
+                missionIDs.Add( 445 );
+                missionIDs.Add( 495 );
+                missionIDs.Add( 496 );
+                missionIDs.Add( 503 );
+                this.GenerateText( this.textTwoFollowerQuest, uncompleteIDs, missionIDs );
+            }
+            else
+                this.textTwoFollowerQuest.Text = string.Empty;
         }
 
         private void GenerateText( TextBlock block, List<int> uncompleteIDs, int bottomNumber, int topNumber )
@@ -735,14 +763,54 @@ namespace YesCommander
             }
         }
 
+        private void GenerateText( TextBlock block, List<int> uncompleteIDs, List<int> missionIds )
+        {
+            int totalNumber = missionIds.Count;
+            int uncompleteNumber = 0;
+            string textAppend = string.Empty;
+            for ( int i = 0; i < missionIds.Count; i++ )
+            {
+                if ( uncompleteIDs.Contains( missionIds[ i ] ) )
+                {
+                    uncompleteNumber++;
+                    textAppend += missionIds[ i ].ToString() + " ";
+                }
+            }
+            if ( uncompleteNumber > 0 )
+            {
+                block.Text = "完成度" + ( totalNumber - uncompleteNumber ).ToString() + "/" + totalNumber.ToString() + "，无法达标：" + textAppend;
+                block.Foreground = Brushes.Red;
+            }
+            else
+            {
+                block.Text = "完成度" + totalNumber.ToString() + "/" + totalNumber.ToString();
+                block.Foreground = Brushes.Lime;
+            }
+        }
+
         private void CalculateShowPanel()
         {
-            Solution solution = new Solution( true, true, true, true, true );
+            Solution solution = new Solution( true, true, true, true, true, true );
             solution.CalculateBasicDataSimple( this.Missions, Globals.CurrentFollowers );
             this.GenerateText( this.showHighmaulText, solution.uncompleteIDs, 313, 316 );
             this.GenerateText( this.showRing1Text, solution.uncompleteIDs, 403, 407 );
             this.GenerateText( this.showRing2Text, solution.uncompleteIDs, 408, 413 );
             this.GenerateText( this.showBlackFoundryText, solution.uncompleteIDs, 454, 457 );
+
+            List<int> missionIDs = new List<int>();
+            missionIDs.Add( 379 );
+            missionIDs.Add( 381 );
+            missionIDs.Add( 391 );
+            for ( int i = 394; i <= 399; i++ )
+                missionIDs.Add( i );
+            missionIDs.Add( 401 );
+            missionIDs.Add( 402 );
+            missionIDs.Add( 444 );
+            missionIDs.Add( 445 );
+            missionIDs.Add( 495 );
+            missionIDs.Add( 496 );
+            missionIDs.Add( 503 );
+            this.GenerateText( this.showTwoFollowerMissionText, solution.uncompleteIDs, missionIDs );
 
             int completeNumber = 0;
             if ( this.showBlackFoundryText.Foreground == Brushes.Lime )
@@ -761,7 +829,9 @@ namespace YesCommander
 
             string prefix = string.Empty;
             string name = string.Empty;
-            if ( completeNumber == 4 )
+            if ( completeNumber == 5 )
+                prefix = "被幸运女神偏爱的";
+            else if ( completeNumber == 4 )
                 prefix = "被神眷顾的";
             else if ( completeNumber == 3 )
                 prefix = "欧洲皇家";
@@ -774,6 +844,8 @@ namespace YesCommander
 
             if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 30 )
                 name = "精锐";
+            else if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 50 )
+                name = "至尊";
 
             if ( Globals.CurrentFollowers.Count >= 60 )
                 name += "德拉诺之王";
@@ -789,6 +861,12 @@ namespace YesCommander
                 name += "小队长";
             else
                 name += "小兵";
+
+            if ( completeNumber >= 4 && Globals.CurrentFollowers.Count <= 10 )
+            {
+                prefix = "你丫作弊吧？";
+                name = string.Empty;
+            }
 
             this.achievementText.Text = prefix + name;
         }

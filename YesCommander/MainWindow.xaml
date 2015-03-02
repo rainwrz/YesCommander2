@@ -34,13 +34,15 @@
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 <TextBlock Name="titleRing" Text="橙戒任务" FontSize="15" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                <TextBlock Name="titleTwoFollowerMission" Text="双人任务" FontSize="15" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 <TextBlock Name="titleElse" Text="其他三人任务" FontSize="15" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 <Image Name="missionWindowImage" Source="/Resources/icon32.ico" MouseDown="missionWindow_MouseDown" Stretch="None" MouseEnter="titleBlock_MouseEnter" MouseLeave="titleBlock_MouseLeave"/>
             </StackPanel>
             <ComboBox Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Bottom"
                       Name="maxNumberOfPartyComboBox" Width="200" Height="30" Margin="0,4,60,0" HorizontalAlignment="Right" SelectionChanged="maxNumberOfPartyComboBox_SelectionChanged"/>
-            <Image Grid.Row="1" Source="/Resources/gear-bonus-divider_2.jpg" Stretch="None"/>
+            <Image Grid.Row="1" Source="/Resources/gear-bonus-divider_2.jpg" Stretch="Fill" Width="350"/>
             <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center">
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock">
@@ -96,7 +98,7 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="成功率" />
-                <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用675装等(不影响无装等要求任务)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
+                <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用675装等(现在额外影响橙戒任务)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
                 <CheckBox Name="checkboxUsingFavorite" Grid.Column="2" Content="仅使用偏好随从" VerticalAlignment="Center" Checked="checkboxUsingFavorite_Checked" Unchecked="checkboxUsingFavorite_Checked" 
                           Margin="4,0"/>
                 <TextBlock Grid.Column="3" Text="注意：括号中的红色数字表示不满足装等要求" Foreground="Red"/>
@@ -138,7 +140,7 @@
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleAllFavorite_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 </StackPanel>
                 <Image Grid.Row="1" Source="/Resources/gear-bonus-divider_1.jpg" Stretch="None" Width="140"/>
-                <Grid Name="suggestinoTitle" Margin="0,4,50,0" Grid.Row="2" Visibility="Collapsed" Width="800" HorizontalAlignment="Right">
+                <Grid Name="suggestinoTitle" Margin="0,4,50,0" Grid.Row="2" Visibility="Collapsed" Width="900" HorizontalAlignment="Right">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -151,8 +153,9 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <StackPanel Grid.Column="6" Grid.ColumnSpan="2" Orientation="Horizontal">
                         <Button Name="simulateButton" Content="推荐偏好" Click="simulateButton_Click" Width="80" Height="30" IsEnabled="False" Margin="8,4"/>
                         <Button Name="simulateMyButton" Content="计算概率" Click="simulateMyButton_Click" Width="80" Height="30" IsEnabled="False" Margin="8,4"/>
                     </StackPanel>
@@ -163,12 +166,14 @@
                     <CheckBox Name="ringQuestStage1CheckBox" Content="消磨之石任务" VerticalContentAlignment="Center" Grid.Column="2" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="ringQuestStage2CheckBox" Content="元素符文任务" VerticalContentAlignment="Center" Grid.Column="3" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="equipment645CheckBox" Content="645装备任务" VerticalContentAlignment="Center" Grid.Column="4" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="twoFollowerQuestCheckBox" Content="双随从任务" VerticalContentAlignment="Center" Grid.Column="5" Click="highMaulQuestCheckBox_Click"/>
 
                     <TextBlock Name="textHighmaulQuest" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap"/>
                     <TextBlock Name="textBlackFoundryQuest" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
                     <TextBlock Name="textQuestRing1" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap"/>
                     <TextBlock Name="textQuestRing2" Grid.Row="1" Grid.Column="3" TextWrapping="Wrap"/>
                     <TextBlock Name="textEquipment645" Grid.Row="1" Grid.Column="4"  TextWrapping="Wrap"/>
+                    <TextBlock Name="textTwoFollowerQuest" Grid.Row="1" Grid.Column="5"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="3" Name="scrollTextTitle" VerticalAlignment="Center"  Width="892" Margin="-4,10,0,0" >
                     <Grid.Resources>
@@ -222,6 +227,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -238,10 +244,11 @@
                 <TextBlock Grid.Row="3" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="史诗随从数："/>
                 <TextBlock Grid.Row="4" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="精良随从数："/>
                 <TextBlock Grid.Row="5" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="优秀随从数："/>
-                <TextBlock Grid.Row="6" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="悬槌堡任务完成情况："/>
-                <TextBlock Grid.Row="7" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="黑石铸造厂任务完成情况："/>
-                <TextBlock Grid.Row="8" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒一阶任务完成情况："/>
-                <TextBlock Grid.Row="9" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒二阶任务完成情况："/>
+                <TextBlock Grid.Row="6" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="悬槌堡任务："/>
+                <TextBlock Grid.Row="7" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="黑石铸造厂任务："/>
+                <TextBlock Grid.Row="8" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒一阶任务："/>
+                <TextBlock Grid.Row="9" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒二阶任务："/>
+                <TextBlock Grid.Row="10" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="双随从高装等任务："/>
                 <TextBlock Grid.Row="2" Grid.Column="1" Name="totalFollowerText"/>
                 <TextBlock Grid.Row="3" Grid.Column="1" Name="epicFollowerText" Foreground="BlueViolet"/>
                 <TextBlock Grid.Row="4" Grid.Column="1" Name="blueFollowerText" Foreground="DodgerBlue"/>
@@ -250,6 +257,7 @@
                 <TextBlock Grid.Row="7" Grid.Column="1" Name="showBlackFoundryText"/>
                 <TextBlock Grid.Row="8" Grid.Column="1" Name="showRing1Text"/>
                 <TextBlock Grid.Row="9" Grid.Column="1" Name="showRing2Text"/>
+                <TextBlock Grid.Row="10" Grid.Column="1" Name="showTwoFollowerMissionText"/>
             </Grid>
             
             <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="8" HorizontalAlignment="Center">
