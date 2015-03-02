@@ -71,7 +71,7 @@ namespace YesCommander.Model
         }
         private void AddMissions( DataRow row, Dictionary<int, Mission> missions )
         {
-            Dictionary<Follower.Abilities, int>  abilities = new Dictionary<Follower.Abilities, int>();
+            Dictionary<Follower.Abilities, float> abilities = new Dictionary<Follower.Abilities, float>();
             if ( !string.IsNullOrEmpty( row[ "野怪入侵" ].ToString() ) )
                 abilities.Add( Follower.Abilities.WildAggression, Convert.ToInt16( row[ "野怪入侵" ] ) );
             if ( !string.IsNullOrEmpty( row[ "重击" ].ToString() ) )

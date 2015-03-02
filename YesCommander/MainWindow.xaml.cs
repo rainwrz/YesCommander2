@@ -133,8 +133,8 @@ namespace YesCommander
             this.textBasicChance.Text = ( this.CurrentMission.BasicSucessChange * 100 ).ToString();
             this.textRemark.Text = string.IsNullOrEmpty( this.CurrentMission.Remark ) ? "无" : this.CurrentMission.Remark;
             int i = 0;
-            int j=0;
-            foreach ( KeyValuePair<Follower.Abilities, int> pair in this.CurrentMission.CounterAbilitiesCollection )
+            float j = 0;
+            foreach ( KeyValuePair<Follower.Abilities, float> pair in this.CurrentMission.CounterAbilitiesCollection )
             {
                 j=pair.Value;
                 while ( j > 0 )

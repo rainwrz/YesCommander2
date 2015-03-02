@@ -60,7 +60,7 @@ namespace YesCommander.CustomControls
                 i++;
             }
             int k = 0;
-            foreach ( KeyValuePair<Follower.Abilities, int> pair in mission.CounterAbilitiesLack )
+            foreach ( KeyValuePair<Follower.Abilities, float> pair in mission.CounterAbilitiesLack )
             {
                 if ( k >= this.lacks.Children.Count )
                     break;

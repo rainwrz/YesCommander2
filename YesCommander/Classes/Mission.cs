@@ -13,7 +13,7 @@ namespace YesCommander.Classes
         public string MissionNameCN;
 
         public int FollowersNeed;
-        public int TotalCounterAbilitiesNeed;
+        public float TotalCounterAbilitiesNeed;
         public int ItemLevelNeed;
         public bool IsUsingMaxiLevel;
         public Follower.Traits SlayerNeed;
@@ -23,8 +23,8 @@ namespace YesCommander.Classes
         public string MissionTimeCaculatedStr;
         public string MissionReward;
         public string Remark;
-        public Dictionary<Follower.Abilities, int> CounterAbilitiesCollection;
-        public Dictionary<Follower.Abilities, int> CounterAbilitiesLack =new Dictionary<Follower.Abilities,int>();
+        public Dictionary<Follower.Abilities, float> CounterAbilitiesCollection;
+        public Dictionary<Follower.Abilities, float> CounterAbilitiesLack = new Dictionary<Follower.Abilities, float>();
         public List<Follower> AssignedFollowers;
 
         public double SucessPerAbility;
@@ -37,7 +37,7 @@ namespace YesCommander.Classes
         public List<Follower.Traits> partyBuffs;
         public static readonly int MAXITEMLEVEL = 675;
 
-        public Mission( string missionId, string missionName, string missionNameCN, int itemLevelNeed, int followersNeed, Dictionary<Follower.Abilities, int> abilities, Follower.Traits slayerNeed, string time, string reward, string remark, float basicSucessChange =0, bool isUsingMaxiLevel = false )
+        public Mission( string missionId, string missionName, string missionNameCN, int itemLevelNeed, int followersNeed, Dictionary<Follower.Abilities, float> abilities, Follower.Traits slayerNeed, string time, string reward, string remark, float basicSucessChange = 0, bool isUsingMaxiLevel = false )
         {
             this.MissionId = missionId;
             this.MissionName = missionName;
@@ -51,7 +51,7 @@ namespace YesCommander.Classes
             this.BasicSucessChange = basicSucessChange;
 
             this.TotalCounterAbilitiesNeed = 0;
-            foreach ( KeyValuePair<Follower.Abilities, int> pair in abilities )
+            foreach ( KeyValuePair<Follower.Abilities, float> pair in abilities )
                 this.TotalCounterAbilitiesNeed += pair.Value;
 
             this.SlayerNeed = slayerNeed;
@@ -85,10 +85,10 @@ namespace YesCommander.Classes
             //stringLength = stringLength > 6 ? 6 : stringLength;
             //string stringValue = ( 1 / ( (float)this.TotalCounterAbilitiesNeed + 1 ) ).ToString().Substring( 0, stringLength );
             //this.SucessPerAbility = Convert.ToDouble( stringValue );
-            this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + 1 );
-            this.SucessPerFollower = this.SucessPerAbility / this.FollowersNeed;
+            this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + (float)this.FollowersNeed / 3 );
+            this.SucessPerFollower = this.SucessPerAbility / 3;
             this.SucessPerRaceLover = this.SucessPerAbility / 2;
-            this.SucessPerBurstStamCombatExpSlayer = this.SucessPerFollower;
+            this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility / 3;
             this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
         }
 
@@ -101,23 +101,44 @@ namespace YesCommander.Classes
         private double CalculateFinalSucess()
         {
             double result = 0;
+            if ( this.ItemLevelNeed > 0 || ( Convert.ToInt16( this.MissionId ) <= 413 && Convert.ToInt16( this.MissionId ) >= 403 ) )
+            {
+                foreach ( Follower follower in this.AssignedFollowers )
+                {
+                    int followerILevel = this.IsUsingMaxiLevel ? MAXITEMLEVEL : follower.ItemLevel;
+                    int ilevelIncrease = followerILevel - ( this.ItemLevelNeed == 0 ? 600 : this.ItemLevelNeed );
+                    ilevelIncrease = ilevelIncrease > 15 ? 15 : ilevelIncrease;
+                    if ( ilevelIncrease > 0 )
+                        result += this.SucessPerItemLevel * ilevelIncrease;
+                }
+            }
+
             this.partyBuffs = new List<Follower.Traits>();
 
             if ( this.AssignedFollowers.Count == this.FollowersNeed )
                 result += this.FollowersNeed * this.SucessPerFollower;
             // Abilities
-            Dictionary<Follower.Abilities, int> followerRemain = new Dictionary<Follower.Abilities, int>();
+            Dictionary<Follower.Abilities, float> followerRemain = new Dictionary<Follower.Abilities, float>();
             foreach ( Follower follower in this.AssignedFollowers )
             {
                 foreach ( Follower.Abilities ability in follower.AbilityCollection )
                 {
+                    float validNumber = 1;
+                    if ( this.ItemLevelNeed > 0 || ( Convert.ToInt16( this.MissionId ) <= 413 && Convert.ToInt16( this.MissionId ) >= 403 ) )
+                    {
+                        float followerILevel = this.IsUsingMaxiLevel ? MAXITEMLEVEL : follower.ItemLevel;
+                        float ilevelIncrease = followerILevel - ( this.ItemLevelNeed == 0 ? 600 : this.ItemLevelNeed );
+                        ilevelIncrease = ilevelIncrease > 15 ? 15 : ilevelIncrease;
+                        if ( ilevelIncrease > 0 )
+                            validNumber = 1 + ( ilevelIncrease / 15 ) / 3;
+                    }
                     if ( followerRemain.ContainsKey( ability ) )
-                        followerRemain[ ability ] += 1;
+                        followerRemain[ ability ] += validNumber;
                     else
-                        followerRemain.Add( ability, 1 );
+                        followerRemain.Add( ability, validNumber );
                 }
             }
-            foreach ( KeyValuePair<Follower.Abilities, int> pair in this.CounterAbilitiesCollection )
+            foreach ( KeyValuePair<Follower.Abilities, float> pair in this.CounterAbilitiesCollection )
             {
                 float dancerNumber = 0;
                 if ( followerRemain.ContainsKey( pair.Key ) )
@@ -131,7 +152,7 @@ namespace YesCommander.Classes
                         result += this.SucessPerAbility * followerRemain[ pair.Key ];
                         if ( pair.Key == Follower.Abilities.DangerZones )
                         {
-                            int required = pair.Value - followerRemain[ pair.Key ];
+                            float required = pair.Value - followerRemain[ pair.Key ];
                             foreach ( Follower follower in this.AssignedFollowers )
                             {
                                 if ( follower.TraitCollection.Contains( Follower.Traits.Dancer ) )
@@ -141,9 +162,15 @@ namespace YesCommander.Classes
                             }
                             if ( dancerNumber > 0 )
                             {
-                                dancerNumber = dancerNumber > required * 2 ? required * 2 : dancerNumber;
-                                result += ( dancerNumber / 2 ) * this.SucessPerAbility;
-                                this.CounterAbilitiesLack.Add( pair.Key, pair.Value - followerRemain[ pair.Key ] - (int)( dancerNumber / 2 - Math.Truncate( (double)dancerNumber / 2 ) ) );
+                                if ( dancerNumber * 2 / 3 > required )
+                                {
+                                    result += required * this.SucessPerAbility;
+                                }
+                                else
+                                {
+                                    result += ( dancerNumber * 2 / 3 ) * this.SucessPerAbility;
+                                    this.CounterAbilitiesLack.Add( pair.Key, pair.Value - followerRemain[ pair.Key ] - dancerNumber * 2 / 3 );
+                                }
                             }
                             else
                             {
@@ -158,7 +185,7 @@ namespace YesCommander.Classes
                 }
                 else if ( pair.Key == Follower.Abilities.DangerZones )
                 {
-                    int required = pair.Value;
+                    float required = pair.Value;
                     foreach ( Follower follower in this.AssignedFollowers )
                     {
                         if ( follower.TraitCollection.Contains( Follower.Traits.Dancer ) )
@@ -168,9 +195,15 @@ namespace YesCommander.Classes
                     }
                     if ( dancerNumber > 0 )
                     {
-                        dancerNumber = dancerNumber > required * 2 ? required * 2 : dancerNumber;
-                        result += ( dancerNumber / 2 ) * this.SucessPerAbility;
-                        this.CounterAbilitiesLack.Add( pair.Key, pair.Value  - (int)( dancerNumber / 2 - Math.Truncate( (double)dancerNumber / 2 ) ) );
+                        if ( dancerNumber * 2 / 3 > required )
+                        {
+                            result += required * this.SucessPerAbility;
+                        }
+                        else
+                        {
+                            result += ( dancerNumber * 2 / 3 ) * this.SucessPerAbility;
+                            this.CounterAbilitiesLack.Add( pair.Key, pair.Value - followerRemain[ pair.Key ] - dancerNumber * 2 / 3 );
+                        }
                     }
                     else
                     {
@@ -252,17 +285,6 @@ namespace YesCommander.Classes
             {
                 result += this.SingleTraitRaceMatching( this.AssignedFollowers[ 0 ], this.AssignedFollowers[ 1 ] );
                 result += this.SingleTraitRaceMatching( this.AssignedFollowers[ 1 ], this.AssignedFollowers[ 0 ] );
-            }
-            if ( this.ItemLevelNeed > 0 )
-            {
-                foreach ( Follower follower in this.AssignedFollowers )
-                {
-                    int followerILevel = this.IsUsingMaxiLevel ? MAXITEMLEVEL : follower.ItemLevel;
-                    int ilevelIncrease = followerILevel - this.ItemLevelNeed;
-                    ilevelIncrease = ilevelIncrease > 15 ? 15 : ilevelIncrease;
-                    if ( ilevelIncrease > 0 )
-                        result += this.SucessPerItemLevel * ilevelIncrease;
-                }
             }
             return result;
         }
