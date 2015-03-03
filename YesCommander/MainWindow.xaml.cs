@@ -866,10 +866,10 @@ namespace YesCommander
             else if ( completeNumber == 0 )
                 prefix = "非洲";
 
-            if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 30 )
-                name = "精锐";
-            else if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 50 )
+            if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 50 )
                 name = "至尊";
+            else if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 30 )
+                name = "精锐";            
 
             if ( Globals.CurrentFollowers.Count >= 60 )
                 name += "德拉诺之王";
