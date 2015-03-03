@@ -266,8 +266,11 @@ namespace YesCommander.Classes
             foreach ( int i in missionIDs )
             {
                 Mission theMission = allMissions.AllMissions[ i ];
-                //if ( theMission.FollowersNeed == 3 )
-                List<Mission> missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
+                List<Mission> missions = null;
+                if ( theMission.FollowersNeed == 3 )
+                    missions = this.AssignMissionForThreeFollowers( theMission, allFollowers );
+                else if ( theMission.FollowersNeed == 2 )
+                    missions = this.AssignMissionForTwoFollowers( theMission, allFollowers );
                 var data = from temp in missions.AsEnumerable()
                            where Math.Round( temp.TotalSucessChance, 6 ) >= 1
                            select temp;
@@ -298,7 +301,7 @@ namespace YesCommander.Classes
                             else
                             {
                                 Mission newMission = mission.Copy();
-                                newMission.IsUsingMaxiLevel = true;
+                                newMission.IsUsingMaxiLevel = Globals.IsUsingMaxILevelOnSimulateAll;
                                 newMission.AssignFollowers( new List<Follower>() { list[ i ], list[ j ], list[ k ] } );
                                 missions.Add( newMission );
                             }
@@ -321,7 +324,7 @@ namespace YesCommander.Classes
                     else
                     {
                         Mission newMission = mission.Copy();
-                        newMission.IsUsingMaxiLevel = true;
+                        newMission.IsUsingMaxiLevel = Globals.IsUsingMaxILevelOnSimulateAll;
                         newMission.AssignFollowers( new List<Follower>() { list[ j ], list[ k ] } );
                         missions.Add( newMission );
                     }

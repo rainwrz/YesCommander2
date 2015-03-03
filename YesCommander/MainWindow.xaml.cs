@@ -74,8 +74,12 @@ namespace YesCommander
                 ToolTipService.SetInitialShowDelay( this.about, 0 );
                 this.missionWindowImage.ToolTip = new BaseToolTip( "任务列表", "打开一个新的窗口，查看所有任务详情。" );
                 ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
-                this.simulateButton.ToolTip = new BaseToolTip( "推荐偏好", "注意：1.6.5版本之后的推荐随从在模拟中默认使用675装等。此外，推荐只是提供一种可能的选取方案，并非一定为最少随从方案。请酌情参考。" );
+                this.simulateButton.ToolTip = new BaseToolTip( "推荐偏好(675)", "在模拟中默认使用675装等。此外，推荐只是提供一种可能的选取方案，并非一定为最少随从方案。请酌情参考。" );
                 ToolTipService.SetInitialShowDelay( this.simulateButton, 0 );
+                this.simulateButtonForCurrentIlevel.ToolTip = new BaseToolTip( "推荐偏好(当前)", "在模拟中默认使用当前装等。低于任务要求装等的随从将使用任务要求装等。此推荐为1.6.5以前版本默认推荐。" );
+                ToolTipService.SetInitialShowDelay( this.simulateButtonForCurrentIlevel, 0 );
+                this.simulateMyButton.ToolTip = new BaseToolTip( "计算概率", "重新计算概率。推荐偏好仅供参考，建议自行斟酌后使用此功能查看概率，默认使用675装等。" );
+                ToolTipService.SetInitialShowDelay( this.simulateMyButton, 0 );
             }
             catch
             {
@@ -359,12 +363,24 @@ namespace YesCommander
 
         private void simulateButton_Click( object sender, RoutedEventArgs e )
         {
+            Globals.IsUsingMaxILevelOnSimulateAll = true;
             this.CalculateSuggestion();
             //this.solutionComboBox.Visibility = System.Windows.Visibility.Visible;
             this.favoriteRows.Children.Clear();
             this.AddEpicFollowers( true );
             this.AddFollowers( true );
         }
+        private void simulateButtonForCurrentIlevel_Click( object sender, RoutedEventArgs e )
+        {
+            Globals.IsUsingMaxILevelOnSimulateAll = false;
+            this.CalculateSuggestion();
+            //this.solutionComboBox.Visibility = System.Windows.Visibility.Visible;
+            this.favoriteRows.Children.Clear();
+            this.AddEpicFollowers( true );
+            this.AddFollowers( true );
+            Globals.IsUsingMaxILevelOnSimulateAll = true;
+        }
+
 
         private void simulateMyButton_Click( object sender, RoutedEventArgs e )
         {
@@ -373,6 +389,7 @@ namespace YesCommander
                 MessageBox.Show( "偏好随从少于3个，请选择至少3个偏好随从。", "错误", MessageBoxButton.OK, MessageBoxImage.Warning );
                 return;
             }
+            Globals.IsUsingMaxILevelOnSimulateAll = true;
             this.ReCalculateSuccessChance();
         }
 
@@ -397,6 +414,7 @@ namespace YesCommander
             else if ( this.twoFollowerQuestCheckBox.IsChecked == true )
                 hasCheck = true;
             this.simulateButton.IsEnabled = hasCheck;
+            this.simulateButtonForCurrentIlevel.IsEnabled = hasCheck;
             this.simulateMyButton.IsEnabled = hasCheck;
         }
 
@@ -736,6 +754,8 @@ namespace YesCommander
             }
             else
                 this.textTwoFollowerQuest.Text = string.Empty;
+
+            this.textFollowerCount.Text = "偏好随从数：" + this.favoriteFollowers.Count;
         }
 
         private void GenerateText( TextBlock block, List<int> uncompleteIDs, int bottomNumber, int topNumber )
@@ -790,6 +810,7 @@ namespace YesCommander
 
         private void CalculateShowPanel()
         {
+            Globals.IsUsingMaxILevelOnSimulateAll = true;
             Solution solution = new Solution( true, true, true, true, true, true );
             solution.CalculateBasicDataSimple( this.Missions, Globals.CurrentFollowers );
             this.GenerateText( this.showHighmaulText, solution.uncompleteIDs, 313, 316 );
@@ -811,6 +832,7 @@ namespace YesCommander
             missionIDs.Add( 496 );
             missionIDs.Add( 503 );
             this.GenerateText( this.showTwoFollowerMissionText, solution.uncompleteIDs, missionIDs );
+            this.textFollowerCount.Text = "偏好随从数：" + this.favoriteFollowers.Count;
 
             int completeNumber = 0;
             if ( this.showBlackFoundryText.Foreground == Brushes.Lime )
@@ -820,6 +842,8 @@ namespace YesCommander
             if ( this.showRing1Text.Foreground == Brushes.Lime )
                 completeNumber++;
             if ( this.showRing2Text.Foreground == Brushes.Lime )
+                completeNumber++;
+            if ( this.showTwoFollowerMissionText.Foreground == Brushes.Lime )
                 completeNumber++;
 
             this.totalFollowerText.Text = Globals.CurrentFollowers.Count.ToString();

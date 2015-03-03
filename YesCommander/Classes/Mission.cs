@@ -107,7 +107,7 @@ namespace YesCommander.Classes
         public void AssignFollowers( List<Follower> followers )
         {
             this.AssignedFollowers = followers;
-            this.TotalSucessChance = this.CalculateFinalSucess() + this.BasicSucessChange;
+            this.TotalSucessChance = this.CalculateFinalSucess() * ( 1 - this.BasicSucessChange ) + this.BasicSucessChange;
         }
 
         private double CalculateFinalSucess()

@@ -23,6 +23,7 @@ namespace YesCommander.Classes
         public static List<ImageSource> missionIcionList;
         public static List<ImageSource> specIcionList;
         public static bool IsAlliance = true;
+        public static bool IsUsingMaxILevelOnSimulateAll = true;
         public static DataTable AllFollowersAli;
         public static DataTable AllFollowersHrd;
         public static DataTable AliFollowerSkills;
