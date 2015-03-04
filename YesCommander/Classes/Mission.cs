@@ -92,7 +92,7 @@ namespace YesCommander.Classes
                 this.SucessPerFollower = this.SucessPerAbility * 2 / 3;
                 this.SucessPerRaceLover = this.SucessPerAbility;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility * 2 / 3;
-                this.DancerSucessFactor = 4/3;
+                this.DancerSucessFactor = (float)4 / 3;
                 this.SucessPerItemLevel = 0;
             }
             else
@@ -101,7 +101,7 @@ namespace YesCommander.Classes
                 this.SucessPerFollower = this.SucessPerAbility / 3;
                 this.SucessPerRaceLover = this.SucessPerAbility / 2;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility / 3;
-                this.DancerSucessFactor = 2 / 3;
+                this.DancerSucessFactor = (float)2 / 3;
                 this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
             }
         }
@@ -176,7 +176,7 @@ namespace YesCommander.Classes
                             }
                             if ( dancerNumber > 0 )
                             {
-                                if ( dancerNumber * this.DancerSucessFactor > required )
+                                if ( dancerNumber * this.DancerSucessFactor >= required )
                                 {
                                     result += required * this.SucessPerAbility;
                                 }
@@ -209,7 +209,7 @@ namespace YesCommander.Classes
                     }
                     if ( dancerNumber > 0 )
                     {
-                        if ( dancerNumber * this.DancerSucessFactor > required )
+                        if ( dancerNumber * this.DancerSucessFactor >= required )
                         {
                             result += required * this.SucessPerAbility;
                         }
