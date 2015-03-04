@@ -36,6 +36,7 @@ namespace YesCommander.Classes
         public float BasicSucessChange;
         public List<Follower.Traits> partyBuffs;
         public static readonly int MAXITEMLEVEL = 675;
+        public float DancerSucessFactor = 2 / 3;
 
         public Mission( string missionId, string missionName, string missionNameCN, int itemLevelNeed, int followersNeed, Dictionary<Follower.Abilities, float> abilities, Follower.Traits slayerNeed, string time, string reward, string remark, float basicSucessChange = 0, bool isUsingMaxiLevel = false )
         {
@@ -87,11 +88,11 @@ namespace YesCommander.Classes
             //this.SucessPerAbility = Convert.ToDouble( stringValue );
             if ( this.MissionId == "503" )
             {
-                this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + (float)this.FollowersNeed *2 / 3 );
+                this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + (float)this.FollowersNeed * 2 / 3 );
                 this.SucessPerFollower = this.SucessPerAbility * 2 / 3;
                 this.SucessPerRaceLover = this.SucessPerAbility;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility * 2 / 3;
-                //this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
+                this.DancerSucessFactor = 4/3;
                 this.SucessPerItemLevel = 0;
             }
             else
@@ -100,6 +101,7 @@ namespace YesCommander.Classes
                 this.SucessPerFollower = this.SucessPerAbility / 3;
                 this.SucessPerRaceLover = this.SucessPerAbility / 2;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility / 3;
+                this.DancerSucessFactor = 2 / 3;
                 this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
             }
         }
@@ -174,14 +176,14 @@ namespace YesCommander.Classes
                             }
                             if ( dancerNumber > 0 )
                             {
-                                if ( dancerNumber * 2 / 3 > required )
+                                if ( dancerNumber * this.DancerSucessFactor > required )
                                 {
                                     result += required * this.SucessPerAbility;
                                 }
                                 else
                                 {
-                                    result += ( dancerNumber * 2 / 3 ) * this.SucessPerAbility;
-                                    this.CounterAbilitiesLack.Add( pair.Key, pair.Value - followerRemain[ pair.Key ] - dancerNumber * 2 / 3 );
+                                    result += ( dancerNumber * this.DancerSucessFactor ) * this.SucessPerAbility;
+                                    this.CounterAbilitiesLack.Add( pair.Key, pair.Value - followerRemain[ pair.Key ] - dancerNumber * this.DancerSucessFactor );
                                 }
                             }
                             else
@@ -207,14 +209,14 @@ namespace YesCommander.Classes
                     }
                     if ( dancerNumber > 0 )
                     {
-                        if ( dancerNumber * 2 / 3 > required )
+                        if ( dancerNumber * this.DancerSucessFactor > required )
                         {
                             result += required * this.SucessPerAbility;
                         }
                         else
                         {
-                            result += ( dancerNumber * 2 / 3 ) * this.SucessPerAbility;
-                            this.CounterAbilitiesLack.Add( pair.Key, pair.Value - dancerNumber * 2 / 3 );
+                            result += ( dancerNumber * this.DancerSucessFactor ) * this.SucessPerAbility;
+                            this.CounterAbilitiesLack.Add( pair.Key, pair.Value - dancerNumber * this.DancerSucessFactor );
                         }
                     }
                     else

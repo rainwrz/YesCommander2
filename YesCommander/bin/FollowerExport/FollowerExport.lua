@@ -7,7 +7,7 @@ function frame:OnEvent(event, arg1)
 			print("检测到新帐号登录");
 			DisplayID_Bool=false;
 		end
-		DisplayID:SetChecked(DisplayID_Bool);
+		--DisplayID:SetChecked(DisplayID_Bool);
 
 		if FollowerString == nil then
 			print("检测到新人物登录，"..UnitName("player"));
@@ -89,7 +89,7 @@ function GetFollowerString()
 				local ability = followerAbilities[a];
 				if (ability.isTrait ) then
 					str=str..","..ability.id;
-					str=str..","..ability.name;
+					str=str..","..string.gsub(ability.name,'\r\n','');
 					size=size+1;
 				end
 			end
