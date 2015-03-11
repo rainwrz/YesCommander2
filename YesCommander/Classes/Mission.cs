@@ -266,6 +266,11 @@ namespace YesCommander.Classes
                     numberOfHighStamina++;
                 if ( follower.TraitCollection.Contains( Follower.Traits.BurstOfPower ) )
                     numberOfBurstOfPower++;
+                if ( follower.TraitCollection.Contains( Follower.Traits.MasterAssassin ) )
+                {
+                    result += this.SucessPerAbility;
+                    this.partyBuffs.Add( Follower.Traits.MasterAssassin );
+                }
             }
 
             float timeNeed = this.MisstionTimeNeed / factorOfEpicMount;

@@ -42,6 +42,7 @@ namespace YesCommander.CustomControls
             {
                 this.isFavorit.IsChecked = true;
                 this.isFavorit.IsEnabled = false;
+                this.isIgnored.Visibility = System.Windows.Visibility.Hidden;
             }
             this.followerHead.PopulateFullImage( nameEN );
         }
@@ -56,8 +57,10 @@ namespace YesCommander.CustomControls
             InitializeComponent();
             this.isFavoriteMode = true;
             this.isFavorit.IsEnabled = false;
+            this.isIgnored.IsEnabled = false;
             this.isFavorit.IsChecked = isFavorite;
             this.currentFollower = follower;
+            this.isIgnored.IsChecked = !Globals.CurrentValidFollowers.Contains( follower );
             this.SetFollower( follower );
             this.followerHead.PopulateFullImage( nameEN );
         }
@@ -152,12 +155,28 @@ namespace YesCommander.CustomControls
         {
             if ( !this.isFavoriteMode )
                 this.favoriteFollowers.Add( this.currentFollower );
+            if ( this.isIgnored.IsChecked == true )
+                this.isIgnored.IsChecked = false;
         }
 
         private void isFavorit_Unchecked( object sender, RoutedEventArgs e )
         {
             if ( !this.isFavoriteMode )
             this.favoriteFollowers.Remove( this.currentFollower );
+        }
+
+        private void isIgnored_Checked( object sender, RoutedEventArgs e )
+        {
+            if ( this.isFavorit.IsChecked == true )
+                this.isFavorit.IsChecked = false;
+            this.Opacity = 0.2;
+            Globals.CurrentValidFollowers.Remove( this.currentFollower );
+        }
+
+        private void isIgnored_Unchecked( object sender, RoutedEventArgs e )
+        {
+            this.Opacity = 1;
+            Globals.CurrentValidFollowers.Add( this.currentFollower );
         }
 
     }

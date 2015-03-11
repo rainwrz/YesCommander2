@@ -319,7 +319,6 @@ namespace YesCommander
                     this.suggestinoTitle.Visibility = System.Windows.Visibility.Visible;
                     this.favoriteScroll.Visibility = System.Windows.Visibility.Visible;
                     this.favoriteRows.Children.Clear();
-                    this.AddEpicFollowers( true );
                     this.AddFollowers( true );
                     break;
                 case "titleAll":
@@ -367,7 +366,6 @@ namespace YesCommander
             this.CalculateSuggestion();
             //this.solutionComboBox.Visibility = System.Windows.Visibility.Visible;
             this.favoriteRows.Children.Clear();
-            this.AddEpicFollowers( true );
             this.AddFollowers( true );
         }
         private void simulateButtonForCurrentIlevel_Click( object sender, RoutedEventArgs e )
@@ -376,7 +374,6 @@ namespace YesCommander
             this.CalculateSuggestion();
             //this.solutionComboBox.Visibility = System.Windows.Visibility.Visible;
             this.favoriteRows.Children.Clear();
-            this.AddEpicFollowers( true );
             this.AddFollowers( true );
             Globals.IsUsingMaxILevelOnSimulateAll = true;
         }
@@ -506,7 +503,8 @@ namespace YesCommander
 
         private void GenerateFollowers()
         {
-            Globals.CurrentFollowers = new List<Follower>();
+            Globals.CurrentValidFollowers = new List<Follower>();
+            Globals.AllFollowers = new List<Follower>();
             this.favoriteFollowers = new List<Follower>();
             List<int> abilities;
             List<int> traits;
@@ -514,7 +512,7 @@ namespace YesCommander
             {
                 abilities = new List<int>();
                 abilities.Add( Convert.ToInt16( row[ "技能ID1" ] ) );
-                if ( Convert.ToInt16( row[ "品质" ] ) == 4 )
+                if ( Convert.ToInt16( row[ "品质" ] ) >= 4 )
                     abilities.Add( Convert.ToInt16( row[ "技能ID2" ] ) );
                 traits = new List<int>();
                 traits.Add( Convert.ToInt16( row[ "特长ID1" ] ) );
@@ -523,21 +521,21 @@ namespace YesCommander
                 if ( Convert.ToInt16( row[ "品质" ] ) > 3 )
                     traits.Add( Convert.ToInt16( row[ "特长ID3" ] ) );
 
-                Globals.CurrentFollowers.Add( new Follower( row["ID"].ToString(), row[ "姓名" ].ToString(), Convert.ToInt16( row[ "品质" ] ), Convert.ToInt16( row[ "等级" ] ), Convert.ToInt16( row[ "装等" ] ),
+                Globals.AllFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "姓名" ].ToString(), Convert.ToInt16( row[ "品质" ] ), Convert.ToInt16( row[ "等级" ] ), Convert.ToInt16( row[ "装等" ] ),
                     row[ "种族" ].ToString(), Follower.GetClassBySpec( Convert.ToInt16( row[ "职业ID" ] ) ), row[ "职业" ].ToString(), Convert.ToInt16( row[ "激活" ] ), abilities, traits ) );
             }
+            Globals.CurrentValidFollowers.AddRange( Globals.AllFollowers );
 
-            if ( Globals.CurrentFollowers.Exists( x => ( x.Name == "Qiana Moonshadow" || x.Name == "奇娅娜·月影" || x.Name == "琪安娜‧月影" ) ) ||
-                Globals.CurrentFollowers.Exists( x => ( x.Race == Follower.Races.矮人 || x.Race == Follower.Races.暗夜精灵 || x.Race == Follower.Races.狼人 ) ) ||
-                !Globals.CurrentFollowers.Exists( x => ( x.Race == Follower.Races.被遗忘者 || x.Race == Follower.Races.牛头人 ) ) )
+            if ( Globals.AllFollowers.Exists( x => ( x.Name == "Qiana Moonshadow" || x.Name == "奇娅娜·月影" || x.Name == "琪安娜‧月影" ) ) ||
+                Globals.AllFollowers.Exists( x => ( x.Race == Follower.Races.矮人 || x.Race == Follower.Races.暗夜精灵 || x.Race == Follower.Races.狼人 ) ) ||
+                !Globals.AllFollowers.Exists( x => ( x.Race == Follower.Races.被遗忘者 || x.Race == Follower.Races.牛头人 ) ) )
                 Globals.IsAlliance = true;
             else
                 Globals.IsAlliance = false;
 
-            this.analysisPanel.AssignFollowers( ref Globals.CurrentFollowers, ref this.favoriteFollowers );
+            this.analysisPanel.AssignFollowers( ref Globals.AllFollowers, ref this.favoriteFollowers );
             this.analysisPanel.AddTraitCheckBoxes();
             this.followerRows.Children.Clear();
-            this.AddEpicFollowers();
             this.AddFollowers();
 
             this.isNeedToReShow = true;
@@ -551,26 +549,6 @@ namespace YesCommander
             {
                 if ( this.favoriteFollowers.Count == 0 )
                     return;
-                foreach ( Follower follower in this.favoriteFollowers.FindAll( x => x.Quolaty < 4 ).OrderBy( x => x.AbilityCollection[ 0 ] ) )
-                {
-                    this.favoriteRows.Children.Add( new FollowerRow( follower, ref this.favoriteFollowers, this.GetNameEnById( follower.ID ), true ) );
-                }
-            }
-            else
-            {
-                foreach ( Follower follower in Globals.CurrentFollowers.FindAll( x => x.Quolaty < 4 ).OrderBy( x => x.AbilityCollection[ 0 ] ) )
-                {
-                    this.followerRows.Children.Add( new FollowerRow( follower, ref this.favoriteFollowers, this.GetNameEnById( follower.ID ) ) );
-                }
-            }
-        }
-
-        private void AddEpicFollowers( bool isFavorite = false )
-        {
-            if ( isFavorite )
-            {
-                if ( this.favoriteFollowers.Count == 0 )
-                    return;
                 for ( int i = 0; i < 9; i++ )
                 {
                     Follower.Abilities ability = (Follower.Abilities)i;
@@ -579,21 +557,68 @@ namespace YesCommander
                         this.favoriteRows.Children.Add( new FollowerRow( follower, ref this.favoriteFollowers, this.GetNameEnById( follower.ID ), true ) );
                     }
                 }
+                foreach ( Follower follower in this.favoriteFollowers.FindAll( x => x.Quolaty < 4 ).OrderBy( x => x.AbilityCollection[ 0 ] ) )
+                {
+                    this.favoriteRows.Children.Add( new FollowerRow( follower, ref this.favoriteFollowers, this.GetNameEnById( follower.ID ), true ) );
+                }
             }
-            else for ( int i = 0; i < 9; i++ )
+            else
             {
-                Follower.Abilities ability = (Follower.Abilities)i;
-                foreach ( Follower follower in Globals.CurrentFollowers.FindAll( x => ( x.Quolaty == 4 && x.AbilityCollection[ 0 ] == ability ) ).OrderBy( x => x.AbilityCollection[ 1 ] ) )
+                for ( int i = 0; i < 9; i++ )
+                {
+                    Follower.Abilities ability = (Follower.Abilities)i;
+                    foreach ( Follower follower in Globals.CurrentValidFollowers.FindAll( x => ( x.Quolaty == 4 && x.AbilityCollection[ 0 ] == ability ) ).OrderBy( x => x.AbilityCollection[ 1 ] ) )
+                    {
+                        this.followerRows.Children.Add( new FollowerRow( follower, ref this.favoriteFollowers, this.GetNameEnById( follower.ID ) ) );
+                    }
+                }
+                foreach ( Follower follower in Globals.CurrentValidFollowers.FindAll( x => x.Quolaty < 4 ).OrderBy( x => x.AbilityCollection[ 0 ] ) )
                 {
                     this.followerRows.Children.Add( new FollowerRow( follower, ref this.favoriteFollowers, this.GetNameEnById( follower.ID ) ) );
                 }
             }
         }
 
+        private void AddFollowers( string orderByStr, bool isFavorite = false )
+        {
+            StackPanel panel = isFavorite ? this.favoriteRows : this.followerRows;
+            List<Follower> followerList = isFavorite ? this.favoriteFollowers : Globals.AllFollowers;
+            if ( followerList.Count == 0 )
+                return;
+
+            if ( !isFavorite )
+                followerList = followerList.OrderBy( x => Globals.CurrentValidFollowers.Contains( x ) ).ToList();
+
+            List<Follower> orderedFollowers = new List<Follower>();
+            orderedFollowers.AddRange( followerList );
+            
+            switch ( orderByStr )
+            {
+                default:
+                case "技能":
+                    for ( int i = 0; i < 9; i++ )
+                    {
+                        Follower.Abilities ability = (Follower.Abilities)i;
+                        foreach ( Follower follower in followerList.FindAll( x => ( x.Quolaty == 4 && x.AbilityCollection[ 0 ] == ability ) ).OrderBy( x => x.AbilityCollection[ 1 ] ) )
+                        {
+                            orderedFollowers.Add( follower );
+                        }
+                    }
+                    foreach ( Follower follower in followerList.FindAll( x => x.Quolaty < 4 ).OrderBy( x => x.AbilityCollection[ 0 ] ) )
+                    {
+                        panel.Children.Add( new FollowerRow( follower, ref this.favoriteFollowers, this.GetNameEnById( follower.ID ), isFavorite ) );
+                    }
+
+                    break;
+                case "偏好":
+                    break;
+            }
+        }
+
         private List<Mission> AssignMissionForThreeFollowers( Mission mission, bool isUsingFaverite = false )
         {
             List<Mission> missions = new List<Mission>();
-            List<Follower> list = isUsingFaverite ? this.favoriteFollowers : Globals.CurrentFollowers;
+            List<Follower> list = isUsingFaverite ? this.favoriteFollowers : Globals.CurrentValidFollowers;
             if ( list.Count >= 3 )
             {
                 for ( int i = 0; i < list.Count; i++ )
@@ -623,7 +648,7 @@ namespace YesCommander
         private List<Mission> AssignMissionForTwoFollowers( Mission mission, bool isUsingFaverite = false )
         {
             List<Mission> missions = new List<Mission>();
-            List<Follower> list = isUsingFaverite ? this.favoriteFollowers : Globals.CurrentFollowers;
+            List<Follower> list = isUsingFaverite ? this.favoriteFollowers : Globals.CurrentValidFollowers;
             for ( int j = 0; j < list.Count; j++ )
             {
                 for ( int k = 0; k < list.Count; k++ )
@@ -646,11 +671,11 @@ namespace YesCommander
         {
             List<Follower> followers;
             List<Mission> missions = new List<Mission>();
-            for ( int k = 0; k < Globals.CurrentFollowers.Count; k++ )
+            for ( int k = 0; k < Globals.CurrentValidFollowers.Count; k++ )
             {
                 Mission newMission = mission.Copy();
                 followers = new List<Follower>();
-                followers.Add( Globals.CurrentFollowers[ k ] );
+                followers.Add( Globals.CurrentValidFollowers[ k ] );
                 newMission.AssignFollowers( followers );
                 missions.Add( newMission );
             }
@@ -680,7 +705,7 @@ namespace YesCommander
             bool isContainTwoFollowerMissions = this.twoFollowerQuestCheckBox.IsChecked == true;
 
             Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions );
-            solution.CalculateBasicData( this.Missions, Globals.CurrentFollowers );
+            solution.CalculateBasicData( this.Missions, Globals.CurrentValidFollowers );
             solution.ListAllPossiblities();
             solution.ReduceRedundency( this.Missions );
 
@@ -812,7 +837,7 @@ namespace YesCommander
         {
             Globals.IsUsingMaxILevelOnSimulateAll = true;
             Solution solution = new Solution( true, true, true, true, true, true );
-            solution.CalculateBasicDataSimple( this.Missions, Globals.CurrentFollowers );
+            solution.CalculateBasicDataSimple( this.Missions, Globals.CurrentValidFollowers );
             this.GenerateText( this.showHighmaulText, solution.uncompleteIDs, 313, 316 );
             this.GenerateText( this.showRing1Text, solution.uncompleteIDs, 403, 407 );
             this.GenerateText( this.showRing2Text, solution.uncompleteIDs, 408, 413 );
@@ -846,10 +871,10 @@ namespace YesCommander
             if ( this.showTwoFollowerMissionText.Foreground == Brushes.Lime )
                 completeNumber++;
 
-            this.totalFollowerText.Text = Globals.CurrentFollowers.Count.ToString();
-            this.epicFollowerText.Text = Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ).ToString();
-            this.blueFollowerText.Text = Globals.CurrentFollowers.Count( x => x.Quolaty == 3 ).ToString();
-            this.greenFollowerText.Text = Globals.CurrentFollowers.Count( x => x.Quolaty == 2 ).ToString();
+            this.totalFollowerText.Text = Globals.CurrentValidFollowers.Count.ToString();
+            this.epicFollowerText.Text = Globals.CurrentValidFollowers.Count( x => x.Quolaty == 4 ).ToString();
+            this.blueFollowerText.Text = Globals.CurrentValidFollowers.Count( x => x.Quolaty == 3 ).ToString();
+            this.greenFollowerText.Text = Globals.CurrentValidFollowers.Count( x => x.Quolaty == 2 ).ToString();
 
             string prefix = string.Empty;
             string name = string.Empty;
@@ -866,32 +891,32 @@ namespace YesCommander
             else if ( completeNumber == 0 )
                 prefix = "非洲";
 
-            if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 70 )
+            if ( Globals.CurrentValidFollowers.Count( x => x.Quolaty == 4 ) >= 70 )
                 name = "至尊";
-            else if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 50 )
+            else if ( Globals.CurrentValidFollowers.Count( x => x.Quolaty == 4 ) >= 50 )
                 name = "残酷";
-            else if ( Globals.CurrentFollowers.Count( x => x.Quolaty == 4 ) >= 30 )
+            else if ( Globals.CurrentValidFollowers.Count( x => x.Quolaty == 4 ) >= 30 )
                 name = "精锐";
 
 
-            if ( Globals.CurrentFollowers.Count >= 70 )
+            if ( Globals.CurrentValidFollowers.Count >= 70 )
                 name += "德拉诺之神";
-            else if ( Globals.CurrentFollowers.Count >= 60 )
+            else if ( Globals.CurrentValidFollowers.Count >= 60 )
                 name += "德拉诺之王";
-            else if ( Globals.CurrentFollowers.Count >= 50 )
+            else if ( Globals.CurrentValidFollowers.Count >= 50 )
                 name += "大统帅";
-            else if ( Globals.CurrentFollowers.Count >= 40 )
+            else if ( Globals.CurrentValidFollowers.Count >= 40 )
                 name += "元帅";
-            else if ( Globals.CurrentFollowers.Count >= 30 )
+            else if ( Globals.CurrentValidFollowers.Count >= 30 )
                 name += "指挥官";
-            else if ( Globals.CurrentFollowers.Count >= 20 )
+            else if ( Globals.CurrentValidFollowers.Count >= 20 )
                 name += "士官";
-            else if ( Globals.CurrentFollowers.Count >= 10 )
+            else if ( Globals.CurrentValidFollowers.Count >= 10 )
                 name += "小队长";
             else
                 name += "小兵";
 
-            if ( completeNumber >= 4 && Globals.CurrentFollowers.Count <= 10 )
+            if ( completeNumber >= 4 && Globals.CurrentValidFollowers.Count <= 10 )
             {
                 prefix = "你丫作弊吧？";
                 name = string.Empty;
@@ -900,6 +925,12 @@ namespace YesCommander
             this.achievementText.Text = prefix + name;
         }
         #endregion //Methods
+
+
+        private void TextBlock_MouseLeftButtonDown( object sender, MouseButtonEventArgs e )
+        {
+
+        }
 
 
 

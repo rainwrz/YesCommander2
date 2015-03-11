@@ -41,7 +41,7 @@ namespace YesCommander.CustomControls.Components
         public void AssignFollowers()
         {
             this.Clear();
-            foreach ( Follower follower in Globals.CurrentFollowers )
+            foreach ( Follower follower in Globals.CurrentValidFollowers )
             {
                 if ( follower.Quolaty == 4 )
                 {

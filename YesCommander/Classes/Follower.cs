@@ -804,7 +804,7 @@ namespace YesCommander.Classes
 
                 case Traits.Wildling: races.Add( Races.刃牙虎人 ); races.Add( Races.豺狼人 ); break;
                 case Traits.MechanoAffictionado: races.Add( Races.机械 ); races.Add( Races.埃匹希斯守卫 ); break;
-                case Traits.BirdWatcher: races.Add( Races.高等鸦人 ); break;
+                case Traits.BirdWatcher: races.Add( Races.高等鸦人 ); races.Add( Races.鸦人流亡者 ); break;
                 case Traits.OgreBuddy: races.Add( Races.食人魔 ); races.Add( Races.独眼魔 ); break;
                 default: races.Add( Races.error ); break;
             }

@@ -31,7 +31,8 @@ namespace YesCommander.Classes
         public static List<Follower> AliFollowers;
         public static List<Follower> HrdFollowers;
         public static List<AbilityCombinationModel> combinationModelList;
-        public static List<Follower> CurrentFollowers;
+        public static List<Follower> CurrentValidFollowers;
+        public static List<Follower> AllFollowers;
         public static void Initialize()
         {
             InitialImageSources();

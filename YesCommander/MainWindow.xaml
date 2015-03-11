@@ -176,15 +176,17 @@
                     <TextBlock Name="textTwoFollowerQuest" Grid.Row="1" Grid.Column="5"  TextWrapping="Wrap"/>
                     <TextBlock Name="textFollowerCount" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" Foreground="Lime" Margin="-80,4,0,4"  TextWrapping="Wrap"/>
                 </Grid>
-                <Grid Grid.Row="3" Name="scrollTextTitle" VerticalAlignment="Center"  Width="892" Margin="-4,10,0,0" >
+                <Grid Grid.Row="3" Name="scrollTextTitle" VerticalAlignment="Center"  Width="922" Margin="-4,10,0,0" >
                     <Grid.Resources>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center"/>
                             <Setter Property="VerticalAlignment" Value="Center"/>
                             <Setter Property="Margin" Value="4"/>
+                            <Setter Property="Foreground" Value="#ffe8ce"/>
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
                         <ColumnDefinition Width="30"/>
                         <ColumnDefinition Width="202"/>
                         <ColumnDefinition Width="110"/>
@@ -196,24 +198,25 @@
                         <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="偏好"  Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                    <TextBlock Grid.Column="1" Text="姓名" />
-                    <TextBlock Grid.Column="2" Text="种族" />
-                    <TextBlock Grid.Column="3" Text="职业" />
-                    <TextBlock Grid.Column="4" Text="等级" />
-                    <TextBlock Grid.Column="5" Text="装等" />
-                    <TextBlock Grid.Column="6" Text="技能" />
-                    <TextBlock Grid.Column="7" Text="可能习得" />
-                    <TextBlock Grid.Column="8" Text="特长" />
-                    <TextBlock Grid.Column="9" Text="冻结" />
+                    <TextBlock Text="忽略"  Grid.ColumnSpan="2" HorizontalAlignment="Left" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Text="偏好" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Left" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="2" Text="姓名" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="3" Text="种族" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="4" Text="职业" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="5" Text="等级" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="6" Text="装等" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="7" Text="技能" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="8" Text="可能习得" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="9" Text="特长" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Grid.Column="10" Text="冻结" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 </Grid>
             </Grid>
             <ScrollViewer Name="allScroll" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Visible" Margin="4" VerticalAlignment="Top">
-                <StackPanel Name="followerRows" Orientation="Vertical" VerticalAlignment="Center" Width="900" >
+                <StackPanel Name="followerRows" Orientation="Vertical" VerticalAlignment="Center" Width="930" >
                 </StackPanel>
             </ScrollViewer>
             <ScrollViewer Name="favoriteScroll" Grid.Row="1" Visibility="Hidden" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Visible" Margin="4" VerticalAlignment="Top">
-                <StackPanel Name="favoriteRows" Orientation="Vertical" VerticalAlignment="Center" Width="900" >
+                <StackPanel Name="favoriteRows" Orientation="Vertical" VerticalAlignment="Center" Width="930" >
                 </StackPanel>
             </ScrollViewer>
             <Grid Name="showGrid" Grid.Row="1" Visibility="Hidden" Margin="0,-10,0,0">
