@@ -551,7 +551,7 @@ namespace YesCommander.Classes
                 case Traits.BurstOfPower: return "提高持续时间少于7小时的任务的成功率。";
                 case Traits.LoneWolf: return "提高独自执行任务的成功率。";
                 case Traits.Scavenger: return "使完成任务后获得的要塞物资提高100%";
-                case Traits.ExtraTraining: return "使所有追随者完成任务所获得的经验值提高35%";
+                case Traits.ExtraTraining: return "使所有追随者完成任务所获得的经验值提高30%";
                 case Traits.CombatExperience: return "提高任务的成功率。";
                 case Traits.EpicMount: return "任务时间缩短50%";
                 case Traits.Angler: return "有了纳特的知识，你在德拉诺的钓鱼技术使你能够不用鱼饵就钓到大鱼。";

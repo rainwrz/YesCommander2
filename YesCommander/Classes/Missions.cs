@@ -13,13 +13,13 @@ namespace YesCommander.Model
 
         public Dictionary<int, Mission> AllMissions;
 
-        public Dictionary<int, Mission> HighmaulMissions;
-        public Dictionary<int, Mission> RingMissions;
+        public Dictionary<int, Mission> RaidAndRingMissions;
+        public Dictionary<int, Mission> GarrisonResourceMissions;
         public Dictionary<int, Mission> TwoFollowerMissions;
         public Dictionary<int, Mission> OtherThreeFollowersMissions;
 
-        public List<DataRow> HighmaulMissionRows;
-        public List<DataRow> RingMissionRows;
+        public List<DataRow> RaidAndRingMissionRows;
+        public List<DataRow> GarrisonResourceMissionRows;
         public List<DataRow> TwoFollowerMissionRows;
         public List<DataRow> OtherThreeFollowersMissionRows;
 
@@ -28,13 +28,13 @@ namespace YesCommander.Model
             this.AllMissionsTable = new DataTable();
             this.AllMissions = new Dictionary<int, Mission>();
 
-            this.HighmaulMissions = new Dictionary<int, Mission>();
-            this.RingMissions = new Dictionary<int, Mission>();
+            this.RaidAndRingMissions = new Dictionary<int, Mission>();
+            this.GarrisonResourceMissions = new Dictionary<int, Mission>();
             this.TwoFollowerMissions = new Dictionary<int, Mission>();
             this.OtherThreeFollowersMissions = new Dictionary<int, Mission>();
 
-            this.HighmaulMissionRows = new List<DataRow>();
-            this.RingMissionRows = new List<DataRow>();
+            this.RaidAndRingMissionRows = new List<DataRow>();
+            this.GarrisonResourceMissionRows = new List<DataRow>();
             this.TwoFollowerMissionRows = new List<DataRow>();
             this.OtherThreeFollowersMissionRows = new List<DataRow>();
             this.AllMissionsTable = LoadData.LoadMissionFile( "Txts/missions.txt" );
@@ -46,9 +46,9 @@ namespace YesCommander.Model
                        select temp;
             foreach ( DataRow row in data )
             {
-                this.AddMissions( row, this.HighmaulMissions );
+                this.AddMissions( row, this.RaidAndRingMissions );
                 this.AddMissions( row, this.AllMissions );
-                this.HighmaulMissionRows.Add( row );
+                this.RaidAndRingMissionRows.Add( row );
             }
 
             data = from temp in this.AllMissionsTable.AsEnumerable()
@@ -58,9 +58,20 @@ namespace YesCommander.Model
                         select temp;
             foreach ( DataRow row in data )
             {
-                this.AddMissions( row, this.RingMissions );
+                this.AddMissions( row, this.RaidAndRingMissions );
                 this.AddMissions( row, this.AllMissions );
-                this.RingMissionRows.Add( row );
+                this.RaidAndRingMissionRows.Add( row );
+            }
+
+            data = from temp in this.AllMissionsTable.AsEnumerable()
+                   where
+                   temp.Field<string>( "奖励" ).Contains( "要塞物资" )
+                   select temp;
+            foreach ( DataRow row in data )
+            {
+                this.AddMissions( row, this.GarrisonResourceMissions );
+                this.AddMissions( row, this.AllMissions );
+                this.GarrisonResourceMissionRows.Add( row );
             }
 
             data = from temp in this.AllMissionsTable.AsEnumerable()
@@ -81,7 +92,8 @@ namespace YesCommander.Model
                    temp.Field<string>( "奖励" ) != "3 消魔之石 （戒指任务）" &&
                    temp.Field<string>( "奖励" ) != "18 元素符文 （戒指任务）" &&
                      ( temp.Field<string>( "任务ID" ) != "454" && temp.Field<string>( "任务ID" ) != "455" && temp.Field<string>( "任务ID" ) != "456" && temp.Field<string>( "任务ID" ) != "457" ) &&
-                   temp.Field<string>( "随从数量" ) == "3"
+                   temp.Field<string>( "随从数量" ) == "3" &&
+                   !temp.Field<string>( "奖励" ).Contains( "要塞物资" )
                    select temp;
             foreach ( DataRow row in data )
             {

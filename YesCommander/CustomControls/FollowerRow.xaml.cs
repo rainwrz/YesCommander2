@@ -23,7 +23,6 @@ namespace YesCommander.CustomControls
     public partial class FollowerRow : UserControl
     {
         public Follower currentFollower;
-        private List<Follower> favoriteFollowers;
         private bool isFavoriteMode = false;
 
         public FollowerRow()
@@ -31,11 +30,10 @@ namespace YesCommander.CustomControls
             InitializeComponent();
         }
 
-        public FollowerRow( Follower follower, ref List<Follower> list, string nameEN, bool isFavorite = false )
+        public FollowerRow( Follower follower, List<Follower> list, string nameEN, bool isFavorite = false )
         {
             InitializeComponent();
             this.currentFollower = follower;
-            this.favoriteFollowers = list;
             this.isFavoriteMode = isFavorite;
             this.SetFollower( follower );
             if ( isFavorite )
@@ -44,6 +42,11 @@ namespace YesCommander.CustomControls
                 this.isFavorit.IsEnabled = false;
                 this.isIgnored.Visibility = System.Windows.Visibility.Hidden;
             }
+            else
+            {
+                this.isFavorit.IsChecked = list.Count > 0 && list.Contains( follower ) ? true : false;
+            }
+            this.isIgnored.IsChecked = !Globals.CurrentValidFollowers.Contains( this.currentFollower );
             this.followerHead.PopulateFullImage( nameEN );
         }
 
@@ -62,6 +65,7 @@ namespace YesCommander.CustomControls
             this.currentFollower = follower;
             this.isIgnored.IsChecked = !Globals.CurrentValidFollowers.Contains( follower );
             this.SetFollower( follower );
+            this.isIgnored.IsChecked = !Globals.CurrentValidFollowers.Contains( this.currentFollower );
             this.followerHead.PopulateFullImage( nameEN );
         }
 
@@ -153,16 +157,16 @@ namespace YesCommander.CustomControls
 
         private void isFavorit_Checked( object sender, RoutedEventArgs e )
         {
-            if ( !this.isFavoriteMode )
-                this.favoriteFollowers.Add( this.currentFollower );
-            if ( this.isIgnored.IsChecked == true )
+            if ( !this.isFavoriteMode && !Globals.FavoriteFollowers.Contains( this.currentFollower ) )
+                Globals.FavoriteFollowers.Add( this.currentFollower );
+            if ( !this.isFavoriteMode && this.isIgnored.IsChecked == true )
                 this.isIgnored.IsChecked = false;
         }
 
         private void isFavorit_Unchecked( object sender, RoutedEventArgs e )
         {
             if ( !this.isFavoriteMode )
-            this.favoriteFollowers.Remove( this.currentFollower );
+            Globals.FavoriteFollowers.Remove( this.currentFollower );
         }
 
         private void isIgnored_Checked( object sender, RoutedEventArgs e )

@@ -33,6 +33,7 @@ namespace YesCommander.Classes
         public static List<AbilityCombinationModel> combinationModelList;
         public static List<Follower> CurrentValidFollowers;
         public static List<Follower> AllFollowers;
+        public static List<Follower> FavoriteFollowers;
         public static void Initialize()
         {
             InitialImageSources();
@@ -108,6 +109,8 @@ namespace YesCommander.Classes
                 traitList = new List<int>();
                 if ( !string.IsNullOrEmpty( currentRow[ "特长ID" ].ToString() ) )
                     traitList.Add( Convert.ToInt16( currentRow[ "特长ID" ] ) );
+                if ( !string.IsNullOrEmpty( currentRow[ "特长ID2" ].ToString() ) )
+                    traitList.Add( Convert.ToInt16( currentRow[ "特长ID2" ] ) );
 
                 AliFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
                     Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,

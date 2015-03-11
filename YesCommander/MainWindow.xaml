@@ -30,10 +30,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4" HorizontalAlignment="Center">
-                <TextBlock Name="titleHighMaul" Text="团队本任务" FontSize="18" Foreground="#ffe8ce"
+                <TextBlock Name="titleHighMaul" Text="团队本及橙戒任务" FontSize="18" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
-                <TextBlock Name="titleRing" Text="橙戒任务" FontSize="15" Foreground="#ffe8ce"
-                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                <TextBlock Name="titleRing" Text="资源任务" FontSize="15" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter" Visibility="Collapsed"/>
                 <TextBlock Name="titleTwoFollowerMission" Text="双人任务" FontSize="15" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 <TextBlock Name="titleElse" Text="其他三人任务" FontSize="15" Foreground="#ffe8ce"
@@ -198,7 +198,8 @@
                         <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="忽略"  Grid.ColumnSpan="2" HorizontalAlignment="Left" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
+                    <TextBlock Text="忽略" Name="ignoreTextBlock" Grid.ColumnSpan="2" HorizontalAlignment="Left" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseRightButtonDown="ignoreTextBlock_MouseRightButtonDown_1"
+                               MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                     <TextBlock Text="偏好" Grid.Column="1" Grid.ColumnSpan="2"  HorizontalAlignment="Left" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                     <TextBlock Grid.Column="2" Text="姓名" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                     <TextBlock Grid.Column="3" Text="种族" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>

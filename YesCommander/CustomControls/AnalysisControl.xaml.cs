@@ -104,6 +104,7 @@ namespace YesCommander.CustomControls
             this.AddCheckboxToTraitPanel( 39 );
             this.AddCheckboxToTraitPanel( 41 );
             this.AddCheckboxToTraitPanel( 40 );
+            this.AddCheckboxToTraitPanel( 55 );
         }
 
         public void CheckBox_Checked( object sender, EventArgs e )
@@ -245,7 +246,7 @@ namespace YesCommander.CustomControls
             Follower.Classes currentClass = Follower.GetClassBySingleStr( ( this.classComboBox.SelectedItem as ImageComboBoxItem ).Name );
             int followerColor = 0;
             this.aliPanel.Children.Clear();
-            foreach ( Follower follower in this.AliFollowers.FindAll( x => x.Class == currentClass ) )
+            foreach ( Follower follower in this.AliFollowers.FindAll( x => x.Class == currentClass ).OrderByDescending( x => x.Quolaty ) )
             {
                 followerColor = 0;
                 if ( Globals.IsAlliance && this.allFollowers.Exists( x => x.ID == follower.ID ) )
@@ -254,7 +255,7 @@ namespace YesCommander.CustomControls
             }
 
             this.hrdPanel.Children.Clear();
-            foreach ( Follower follower in this.HrdFollowers.FindAll( x => x.Class == currentClass ) )
+            foreach ( Follower follower in this.HrdFollowers.FindAll( x => x.Class == currentClass ).OrderByDescending( x => x.Quolaty ) )
             {
                 followerColor = 0;
                 if ( !Globals.IsAlliance && this.allFollowers.Exists( x => x.ID == follower.ID ) )
@@ -435,6 +436,14 @@ namespace YesCommander.CustomControls
             this.AddFollowersToScrollByQuolaty( trait );
             
             if ( trait.Count == 1 && trait[ 0 ] == Follower.Traits.Bodyguard )
+            {
+                this.AddFollowersToPanelForOwend( this.AliFollowers, this.aliPanel, trait, true );
+                this.AddFollowersToPanel( this.AliFollowers, this.aliPanel, trait, true );
+                this.AddFollowersToPanelForOwend( this.HrdFollowers, this.hrdPanel, trait, false );
+                this.AddFollowersToPanel( this.HrdFollowers, this.hrdPanel, trait, false );
+            }
+
+            if ( trait.Count >= 1 && trait[ 0 ] == Follower.Traits.TreasureHunter )
             {
                 this.AddFollowersToPanelForOwend( this.AliFollowers, this.aliPanel, trait, true );
                 this.AddFollowersToPanel( this.AliFollowers, this.aliPanel, trait, true );
@@ -735,6 +744,8 @@ namespace YesCommander.CustomControls
                 traitList = new List<int>();
                 if ( !string.IsNullOrEmpty( currentRow[ "特长ID" ].ToString() ) )
                     traitList.Add( Convert.ToInt16( currentRow[ "特长ID" ] ) );
+                if ( !string.IsNullOrEmpty( currentRow[ "特长ID2" ].ToString() ) )
+                    traitList.Add( Convert.ToInt16( currentRow[ "特长ID2" ] ) );
 
                 this.AliFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
                     Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,

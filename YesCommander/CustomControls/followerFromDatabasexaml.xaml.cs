@@ -57,6 +57,8 @@ namespace YesCommander.CustomControls
                 this.abilityImage.SetUp( follower.AbilityCollection[ 0 ] );
             if ( follower.TraitCollection.Count > 0 )
                 this.traitImage.SetUp( follower.TraitCollection[ 0 ] );
+            if ( follower.TraitCollection.Count > 1 )
+                this.traitImage2.SetUp( follower.TraitCollection[ 1 ] );
 
             Brush color;
             switch ( follower.Quolaty )

@@ -43,7 +43,10 @@
         <component:SpecIcon x:Name="specIcon" Grid.Column="5" HorizontalAlignment="Center"/>
         <TextBlock Name="level" Grid.Column="6" HorizontalAlignment="Center"/>
         <component:TinyImage x:Name="abilityImage" Grid.Column="7"/>
-        <component:TinyImage x:Name="traitImage" Grid.Column="8"/>
+        <StackPanel Grid.Column="8"  VerticalAlignment="Center"  Orientation="Horizontal">
+            <component:TinyImage x:Name="traitImage" />
+            <component:TinyImage x:Name="traitImage2" />
+        </StackPanel>
         <TextBlock Name="owned" Grid.Column="9" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>
