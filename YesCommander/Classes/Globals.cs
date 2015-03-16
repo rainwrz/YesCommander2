@@ -67,6 +67,8 @@ namespace YesCommander.Classes
             missionIcionList.Add( Follower.GetImageFromPicName( "archstone.jpg" ) );
             missionIcionList.Add( Follower.GetImageFromPicName( "runestone.jpg" ) );
             missionIcionList.Add( Follower.GetImageFromPicName( "Treasures2.jpg" ) );
+            missionIcionList.Add( Follower.GetImageFromPicName( "Garrison_resource.jpg" ) );
+            missionIcionList.Add( Follower.GetImageFromPicName( "Gold.jpg" ) );
 
             int[] classIndexList = new int[] { 9, 0, 4, 2, 10, 8, 6, 1, 5, 7, 3 };
             foreach ( int classIndex in classIndexList )

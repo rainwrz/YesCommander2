@@ -161,6 +161,10 @@ namespace YesCommander.CustomControls.Components
                 return this.imageSourceList[ 1 ];
             else if ( id >= 408 && id <= 413 )
                 return this.imageSourceList[ 2 ];
+            else if ( row.Field<string>( "奖励" ).Contains( "要塞物资" ) )
+                return this.imageSourceList[ 4 ];
+            else if ( row.Field<string>( "奖励" ).Contains( "G" ) )
+                return this.imageSourceList[ 5 ];
             else
             {
                 return null;

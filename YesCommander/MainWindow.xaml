@@ -32,8 +32,8 @@
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4" HorizontalAlignment="Center">
                 <TextBlock Name="titleHighMaul" Text="团队本及橙戒任务" FontSize="18" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
-                <TextBlock Name="titleRing" Text="资源任务" FontSize="15" Foreground="#ffe8ce"
-                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter" Visibility="Collapsed"/>
+                <TextBlock Name="titleResource" Text="资源任务" FontSize="15" Foreground="#ffe8ce"
+                       VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 <TextBlock Name="titleTwoFollowerMission" Text="双人任务" FontSize="15" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 <TextBlock Name="titleElse" Text="其他三人任务" FontSize="15" Foreground="#ffe8ce"
@@ -89,7 +89,7 @@
                     </Style>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto" />
@@ -97,7 +97,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="成功率" />
+                <TextBlock Text="成功率" Name="successOrEarn"/>
                 <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用675装等(现在额外影响橙戒任务)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
                 <CheckBox Name="checkboxUsingFavorite" Grid.Column="2" Content="仅使用偏好随从" VerticalAlignment="Center" Checked="checkboxUsingFavorite_Checked" Unchecked="checkboxUsingFavorite_Checked" 
                           Margin="4,0"/>

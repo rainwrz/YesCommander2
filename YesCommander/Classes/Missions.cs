@@ -65,7 +65,7 @@ namespace YesCommander.Model
 
             data = from temp in this.AllMissionsTable.AsEnumerable()
                    where
-                   temp.Field<string>( "奖励" ).Contains( "要塞物资" )
+                   temp.Field<string>( "奖励" ).Contains( "要塞物资" ) && ( temp.Field<string>( "随从数量" ) == "3" || temp.Field<string>( "随从数量" ) == "2" )
                    select temp;
             foreach ( DataRow row in data )
             {
@@ -93,7 +93,7 @@ namespace YesCommander.Model
                    temp.Field<string>( "奖励" ) != "18 元素符文 （戒指任务）" &&
                      ( temp.Field<string>( "任务ID" ) != "454" && temp.Field<string>( "任务ID" ) != "455" && temp.Field<string>( "任务ID" ) != "456" && temp.Field<string>( "任务ID" ) != "457" ) &&
                    temp.Field<string>( "随从数量" ) == "3" &&
-                   !temp.Field<string>( "奖励" ).Contains( "要塞物资" )
+                   !( temp.Field<string>( "奖励" ).Contains( "要塞物资" ) && ( temp.Field<string>( "随从数量" ) == "3" || temp.Field<string>( "随从数量" ) == "2" ) )
                    select temp;
             foreach ( DataRow row in data )
             {

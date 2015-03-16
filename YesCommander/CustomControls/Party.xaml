@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:component="clr-namespace:YesCommander.CustomControls.Components" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="30" MinWidth="1000">
+             mc:Ignorable="d" Height="30" MinWidth="1030">
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBlock">
@@ -14,7 +14,7 @@
             </Style>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="2.5*"/>
             <ColumnDefinition Width="*"/>

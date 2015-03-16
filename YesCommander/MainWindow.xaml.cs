@@ -168,8 +168,10 @@ namespace YesCommander
         private void titleBlock_MouseDown( object sender, MouseButtonEventArgs e )
         {
             this.titleHighMaul.FontSize = 15;
-            this.titleRing.FontSize = 15;
+            this.titleResource.FontSize = 15;
             this.titleElse.FontSize = 15;
+
+            this.successOrEarn.Text = "成功率";
 
             ( sender as TextBlock ).FontSize = 18;
             switch ( ( sender as TextBlock ).Name )
@@ -178,7 +180,8 @@ namespace YesCommander
                     this.currentMissions = this.Missions.RaidAndRingMissions;
                     this.FillInMissions( this.Missions.RaidAndRingMissionRows );
                     break;
-                case "titleRing":
+                case "titleResource":
+                    this.successOrEarn.Text = "资源(成功率)";
                     this.currentMissions = this.Missions.GarrisonResourceMissions;
                     this.FillInMissions( this.Missions.GarrisonResourceMissionRows );
                     break;
@@ -484,7 +487,15 @@ namespace YesCommander
             var data = from temp in missions.AsEnumerable()
                        //where temp.TotalSucessChance > 0.8
                        select temp;
-            data = data.OrderByDescending( x => x.TotalSucessChance ).ThenBy( x => x.MissionTimeCaculated );
+            if ( this.CurrentMission.MissionReward.Contains( "要塞物资" ) && this.CurrentMission.FollowersNeed > 1 )
+            {
+                data = from temp in missions.AsEnumerable()
+                       where temp.TotalSucessChance >= 0.70
+                       select temp;
+                data = data.OrderByDescending( x => x.CurrencyReward ).ThenByDescending( x => x.TotalSucessChance );
+            }
+            else
+                data = data.OrderByDescending( x => x.TotalSucessChance ).ThenBy( x => x.MissionTimeCaculated );
 
             int number = this.partyPanel.Children.Count;
             //this.partyPanel.Children.Clear();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace YesCommander.Classes
 {
@@ -37,6 +38,7 @@ namespace YesCommander.Classes
         public List<Follower.Traits> partyBuffs;
         public static readonly int MAXITEMLEVEL = 675;
         public float DancerSucessFactor = 2 / 3;
+        public int CurrencyReward = 0;
 
         public Mission( string missionId, string missionName, string missionNameCN, int itemLevelNeed, int followersNeed, Dictionary<Follower.Abilities, float> abilities, Follower.Traits slayerNeed, string time, string reward, string remark, float basicSucessChange = 0, bool isUsingMaxiLevel = false )
         {
@@ -242,6 +244,16 @@ namespace YesCommander.Classes
             float factorOfEpicMount = 1;
             foreach ( Follower follower in this.AssignedFollowers )
             {
+                if ( this.MissionReward.Contains( "要塞物资" ) && follower.TraitCollection.Contains( Follower.Traits.Scavenger ) )
+                {
+                    this.partyBuffs.Add( Follower.Traits.Scavenger );
+                }
+
+                if ( this.MissionReward.Contains( "G" ) && follower.TraitCollection.Contains( Follower.Traits.TreasureHunter ) )
+                {
+                    this.partyBuffs.Add( Follower.Traits.TreasureHunter );
+                }
+
                 if ( follower.TraitCollection.Contains( this.SlayerNeed ) )
                 {
                     result += this.SucessPerBurstStamCombatExpSlayer;
@@ -279,8 +291,8 @@ namespace YesCommander.Classes
             if ( Math.Truncate( timeNeed ) != 0 )
                 this.MissionTimeCaculatedStr = Math.Truncate( timeNeed ).ToString() + "小时";
             double minute = Math.Round( ( timeNeed - Math.Truncate( timeNeed ) ) * 60, 0 );
-            if( minute!=0)
-                this.MissionTimeCaculatedStr +=minute.ToString() + "分钟";
+            if ( minute != 0 )
+                this.MissionTimeCaculatedStr += minute.ToString() + "分钟";
             if ( timeNeed > 7 )
             {
                 result += this.SucessPerBurstStamCombatExpSlayer * numberOfHighStamina;
@@ -305,6 +317,13 @@ namespace YesCommander.Classes
                 result += this.SingleTraitRaceMatching( this.AssignedFollowers[ 0 ], this.AssignedFollowers[ 1 ] );
                 result += this.SingleTraitRaceMatching( this.AssignedFollowers[ 1 ], this.AssignedFollowers[ 0 ] );
             }
+
+            if ( this.MissionReward.Contains( "要塞物资" ) && this.FollowersNeed > 1 )
+            {
+                int reward = Convert.ToInt32( Regex.Replace(this.MissionReward, @"[^\d.\d]", "") );
+                this.CurrencyReward = ( this.CalculateCurrencyFactor() + 1 ) * reward;
+            }
+
             return result;
         }
 
@@ -322,6 +341,19 @@ namespace YesCommander.Classes
             return result;
         }
 
+        private int CalculateCurrencyFactor()
+        {
+            int factor = 0;
+            if ( this.MissionReward.Contains( "要塞物资" ) && this.FollowersNeed > 1 )
+            {
+                foreach ( Follower follower in this.AssignedFollowers )
+                {
+                    if ( follower.TraitCollection.Contains( Follower.Traits.Scavenger ) )
+                        factor++;
+                }
+            }
+            return factor;
+        }
 
     }
 }
