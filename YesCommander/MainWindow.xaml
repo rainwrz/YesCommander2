@@ -140,8 +140,9 @@
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleAllFavorite_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 </StackPanel>
                 <Image Grid.Row="1" Source="/Resources/gear-bonus-divider_1.jpg" Stretch="None" Width="140"/>
-                <Grid Name="suggestinoTitle" Margin="0,4,50,0" Grid.Row="2" Visibility="Collapsed" Width="950" HorizontalAlignment="Right">
+                <Grid Name="suggestinoTitle" Margin="0,4,50,0" Grid.Row="2" Visibility="Collapsed" Width="850" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
+                        <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
@@ -152,13 +153,14 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="6" Orientation="Horizontal">
+                    <StackPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Orientation="Horizontal">
                         <Button Name="simulateButton" Content="推荐偏好(675)" Click="simulateButton_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
                         <Button Name="simulateButtonForCurrentIlevel" Content="推荐偏好(当前)" Click="simulateButtonForCurrentIlevel_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
                         <Button Name="simulateMyButton" Content="计算概率" Click="simulateMyButton_Click" Width="80" Height="30" IsEnabled="False" Margin="4,4"/>
                     </StackPanel>
+                    <TextBlock Name="textFollowerCount" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="Lime" TextWrapping="Wrap"/>
                     <ComboBox Name="solutionComboBox" Grid.Row="0" Grid.Column="5" Margin="4" Visibility="Collapsed" SelectionChanged="solutionComboBox_SelectionChanged"/>
 
                     <CheckBox Name="highMaulQuestCheckBox" Content="悬槌堡任务" VerticalContentAlignment="Center" Grid.Column="0" Click="highMaulQuestCheckBox_Click"/>
@@ -167,6 +169,7 @@
                     <CheckBox Name="ringQuestStage2CheckBox" Content="元素符文任务" VerticalContentAlignment="Center" Grid.Column="3" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="equipment645CheckBox" Content="645装备任务" VerticalContentAlignment="Center" Grid.Column="4" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="twoFollowerQuestCheckBox" Content="双随从任务" VerticalContentAlignment="Center" Grid.Column="5" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="garrisonResourceQuestCheckBox" Content="资源任务" VerticalContentAlignment="Center" Grid.Column="6" Click="highMaulQuestCheckBox_Click"/>
 
                     <TextBlock Name="textHighmaulQuest" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap"/>
                     <TextBlock Name="textBlackFoundryQuest" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
@@ -174,8 +177,10 @@
                     <TextBlock Name="textQuestRing2" Grid.Row="1" Grid.Column="3" TextWrapping="Wrap"/>
                     <TextBlock Name="textEquipment645" Grid.Row="1" Grid.Column="4"  TextWrapping="Wrap"/>
                     <TextBlock Name="textTwoFollowerQuest" Grid.Row="1" Grid.Column="5"  TextWrapping="Wrap"/>
-                    <TextBlock Name="textFollowerCount" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" Foreground="Lime" Margin="-80,4,0,4"  TextWrapping="Wrap"/>
+                    <TextBlock Name="textGarrisonResourceQuest" Grid.Row="1" Grid.Column="6"  TextWrapping="Wrap"/>
                 </Grid>
+                
+                
                 <Grid Grid.Row="3" Name="scrollTextTitle" VerticalAlignment="Center"  Width="922" Margin="-4,10,0,0" >
                     <Grid.Resources>
                         <Style TargetType="TextBlock">

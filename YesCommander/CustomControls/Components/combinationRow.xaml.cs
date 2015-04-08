@@ -43,7 +43,7 @@ namespace YesCommander.CustomControls.Components
             this.Clear();
             foreach ( Follower follower in Globals.CurrentValidFollowers )
             {
-                if ( follower.Quolaty == 4 )
+                if ( follower.Quolaty >= 4 )
                 {
                     List<Follower.Abilities> abilities = new List<Follower.Abilities>();
                     abilities.AddRange( follower.AbilityCollection );

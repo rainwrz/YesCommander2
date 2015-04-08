@@ -63,6 +63,8 @@ namespace YesCommander.Model
                 this.RaidAndRingMissionRows.Add( row );
             }
 
+
+
             data = from temp in this.AllMissionsTable.AsEnumerable()
                    where
                    temp.Field<string>( "奖励" ).Contains( "要塞物资" ) && ( temp.Field<string>( "随从数量" ) == "3" || temp.Field<string>( "随从数量" ) == "2" )
@@ -73,6 +75,9 @@ namespace YesCommander.Model
                 this.AddMissions( row, this.AllMissions );
                 this.GarrisonResourceMissionRows.Add( row );
             }
+
+
+
 
             data = from temp in this.AllMissionsTable.AsEnumerable()
                    where

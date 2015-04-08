@@ -14,6 +14,7 @@ namespace YesCommander.Classes
         private bool isContainEquipment645;
         private bool isContainBlackFoundry;
         private bool isContainTwoFollowerMissions;
+        private bool isContainGarrisonResourceMissions;
         public List<int> uncompleteIDs;
         private Dictionary<int, List<Mission>> dic;
         private List<int> missionIDs;
@@ -27,7 +28,7 @@ namespace YesCommander.Classes
 
         public List<Follower> suggestedFollowers;
 
-        public Solution( bool isContainHighmaul, bool isContainRingStage1, bool isContainRingStage2, bool isContainEquipment645, bool isContainBlackFoundry, bool isContainTwoFollowerMissions )
+        public Solution( bool isContainHighmaul, bool isContainRingStage1, bool isContainRingStage2, bool isContainEquipment645, bool isContainBlackFoundry, bool isContainTwoFollowerMissions, bool isContainGarrisonResourceMissions )
         {
             this.isContainHighmaul = isContainHighmaul;
             this.isContainRingStage1 = isContainRingStage1;
@@ -35,6 +36,7 @@ namespace YesCommander.Classes
             this.isContainEquipment645 = isContainEquipment645;
             this.isContainBlackFoundry = isContainBlackFoundry;
             this.isContainTwoFollowerMissions = isContainTwoFollowerMissions;
+            this.isContainGarrisonResourceMissions = isContainGarrisonResourceMissions;
         }
 
         public void CalculateBasicData( Missions allMissions, List<Follower> allFollowers )
@@ -84,6 +86,15 @@ namespace YesCommander.Classes
                 missionIDs.Add( 495 );
                 missionIDs.Add( 496 );
                 missionIDs.Add( 503 );
+            }
+            if ( this.isContainGarrisonResourceMissions )
+            {
+                missionIDs.Add( 132 );
+                missionIDs.Add( 133 );
+                missionIDs.Add( 268 );
+                missionIDs.Add( 269 );
+                missionIDs.Add( 311 );
+                missionIDs.Add( 312 );
             }
 
             foreach ( int i in missionIDs )
@@ -181,6 +192,15 @@ namespace YesCommander.Classes
                 missionIDs.Add( 495 );
                 missionIDs.Add( 496 );
                 missionIDs.Add( 503 );
+            }
+            if ( this.isContainGarrisonResourceMissions )
+            {
+                missionIDs.Add( 132 );
+                missionIDs.Add( 133 );
+                missionIDs.Add( 268 );
+                missionIDs.Add( 269 );
+                missionIDs.Add( 311 );
+                missionIDs.Add( 312 );
             }
 
 
@@ -286,6 +306,8 @@ namespace YesCommander.Classes
         private List<Mission> AssignMissionForThreeFollowers( Mission mission, List<Follower> list )
         {
             List<Mission> missions = new List<Mission>();
+            if ( mission.MissionReward.Contains( "要塞物资" ) )
+                list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Scavenger ) );
             if ( list.Count >= 3 )
             {
                 for ( int i = 0; i < list.Count; i++ )
@@ -315,6 +337,8 @@ namespace YesCommander.Classes
         private List<Mission> AssignMissionForTwoFollowers( Mission mission, List<Follower> list )
         {
             List<Mission> missions = new List<Mission>();
+            if ( mission.MissionReward.Contains( "要塞物资" ) )
+                list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Scavenger ) );
             for ( int j = 0; j < list.Count; j++ )
             {
                 for ( int k = 0; k < list.Count; k++ )

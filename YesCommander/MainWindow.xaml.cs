@@ -74,7 +74,7 @@ namespace YesCommander
                 ToolTipService.SetInitialShowDelay( this.about, 0 );
                 this.missionWindowImage.ToolTip = new BaseToolTip( "任务列表", "打开一个新的窗口，查看所有任务详情。" );
                 ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
-                this.simulateButton.ToolTip = new BaseToolTip( "推荐偏好(675)", "在模拟中默认使用675装等。此外，推荐只是提供一种可能的选取方案，并非一定为最少随从方案。请酌情参考。" );
+                this.simulateButton.ToolTip = new BaseToolTip( "推荐偏好(最高)", "在模拟中默认使用最高（675）装等。此外，推荐只是提供一种可能的选取方案，并非一定为最少随从方案。请酌情参考。" );
                 ToolTipService.SetInitialShowDelay( this.simulateButton, 0 );
                 this.simulateButtonForCurrentIlevel.ToolTip = new BaseToolTip( "推荐偏好(当前)", "在模拟中默认使用当前装等。低于任务要求装等的随从将使用任务要求装等。此推荐为1.6.5以前版本默认推荐。" );
                 ToolTipService.SetInitialShowDelay( this.simulateButtonForCurrentIlevel, 0 );
@@ -170,6 +170,7 @@ namespace YesCommander
             this.titleHighMaul.FontSize = 15;
             this.titleResource.FontSize = 15;
             this.titleElse.FontSize = 15;
+            this.titleTwoFollowerMission.FontSize = 15;
 
             this.successOrEarn.Text = "成功率";
 
@@ -415,6 +416,8 @@ namespace YesCommander
                 hasCheck = true;
             else if ( this.twoFollowerQuestCheckBox.IsChecked == true )
                 hasCheck = true;
+            else if ( this.garrisonResourceQuestCheckBox.IsChecked == true )
+                hasCheck = true;
             this.simulateButton.IsEnabled = hasCheck;
             this.simulateButtonForCurrentIlevel.IsEnabled = hasCheck;
             this.simulateMyButton.IsEnabled = hasCheck;
@@ -490,7 +493,7 @@ namespace YesCommander
             if ( this.CurrentMission.MissionReward.Contains( "要塞物资" ) && this.CurrentMission.FollowersNeed > 1 )
             {
                 data = from temp in missions.AsEnumerable()
-                       where temp.TotalSucessChance >= 0.70
+                       where temp.TotalSucessChance >= 0.30
                        select temp;
                 data = data.OrderByDescending( x => x.CurrencyReward ).ThenByDescending( x => x.TotalSucessChance );
             }
@@ -635,6 +638,9 @@ namespace YesCommander
         {
             List<Mission> missions = new List<Mission>();
             List<Follower> list = isUsingFaverite ? Globals.FavoriteFollowers : Globals.CurrentValidFollowers;
+            if ( mission.MissionReward.Contains( "要塞物资" ) )
+                list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Scavenger ) );
+
             if ( list.Count >= 3 )
             {
                 for ( int i = 0; i < list.Count; i++ )
@@ -665,6 +671,8 @@ namespace YesCommander
         {
             List<Mission> missions = new List<Mission>();
             List<Follower> list = isUsingFaverite ? Globals.FavoriteFollowers : Globals.CurrentValidFollowers;
+            if ( mission.MissionReward.Contains( "要塞物资" ) )
+                list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Scavenger ) );
             for ( int j = 0; j < list.Count; j++ )
             {
                 for ( int k = 0; k < list.Count; k++ )
@@ -719,8 +727,9 @@ namespace YesCommander
             bool isContainRingStage2 = this.ringQuestStage2CheckBox.IsChecked == true;
             bool isContainEquipment645 = this.equipment645CheckBox.IsChecked == true;
             bool isContainTwoFollowerMissions = this.twoFollowerQuestCheckBox.IsChecked == true;
+            bool isContainGarrisonResourceMissions = this.garrisonResourceQuestCheckBox.IsChecked == true;
 
-            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions );
+            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions, isContainGarrisonResourceMissions );
             solution.CalculateBasicData( this.Missions, Globals.CurrentValidFollowers );
             solution.ListAllPossiblities();
             solution.ReduceRedundency( this.Missions );
@@ -743,8 +752,9 @@ namespace YesCommander
             bool isContainRingStage2 = this.ringQuestStage2CheckBox.IsChecked == true;
             bool isContainEquipment645 = this.equipment645CheckBox.IsChecked == true;
             bool isContainTwoFollowerMissions = this.twoFollowerQuestCheckBox.IsChecked == true;
+            bool isContainGarrisonResourceMissions = this.garrisonResourceQuestCheckBox.IsChecked == true;
 
-            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions );
+            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions, isContainGarrisonResourceMissions );
             solution.CalculateBasicDataSimple( this.Missions, Globals.FavoriteFollowers );
             this.GenerateString( solution.uncompleteIDs );
         }
@@ -795,6 +805,20 @@ namespace YesCommander
             }
             else
                 this.textTwoFollowerQuest.Text = string.Empty;
+
+            if ( this.garrisonResourceQuestCheckBox.IsChecked == true )
+            {
+                List<int> missionIDs = new List<int>();
+                missionIDs.Add( 132 );
+                missionIDs.Add( 133 );
+                missionIDs.Add( 268 );
+                missionIDs.Add( 269 );
+                missionIDs.Add( 311 );
+                missionIDs.Add( 312 );
+                this.GenerateText( this.textGarrisonResourceQuest, uncompleteIDs, missionIDs );
+            }
+            else
+                this.textGarrisonResourceQuest.Text = string.Empty;
 
             this.textFollowerCount.Text = "偏好随从数：" + Globals.FavoriteFollowers.Count;
         }
@@ -852,7 +876,7 @@ namespace YesCommander
         private void CalculateShowPanel()
         {
             Globals.IsUsingMaxILevelOnSimulateAll = true;
-            Solution solution = new Solution( true, true, true, true, true, true );
+            Solution solution = new Solution( true, true, true, true, true, true, true );
             solution.CalculateBasicDataSimple( this.Missions, Globals.AllFollowers );
             this.GenerateText( this.showHighmaulText, solution.uncompleteIDs, 313, 316 );
             this.GenerateText( this.showRing1Text, solution.uncompleteIDs, 403, 407 );
@@ -887,7 +911,7 @@ namespace YesCommander
                 completeNumber++;
 
             this.totalFollowerText.Text = Globals.AllFollowers.Count.ToString();
-            this.epicFollowerText.Text = Globals.AllFollowers.Count( x => x.Quolaty == 4 ).ToString();
+            this.epicFollowerText.Text = Globals.AllFollowers.Count( x => x.Quolaty >= 4 ).ToString();
             this.blueFollowerText.Text = Globals.AllFollowers.Count( x => x.Quolaty == 3 ).ToString();
             this.greenFollowerText.Text = Globals.AllFollowers.Count( x => x.Quolaty == 2 ).ToString();
 
