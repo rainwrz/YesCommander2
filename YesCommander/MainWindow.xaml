@@ -6,7 +6,7 @@
         RenderOptions.BitmapScalingMode="NearestNeighbor"
         xmlns:custom="clr-namespace:YesCommander.CustomControls" 
         xmlns:component="clr-namespace:YesCommander.CustomControls.Components" 
-        Title="YesCommander" Height="580" Width="1050" MinHeight="580" MinWidth="1020"  ResizeMode="CanResizeWithGrip" Icon="/Resources/icon32.ico"
+        Title="YesCommander" Height="600" Width="1050" MinHeight="480" MinWidth="1020"  ResizeMode="CanResizeWithGrip" Icon="/Resources/icon32.ico"
         WindowStartupLocation="CenterScreen" params:Design.Theme="Dark" Loaded="Loaded_1" Closing="Window_Closing"
         params:Manager.Theme="Dark">
     <Grid>
@@ -15,7 +15,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Image Grid.Row="0" Name="about" Margin="10,0" Source="/Resources/help-icon.png" Stretch="None"  MouseEnter="tag_MouseEnter" MouseLeave="tag_MouseLeave" HorizontalAlignment="Right"/>
-        <StackPanel Orientation="Horizontal" Margin="4,0" HorizontalAlignment="Left">
+        <StackPanel Orientation="Horizontal" Margin="4,0,4,15" HorizontalAlignment="Center">
             <RadioButton Name="radioFollowers" Content="随从一览" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
             <RadioButton Name="radioMissions" Content="任务模拟" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
             <RadioButton Name="radioAnalysis" Content="数据分析" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
@@ -30,9 +30,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4" HorizontalAlignment="Center">
-                <TextBlock Name="titleHighMaul" Text="团队本及橙戒任务" FontSize="18" Foreground="#ffe8ce"
+                <TextBlock Name="titleHighMaul" Text="团队本及橙戒" FontSize="18" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
-                <TextBlock Name="titleResource" Text="资源任务" FontSize="15" Foreground="#ffe8ce"
+                <TextBlock Name="titleResource" Text="资源或金币" FontSize="15" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 <TextBlock Name="titleTwoFollowerMission" Text="双人任务" FontSize="15" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
@@ -98,7 +98,7 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="成功率" Name="successOrEarn"/>
-                <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用675装等(现在额外影响橙戒任务)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
+                <CheckBox Name="checkboxMaxiLevel" Grid.Column="1" Content="使用最高装等(675)" VerticalAlignment="Center" Checked="checkboxMaxiLevel_Checked" Unchecked="checkboxMaxiLevel_Unchecked" />
                 <CheckBox Name="checkboxUsingFavorite" Grid.Column="2" Content="仅使用偏好随从" VerticalAlignment="Center" Checked="checkboxUsingFavorite_Checked" Unchecked="checkboxUsingFavorite_Checked" 
                           Margin="4,0"/>
                 <TextBlock Grid.Column="3" Text="注意：括号中的红色数字表示不满足装等要求" Foreground="Red"/>
@@ -143,7 +143,7 @@
                 <Grid Name="suggestinoTitle" Margin="0,4,50,0" Grid.Row="2" Visibility="Collapsed" Width="850" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition/>    
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -154,13 +154,15 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <StackPanel Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
                         <Button Name="simulateButton" Content="推荐偏好(675)" Click="simulateButton_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
                         <Button Name="simulateButtonForCurrentIlevel" Content="推荐偏好(当前)" Click="simulateButtonForCurrentIlevel_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
+                        <Button Name="simulateButtonForCurrentFollower" Content="推荐偏好(改进)" Click="simulateForCurrentFollower_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
                         <Button Name="simulateMyButton" Content="计算概率" Click="simulateMyButton_Click" Width="80" Height="30" IsEnabled="False" Margin="4,4"/>
                     </StackPanel>
-                    <TextBlock Name="textFollowerCount" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="Lime" TextWrapping="Wrap"/>
+                    <TextBlock Name="textFollowerCount" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Foreground="Lime" TextWrapping="Wrap"/>
                     <ComboBox Name="solutionComboBox" Grid.Row="0" Grid.Column="5" Margin="4" Visibility="Collapsed" SelectionChanged="solutionComboBox_SelectionChanged"/>
 
                     <CheckBox Name="highMaulQuestCheckBox" Content="悬槌堡任务" VerticalContentAlignment="Center" Grid.Column="0" Click="highMaulQuestCheckBox_Click"/>
@@ -170,6 +172,7 @@
                     <CheckBox Name="equipment645CheckBox" Content="645装备任务" VerticalContentAlignment="Center" Grid.Column="4" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="twoFollowerQuestCheckBox" Content="双随从任务" VerticalContentAlignment="Center" Grid.Column="5" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="garrisonResourceQuestCheckBox" Content="资源任务" VerticalContentAlignment="Center" Grid.Column="6" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="goldQuestCheckBox" Content="金币任务" VerticalContentAlignment="Center" Grid.Column="7" Click="highMaulQuestCheckBox_Click"/>
 
                     <TextBlock Name="textHighmaulQuest" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap"/>
                     <TextBlock Name="textBlackFoundryQuest" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
@@ -178,6 +181,7 @@
                     <TextBlock Name="textEquipment645" Grid.Row="1" Grid.Column="4"  TextWrapping="Wrap"/>
                     <TextBlock Name="textTwoFollowerQuest" Grid.Row="1" Grid.Column="5"  TextWrapping="Wrap"/>
                     <TextBlock Name="textGarrisonResourceQuest" Grid.Row="1" Grid.Column="6"  TextWrapping="Wrap"/>
+                    <TextBlock Name="textGoldQuest" Grid.Row="1" Grid.Column="7" Grid.RowSpan="3" TextWrapping="Wrap"/>
                 </Grid>
                 
                 
@@ -225,20 +229,36 @@
                 <StackPanel Name="favoriteRows" Orientation="Vertical" VerticalAlignment="Center" Width="930" >
                 </StackPanel>
             </ScrollViewer>
-            <Grid Name="showGrid" Grid.Row="1" Visibility="Hidden" Margin="0,-10,0,0">
+            <ScrollViewer Name="showGrid" Grid.Row="1" Visibility="Hidden" Margin="0,-10,0,0" >
+            <Grid  Height="850">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -250,26 +270,51 @@
                 </Grid.Resources>
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Name="toCommanderText" FontSize="30" Foreground="SkyBlue" Text="Yes, Commander! 尊贵的：" HorizontalAlignment="Center"/>
                 <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Name="achievementText" FontSize="40" Foreground="Gold" Margin="0,0,0,15" HorizontalAlignment="Center" />
-                <TextBlock Grid.Row="2" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="一共拥有随从数："/>
-                <TextBlock Grid.Row="3" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="史诗随从数："/>
-                <TextBlock Grid.Row="4" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="精良随从数："/>
-                <TextBlock Grid.Row="5" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="优秀随从数："/>
-                <TextBlock Grid.Row="6" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="悬槌堡任务："/>
-                <TextBlock Grid.Row="7" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="黑石铸造厂任务："/>
-                <TextBlock Grid.Row="8" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒一阶任务："/>
-                <TextBlock Grid.Row="9" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒二阶任务："/>
-                <TextBlock Grid.Row="10" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="双随从高装等任务："/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Name="totalFollowerText"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="一共拥有随从数："/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="史诗："/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="精良："/>
+                <TextBlock Grid.Row="5" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="优秀："/>
+
+                <TextBlock Grid.Row="6" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="悬槌堡任务："/>
+                <TextBlock Grid.Row="7" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="黑石铸造厂任务："/>
+                <TextBlock Grid.Row="8" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒一阶任务："/>
+                <TextBlock Grid.Row="9" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="橙戒二阶任务："/>
+                    <TextBlock Grid.Row="10" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="双随从高装等任务："/>
+                <TextBlock Grid.Row="11" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="资源任务："/>
+                <TextBlock Grid.Row="12" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="金币任务："/>
+                
+                    <TextBlock Grid.Row="13" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="人类后宫："/>
+                    <TextBlock Grid.Row="14" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="德莱尼后宫："/>
+                    <TextBlock Grid.Row="15" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="暗夜精灵后宫："/>
+                    <TextBlock Grid.Row="16" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="侏儒后宫："/>
+                    <TextBlock Grid.Row="17" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="矮人后宫："/>
+                    <TextBlock Grid.Row="18" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="狼人后宫："/>
+                    <TextBlock Grid.Row="19" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="熊猫人后宫："/>
+                    <TextBlock Grid.Row="20" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="血精灵后宫："/>
+                    <TextBlock Grid.Row="21" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="巨魔后宫："/>
+                    <TextBlock Grid.Row="22" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="牛头人后宫："/>
+                    <TextBlock Grid.Row="23" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="亡灵后宫："/>
+                    <TextBlock Grid.Row="24" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="地精后宫："/>
+                    <TextBlock Grid.Row="25" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="兽人后宫："/>
+                
+
+                    <TextBlock Grid.Row="2" Grid.Column="1" Name="totalFollowerText"/>
                 <TextBlock Grid.Row="3" Grid.Column="1" Name="epicFollowerText" Foreground="BlueViolet"/>
                 <TextBlock Grid.Row="4" Grid.Column="1" Name="blueFollowerText" Foreground="DodgerBlue"/>
                 <TextBlock Grid.Row="5" Grid.Column="1" Name="greenFollowerText" Foreground="Lime"/>
+                
                 <TextBlock Grid.Row="6" Grid.Column="1" Name="showHighmaulText"/>
                 <TextBlock Grid.Row="7" Grid.Column="1" Name="showBlackFoundryText"/>
                 <TextBlock Grid.Row="8" Grid.Column="1" Name="showRing1Text"/>
                 <TextBlock Grid.Row="9" Grid.Column="1" Name="showRing2Text"/>
                 <TextBlock Grid.Row="10" Grid.Column="1" Name="showTwoFollowerMissionText"/>
+                <TextBlock Grid.Row="11" Grid.Column="1" Name="showGarrisonResourceText"/>
+                <TextBlock Grid.Row="12" Grid.Column="1" Name="showGoldText"/>
+                
+                
             </Grid>
-            
+            </ScrollViewer>
             <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="8" HorizontalAlignment="Center">
                 <Button Click="readButton_Click"  Width="90" Margin="8" Content="Read"/>
                 <Button Click="InputButton_Click"  Width="90" Margin="8" Content="Input"/>

@@ -38,7 +38,7 @@ namespace YesCommander.Classes
         public List<Follower.Traits> partyBuffs;
         public static readonly int MAXITEMLEVEL = 675;
         public float DancerSucessFactor = 2 / 3;
-        public int CurrencyReward = 0;
+        public float CurrencyReward = 0;
 
         public Mission( string missionId, string missionName, string missionNameCN, int itemLevelNeed, int followersNeed, Dictionary<Follower.Abilities, float> abilities, Follower.Traits slayerNeed, string time, string reward, string remark, float basicSucessChange = 0, bool isUsingMaxiLevel = false )
         {
@@ -320,10 +320,15 @@ namespace YesCommander.Classes
 
             if ( this.MissionReward.Contains( "要塞物资" ) && this.FollowersNeed > 1 )
             {
-                int reward = Convert.ToInt32( Regex.Replace(this.MissionReward, @"[^\d.\d]", "") );
-                this.CurrencyReward = ( this.CalculateCurrencyFactor() + 1 ) * reward;
+                float reward = Convert.ToInt32( Regex.Replace( this.MissionReward, @"[^\d.\d]", "" ) );
+                this.CurrencyReward = ( this.CalculateCurrencyFactorForGarrisonResource() + 1 ) * reward;
             }
 
+            if ( this.MissionReward.Contains( "G" ) && this.FollowersNeed > 1 )
+            {
+                float reward = Globals.GetGoldRewardFromString( this.MissionReward );
+                this.CurrencyReward = ( this.CalculateCurrencyFactorForGold() + 1 ) * reward;
+            }
             return result;
         }
 
@@ -332,7 +337,16 @@ namespace YesCommander.Classes
             double result = 0;
             foreach ( Follower.Traits trait in Follower.FilteredRaceTrait( follower1 ) )
             {
-                if ( Follower.GetRaceMatchedByTrait( trait ).Contains( follower2.Race ) || ( follower3 != null && Follower.GetRaceMatchedByTrait( trait ).Contains( follower3.Race ) ) )
+                // Neutral follower race lover
+                if ( this.FollowersNeed == 3 && Follower.GetRaceMatchedByTrait( trait ).Contains( follower2.Race ) && Follower.GetRaceMatchedByTrait( trait ).Contains( follower3.Race )
+                    && follower2.Race != follower3.Race )
+                {
+                    result += this.SucessPerRaceLover;
+                    result += this.SucessPerRaceLover;
+                    this.partyBuffs.Add( trait );
+                    this.partyBuffs.Add( trait );
+                }
+                else if ( Follower.GetRaceMatchedByTrait( trait ).Contains( follower2.Race ) || ( follower3 != null && Follower.GetRaceMatchedByTrait( trait ).Contains( follower3.Race ) ) )
                 {
                     result += this.SucessPerRaceLover;
                     this.partyBuffs.Add( trait );
@@ -341,7 +355,7 @@ namespace YesCommander.Classes
             return result;
         }
 
-        private int CalculateCurrencyFactor()
+        private int CalculateCurrencyFactorForGarrisonResource()
         {
             int factor = 0;
             if ( this.MissionReward.Contains( "要塞物资" ) && this.FollowersNeed > 1 )
@@ -349,6 +363,20 @@ namespace YesCommander.Classes
                 foreach ( Follower follower in this.AssignedFollowers )
                 {
                     if ( follower.TraitCollection.Contains( Follower.Traits.Scavenger ) )
+                        factor++;
+                }
+            }
+            return factor;
+        }
+
+        private int CalculateCurrencyFactorForGold()
+        {
+            int factor = 0;
+            if ( this.MissionReward.Contains( "G" ) && this.FollowersNeed > 1 )
+            {
+                foreach ( Follower follower in this.AssignedFollowers )
+                {
+                    if ( follower.TraitCollection.Contains( Follower.Traits.TreasureHunter ) )
                         factor++;
                 }
             }

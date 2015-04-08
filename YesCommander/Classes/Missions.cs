@@ -15,6 +15,7 @@ namespace YesCommander.Model
 
         public Dictionary<int, Mission> RaidAndRingMissions;
         public Dictionary<int, Mission> GarrisonResourceMissions;
+        public Dictionary<int, Mission> GlodMissions;
         public Dictionary<int, Mission> TwoFollowerMissions;
         public Dictionary<int, Mission> OtherThreeFollowersMissions;
 
@@ -22,6 +23,7 @@ namespace YesCommander.Model
         public List<DataRow> GarrisonResourceMissionRows;
         public List<DataRow> TwoFollowerMissionRows;
         public List<DataRow> OtherThreeFollowersMissionRows;
+        public List<DataRow> GlodMissionRows;
 
         public Missions()
         {
@@ -32,17 +34,20 @@ namespace YesCommander.Model
             this.GarrisonResourceMissions = new Dictionary<int, Mission>();
             this.TwoFollowerMissions = new Dictionary<int, Mission>();
             this.OtherThreeFollowersMissions = new Dictionary<int, Mission>();
+            this.GlodMissions = new Dictionary<int, Mission>();
 
             this.RaidAndRingMissionRows = new List<DataRow>();
             this.GarrisonResourceMissionRows = new List<DataRow>();
             this.TwoFollowerMissionRows = new List<DataRow>();
             this.OtherThreeFollowersMissionRows = new List<DataRow>();
+            this.GlodMissionRows = new List<DataRow>();
+
             this.AllMissionsTable = LoadData.LoadMissionFile( "Txts/missions.txt" );
 
             var data = from temp in this.AllMissionsTable.AsEnumerable()
                        where
                        ( temp.Field<string>( "任务ID" ) == "313" || temp.Field<string>( "任务ID" ) == "314" || temp.Field<string>( "任务ID" ) == "315" || temp.Field<string>( "任务ID" ) == "316") ||
-                       temp.Field<string>( "任务ID" ) == "454" || temp.Field<string>( "任务ID" ) == "455" || temp.Field<string>( "任务ID" ) == "456" || temp.Field<string>( "任务ID" ) == "457"
+                       temp.Field<string>( "任务ID" ) == "427" || temp.Field<string>( "任务ID" ) == "428" || temp.Field<string>( "任务ID" ) == "429" || temp.Field<string>( "任务ID" ) == "430"
                        select temp;
             foreach ( DataRow row in data )
             {
@@ -76,6 +81,19 @@ namespace YesCommander.Model
                 this.GarrisonResourceMissionRows.Add( row );
             }
 
+            data = from temp in this.AllMissionsTable.AsEnumerable()
+                   where
+                   temp.Field<string>( "奖励" ).Contains( "G" ) && ( temp.Field<string>( "随从数量" ) == "3" || temp.Field<string>( "随从数量" ) == "2" ) &&
+                   !temp.Field<string>( "奖励" ).Contains( "荣誉点数" ) &&
+                   !temp.Field<string>( "奖励" ).Contains( "征服点数" )
+                   select temp;
+            foreach ( DataRow row in data )
+            {
+                this.AddMissions( row, this.GlodMissions );
+                this.AddMissions( row, this.AllMissions );
+                this.GlodMissionRows.Add( row );
+            }
+            this.GlodMissionRows = this.GlodMissionRows.OrderBy( x => Globals.GetGoldRewardFromString( x.Field<string>( "奖励" ) ) ).ThenBy( x => Convert.ToInt16( x.Field<string>( "随从数量" ) ) ).ToList<DataRow>();
 
 
 
@@ -87,7 +105,8 @@ namespace YesCommander.Model
             foreach ( DataRow row in data )
             {
                 this.AddMissions( row, this.TwoFollowerMissions );
-                this.AddMissions( row, this.AllMissions );
+                if ( !this.AllMissions.ContainsKey( Convert.ToInt16( row[ "任务ID" ] ) ) )
+                    this.AddMissions( row, this.AllMissions );
                 this.TwoFollowerMissionRows.Add( row );
             }
 
@@ -96,9 +115,10 @@ namespace YesCommander.Model
                    temp.Field<string>( "任务名" ) != "Highmaul Raid" &&
                    temp.Field<string>( "奖励" ) != "3 消魔之石 （戒指任务）" &&
                    temp.Field<string>( "奖励" ) != "18 元素符文 （戒指任务）" &&
-                     ( temp.Field<string>( "任务ID" ) != "454" && temp.Field<string>( "任务ID" ) != "455" && temp.Field<string>( "任务ID" ) != "456" && temp.Field<string>( "任务ID" ) != "457" ) &&
+                     !( temp.Field<string>( "任务ID" ) == "427" || temp.Field<string>( "任务ID" ) == "428" || temp.Field<string>( "任务ID" ) == "429" || temp.Field<string>( "任务ID" ) == "430" ) &&
                    temp.Field<string>( "随从数量" ) == "3" &&
-                   !( temp.Field<string>( "奖励" ).Contains( "要塞物资" ) && ( temp.Field<string>( "随从数量" ) == "3" || temp.Field<string>( "随从数量" ) == "2" ) )
+                   !( temp.Field<string>( "奖励" ).Contains( "要塞物资" ) && ( temp.Field<string>( "随从数量" ) == "3" || temp.Field<string>( "随从数量" ) == "2" ) ) &&
+                   !( temp.Field<string>( "奖励" ).Contains( "G" ) && ( temp.Field<string>( "随从数量" ) == "3" || temp.Field<string>( "随从数量" ) == "2" ) )
                    select temp;
             foreach ( DataRow row in data )
             {
@@ -107,6 +127,7 @@ namespace YesCommander.Model
                 this.OtherThreeFollowersMissionRows.Add( row );
             }
         }
+
         private void AddMissions( DataRow row, Dictionary<int, Mission> missions )
         {
             Dictionary<Follower.Abilities, float> abilities = new Dictionary<Follower.Abilities, float>();

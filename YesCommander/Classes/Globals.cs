@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.IO;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace YesCommander.Classes
 {
@@ -34,6 +35,8 @@ namespace YesCommander.Classes
         public static List<Follower> CurrentValidFollowers;
         public static List<Follower> AllFollowers;
         public static List<Follower> FavoriteFollowers;
+        public static List<int> missionIdForGold = new List<int>();
+        public static List<int> missionIdForGarrisonResource = new List<int>();
         public static void Initialize()
         {
             InitialImageSources();
@@ -264,6 +267,29 @@ namespace YesCommander.Classes
 
             return returnValue;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reward"></param>
+        /// <returns></returns>
+        public static float GetGoldRewardFromString( string reward )
+        {
+            float returnValue = 0;
+            string[] nums;
+            if ( reward.Contains( '，' ) )
+                nums = reward.Split( '，' );
+            else if ( reward.Contains( ',' ) )
+                nums = reward.Split( ',' );
+            else
+                nums = reward.Split( ' ' );
+            foreach ( string peice in nums )
+            {
+                if ( peice.Contains( 'G' ) )
+                    returnValue += Convert.ToInt32( Regex.Replace( peice, @"[^\d.\d]", "" ) );
+                if ( peice.Contains( 'S' ) )
+                    returnValue += ( (float)Convert.ToInt16( Regex.Replace( peice, @"[^\d.\d]", "" ) ) ) / 100;
+            }
+            return returnValue;
+        }
     }
 }

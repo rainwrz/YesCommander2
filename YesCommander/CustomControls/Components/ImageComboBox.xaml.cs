@@ -15,6 +15,7 @@ using System.ComponentModel;
 using System.Collections;
 using System.Data;
 using YesCommander.Classes;
+using System.Text.RegularExpressions;
 
 namespace YesCommander.CustomControls.Components
 {
@@ -131,6 +132,17 @@ namespace YesCommander.CustomControls.Components
                 Image = GenerateItemImage( row ),
                 DataRowValue = row
             };
+
+            if ( item.Image == this.imageSourceList[ 4 ] )
+            {
+                string reward = Convert.ToInt32( Regex.Replace( row[ "奖励" ].ToString(), @"[^\d.\d]", "" ) ).ToString();
+                item.Name = "(" + reward + ") " + item.Name;
+            }
+            else if ( item.Image == this.imageSourceList[ 5 ] )
+            {
+                string reward = Globals.GetGoldRewardFromString( row[ "奖励" ].ToString() ).ToString();
+                item.Name = "(" + reward + ") " + item.Name;
+            }
             return item;
         }
 
@@ -153,9 +165,9 @@ namespace YesCommander.CustomControls.Components
 
             int id = -1;
             id = Globals.FetchDatabaseInteger( row, "任务ID", -1 );
-            if ( id >= 313 && id <= 328 )
+            if ( id >= 313 && id <= 324 )
                 return this.imageSourceList[ 0 ];
-            else if ( id >= 454 && id <= 457 )
+            else if ( id >= 427 && id <= 430 )
                 return this.imageSourceList[ 3 ];
             else if ( id >= 403 && id <= 407 )
                 return this.imageSourceList[ 1 ];
