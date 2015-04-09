@@ -962,6 +962,10 @@ namespace YesCommander
                 completeNumber++;
             if ( this.showTwoFollowerMissionText.Foreground == Brushes.Lime )
                 completeNumber++;
+            if ( this.showGarrisonResourceText.Foreground == Brushes.Lime )
+                completeNumber++;
+            if ( this.showGoldText.Foreground == Brushes.Lime )
+                completeNumber++;
 
             this.totalFollowerText.Text = Globals.AllFollowers.Count.ToString();
             this.epicFollowerText.Text = Globals.AllFollowers.Count( x => x.Quolaty >= 4 ).ToString();
@@ -970,7 +974,12 @@ namespace YesCommander
 
             string prefix = string.Empty;
             string name = string.Empty;
-            if ( completeNumber == 5 )
+
+            if ( completeNumber == 7 )
+                prefix = "与幸运女神合体的";
+            else if ( completeNumber == 6 )
+                prefix = "被幸运女神附身的";
+            else if ( completeNumber == 5 )
                 prefix = "被幸运女神偏爱的";
             else if ( completeNumber == 4 )
                 prefix = "被神眷顾的";
