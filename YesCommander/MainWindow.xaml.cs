@@ -76,14 +76,22 @@ namespace YesCommander
                     + " \r\n\r\n广告位招租。" );
                 ToolTipService.SetShowDuration( this.about, 60000 );
                 ToolTipService.SetInitialShowDelay( this.about, 0 );
+
                 this.missionWindowImage.ToolTip = new BaseToolTip( "任务列表", "打开一个新的窗口，查看所有任务详情。" );
                 ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
+
                 this.simulateButton.ToolTip = new BaseToolTip( "推荐偏好(最高)", "在模拟中默认使用最高（675）装等。此外，推荐只是提供一种可能的选取方案，并非一定为最少随从方案。请酌情参考。" );
                 ToolTipService.SetInitialShowDelay( this.simulateButton, 0 );
+
                 this.simulateButtonForCurrentIlevel.ToolTip = new BaseToolTip( "推荐偏好(当前)", "在模拟中默认使用当前装等。低于任务要求装等的随从将使用任务要求装等。此推荐为1.6.5以前版本默认推荐。" );
                 ToolTipService.SetInitialShowDelay( this.simulateButtonForCurrentIlevel, 0 );
+
+                this.simulateButtonForCurrentFollower.ToolTip = new BaseToolTip( "推荐偏好(改进)", "保留当前偏好随从下，模拟所有任务完成状况。默认使用最高（675）装等。" );
+                ToolTipService.SetInitialShowDelay( this.simulateButtonForCurrentFollower, 0 );
+
                 this.simulateMyButton.ToolTip = new BaseToolTip( "计算概率", "重新计算概率。推荐偏好仅供参考，建议自行斟酌后使用此功能查看概率，默认使用675装等。" );
                 ToolTipService.SetInitialShowDelay( this.simulateMyButton, 0 );
+
                 this.ignoreTextBlock.ToolTip = new BaseToolTip( "忽略随从", "被忽略的随从将不参与任何模拟（展示除外）。右键点击忽略所有冻结的随从，再次点击启用所有冻结随从。" );
                 ToolTipService.SetInitialShowDelay( this.ignoreTextBlock, 0 );
             }
@@ -385,6 +393,20 @@ namespace YesCommander
             this.favoriteRows.Children.Clear();
             this.AddFollowers( string.Empty, true );
         }
+
+        private void simulateForCurrentFollower_Click( object sender, RoutedEventArgs e )
+        {
+            foreach ( Follower follower in Globals.FavoriteFollowers )
+                Globals.KeptFollowers.Add( follower );
+
+            Globals.IsUsingMaxILevelOnSimulateAll = true;
+            this.CalculateSuggestion();
+
+            this.favoriteRows.Children.Clear();
+            this.AddFollowers( string.Empty, true );
+            Globals.KeptFollowers.Clear();
+        }
+
         private void simulateButtonForCurrentIlevel_Click( object sender, RoutedEventArgs e )
         {
             Globals.IsUsingMaxILevelOnSimulateAll = false;
@@ -434,6 +456,7 @@ namespace YesCommander
             this.simulateButton.IsEnabled = hasCheck;
             this.simulateButtonForCurrentIlevel.IsEnabled = hasCheck;
             this.simulateMyButton.IsEnabled = hasCheck;
+            this.simulateButtonForCurrentFollower.IsEnabled = hasCheck;
         }
 
         #endregion //Events
@@ -535,6 +558,7 @@ namespace YesCommander
             Globals.CurrentValidFollowers = new List<Follower>();
             Globals.AllFollowers = new List<Follower>();
             Globals.FavoriteFollowers = new List<Follower>();
+            Globals.KeptFollowers = new List<Follower>();
             List<int> abilities;
             List<int> traits;
             foreach ( DataRow row in this.TableFollowers.Rows )
@@ -1016,12 +1040,6 @@ namespace YesCommander
                 }
             }
         }
-
-        private void simulateForCurrentFollower_Click( object sender, RoutedEventArgs e )
-        {
-
-        }
-
 
 
     }

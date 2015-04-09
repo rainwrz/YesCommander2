@@ -156,13 +156,13 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <StackPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="5" Orientation="Horizontal">
                         <Button Name="simulateButton" Content="推荐偏好(675)" Click="simulateButton_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
                         <Button Name="simulateButtonForCurrentIlevel" Content="推荐偏好(当前)" Click="simulateButtonForCurrentIlevel_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
                         <Button Name="simulateButtonForCurrentFollower" Content="推荐偏好(改进)" Click="simulateForCurrentFollower_Click" Width="100" Height="30" IsEnabled="False" Margin="4,4"/>
                         <Button Name="simulateMyButton" Content="计算概率" Click="simulateMyButton_Click" Width="80" Height="30" IsEnabled="False" Margin="4,4"/>
                     </StackPanel>
-                    <TextBlock Name="textFollowerCount" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Foreground="Lime" TextWrapping="Wrap"/>
+                    <TextBlock Name="textFollowerCount" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="Lime" TextWrapping="Wrap"/>
                     <ComboBox Name="solutionComboBox" Grid.Row="0" Grid.Column="5" Margin="4" Visibility="Collapsed" SelectionChanged="solutionComboBox_SelectionChanged"/>
 
                     <CheckBox Name="highMaulQuestCheckBox" Content="悬槌堡任务" VerticalContentAlignment="Center" Grid.Column="0" Click="highMaulQuestCheckBox_Click"/>

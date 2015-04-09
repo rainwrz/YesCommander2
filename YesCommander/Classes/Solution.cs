@@ -235,6 +235,10 @@ namespace YesCommander.Classes
         public void ListAllPossiblities()
         {
             this.suggestedFollowers = new List<Follower>();
+
+            if ( Globals.KeptFollowers.Count > 0 )
+                this.suggestedFollowers.AddRange( Globals.KeptFollowers );
+
             Dictionary<int,Mission> cleanMissions = new Dictionary<int, Mission>();
             int number = 0;
             if ( this.orderedList.Count == 0 )
@@ -243,10 +247,10 @@ namespace YesCommander.Classes
             number++;
             List<Mission> result = this.GetHighestValueMissions( pair.Value, this.followerValue );
             cleanMissions.Add( pair.Key, result[ 0 ] );
-            suggestedFollowers.Add( result[ 0 ].AssignedFollowers[ 0 ] );
-            suggestedFollowers.Add( result[ 0 ].AssignedFollowers[ 1 ] );
+            this.AddFollowerIntoList( this.suggestedFollowers, result[ 0 ].AssignedFollowers[ 0 ] );
+            this.AddFollowerIntoList( this.suggestedFollowers, result[ 0 ].AssignedFollowers[ 1 ] );
             if ( result[ 0 ].AssignedFollowers.Count > 2 )
-                suggestedFollowers.Add( result[ 0 ].AssignedFollowers[ 2 ] );
+                this.AddFollowerIntoList( this.suggestedFollowers, result[ 0 ].AssignedFollowers[ 2 ] );
 
             while ( number < this.orderedList.Count )
             {
@@ -270,11 +274,13 @@ namespace YesCommander.Classes
             {
                 if ( !this.suggestedFollowers.Exists( x => x.ID == pair.Key ) )
                     continue;
+                if ( Globals.KeptFollowers.Contains( this.suggestedFollowers.First( x => x.ID == pair.Key ) ) )
+                    continue;
 
                 bool isNecessary = false;
                 foreach ( KeyValuePair<int, List<Mission>> listPair in this.dic )
                 {
-                    if ( !listPair.Value.Exists( x => !x.AssignedFollowers.Exists( y => y.ID == pair.Key ) ) )
+                    if ( listPair.Value.Count>0 && !listPair.Value.Exists( x => !x.AssignedFollowers.Exists( y => y.ID == pair.Key ) ) )
                     {
                         isNecessary = true;
                         break;
@@ -449,6 +455,12 @@ namespace YesCommander.Classes
                 }
             }
 
+        }
+
+        private void AddFollowerIntoList( List<Follower> list, Follower follower )
+        {
+            if ( !list.Contains( follower ) )
+                list.Add( follower );
         }
     }
 }

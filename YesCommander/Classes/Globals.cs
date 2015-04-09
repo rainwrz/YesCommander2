@@ -35,6 +35,7 @@ namespace YesCommander.Classes
         public static List<Follower> CurrentValidFollowers;
         public static List<Follower> AllFollowers;
         public static List<Follower> FavoriteFollowers;
+        public static List<Follower> KeptFollowers;
         public static List<int> missionIdForGold = new List<int>();
         public static List<int> missionIdForGarrisonResource = new List<int>();
         public static void Initialize()
