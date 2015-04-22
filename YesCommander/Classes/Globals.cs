@@ -38,6 +38,10 @@ namespace YesCommander.Classes
         public static List<Follower> KeptFollowers;
         public static List<int> missionIdForGold = new List<int>();
         public static List<int> missionIdForGarrisonResource = new List<int>();
+        public static Dictionary<Follower.Races, int> AliFemaleRaceAmount;
+        public static Dictionary<Follower.Races, int> HrdFemaleRaceAmount;
+
+
         public static void Initialize()
         {
             InitialImageSources();
@@ -92,39 +96,32 @@ namespace YesCommander.Classes
             AliFollowerSkills = LoadData.LoadMissionFile( "Txts/AliSkill.txt" );
             HrdFollowerSkills = LoadData.LoadMissionFile( "Txts/HrdSkill.txt" );
 
-            DataRow currentRow;
-            List<int> abilityList = new List<int>();
-            List<int> traitList = new List<int>();
-            // Ali
             AliFollowers = new List<Follower>();
-            foreach ( DataRow row in Globals.AllFollowersAli.Rows )
-            {
-                int quolaty;
-                switch ( row[ "初始品质" ].ToString() )
-                {
-                    case "传奇": quolaty = 5; break;
-                    case "史诗": quolaty = 4; break;
-                    case "精良": quolaty = 3; break;
-                    case "优秀": quolaty = 2; break;
-                    default: quolaty = 2; break;
-                }
-                abilityList = new List<int>();
-                currentRow = Globals.AliFollowerSkills.Rows.OfType<DataRow>().First( x => x[ "ID" ].ToString() == row[ "ID" ].ToString() );
-                if ( !string.IsNullOrEmpty( currentRow[ "应对ID" ].ToString() ) )
-                    abilityList.Add( Convert.ToInt16( currentRow[ "应对ID" ] ) );
-                traitList = new List<int>();
-                if ( !string.IsNullOrEmpty( currentRow[ "特长ID" ].ToString() ) )
-                    traitList.Add( Convert.ToInt16( currentRow[ "特长ID" ] ) );
-                if ( !string.IsNullOrEmpty( currentRow[ "特长ID2" ].ToString() ) )
-                    traitList.Add( Convert.ToInt16( currentRow[ "特长ID2" ] ) );
-
-                AliFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
-                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,
-                    row[ "英文名字" ].ToString(), row[ "简体名字" ].ToString(), row[ "繁体名字" ].ToString() ) );
-            }
-            //Hrd
             HrdFollowers = new List<Follower>();
-            foreach ( DataRow row in Globals.AllFollowersHrd.Rows )
+            AddFollowerIntoList( AliFollowers, Globals.AllFollowersAli.Rows, Globals.AliFollowerSkills.Rows );
+            AddFollowerIntoList( HrdFollowers, Globals.AllFollowersHrd.Rows, Globals.HrdFollowerSkills.Rows );
+
+            AliFemaleRaceAmount = new Dictionary<Follower.Races, int>();
+            HrdFemaleRaceAmount = new Dictionary<Follower.Races, int>();
+            Globals.CountAmountFemale();
+        }
+
+        private static void CountAmountFemale()
+        {
+            foreach ( var ra in Enum.GetValues( typeof( Follower.Races ) ) )
+            {
+                Follower.Races race = (Follower.Races)ra;
+                Globals.AliFemaleRaceAmount.Add( race, Globals.AliFollowers.Count( x => x.Race == race && x.IsFemale ) );
+                Globals.HrdFemaleRaceAmount.Add( race, Globals.HrdFollowers.Count( x => x.Race == race && x.IsFemale ) );
+            }
+        }
+
+        private static void AddFollowerIntoList( List<Follower> list, DataRowCollection followerRows,DataRowCollection skillRows )
+        {
+            List<int> abilityList;
+            List<int> traitList;
+            DataRow currentRow;
+            foreach ( DataRow row in followerRows )
             {
                 int quolaty;
                 switch ( row[ "初始品质" ].ToString() )
@@ -136,15 +133,15 @@ namespace YesCommander.Classes
                     default: quolaty = 2; break;
                 }
                 abilityList = new List<int>();
-                currentRow = Globals.HrdFollowerSkills.Rows.OfType<DataRow>().First( x => x[ "ID" ].ToString() == row[ "ID" ].ToString() );
+                currentRow = skillRows.OfType<DataRow>().First( x => x[ "ID" ].ToString() == row[ "ID" ].ToString() );
                 if ( !string.IsNullOrEmpty( currentRow[ "应对ID" ].ToString() ) )
                     abilityList.Add( Convert.ToInt16( currentRow[ "应对ID" ] ) );
                 traitList = new List<int>();
                 if ( !string.IsNullOrEmpty( currentRow[ "特长ID" ].ToString() ) )
                     traitList.Add( Convert.ToInt16( currentRow[ "特长ID" ] ) );
 
-                HrdFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
-                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,
+                list.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
+                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList, row[ "性别" ].ToString() == "1",
                     row[ "英文名字" ].ToString(), row[ "简体名字" ].ToString(), row[ "繁体名字" ].ToString() ) );
             }
         }

@@ -574,8 +574,16 @@ namespace YesCommander
                 if ( Convert.ToInt16( row[ "品质" ] ) > 3 )
                     traits.Add( Convert.ToInt16( row[ "特长ID3" ] ) );
 
+                string followerId = row[ "ID" ].ToString();
+                string followerRace = row[ "种族" ].ToString();
+                Follower candidate;
+                candidate = Globals.AliFollowers.Find(x=>x.ID == followerId && x.Race == Follower.GetRaceByName( followerRace ) );
+                if ( candidate == null )
+                    candidate = Globals.HrdFollowers.Find( x => x.ID == followerId && x.Race == Follower.GetRaceByName( followerRace ) );
+                bool isFemail = candidate != null ? candidate.IsFemale : false;
+
                 Globals.AllFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "姓名" ].ToString(), Convert.ToInt16( row[ "品质" ] ), Convert.ToInt16( row[ "等级" ] ), Convert.ToInt16( row[ "装等" ] ),
-                    row[ "种族" ].ToString(), Follower.GetClassBySpec( Convert.ToInt16( row[ "职业ID" ] ) ), row[ "职业" ].ToString(), Convert.ToInt16( row[ "激活" ] ), abilities, traits ) );
+                    row[ "种族" ].ToString(), Follower.GetClassBySpec( Convert.ToInt16( row[ "职业ID" ] ) ), row[ "职业" ].ToString(), Convert.ToInt16( row[ "激活" ] ), abilities, traits, isFemail ) );
             }
             Globals.CurrentValidFollowers.AddRange( Globals.AllFollowers );
 
@@ -1024,6 +1032,7 @@ namespace YesCommander
             }
 
             this.achievementText.Text = prefix + name;
+            this.GenerateFemaleText();
         }
         #endregion //Methods
 
@@ -1050,6 +1059,63 @@ namespace YesCommander
             }
         }
 
+        private void GenerateFemaleText()
+        {
+            this.GenerateFemaleTextFromRace( Follower.Races.人类, this.humanFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.德莱尼, this.draeneiFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.暗夜精灵, this.nightElfFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.侏儒, this.gnomeFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.矮人, this.dwarfFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.狼人, this.werewolfFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.熊猫人, this.pandanrenFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.血精灵, this.bloodElfFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.巨魔, this.trollFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.牛头人, this.taurenFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.被遗忘者, this.undeadFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.地精, this.goblinFemaleText );
+            this.GenerateFemaleTextFromRace( Follower.Races.兽人, this.orcFemaleText );
+        }
 
+        private void GenerateFemaleTextFromRace( Follower.Races race, TextBlock block )
+        {
+            int amount = Globals.IsAlliance ? Globals.AliFemaleRaceAmount[ race ] : Globals.HrdFemaleRaceAmount[ race ];
+            if ( amount == 0 )
+            {
+                block.Text = "NA";
+                block.Foreground = Brushes.Gray;
+            }
+            else
+            {
+                int owned = Globals.AllFollowers.Count( x => x.Race == race && x.IsFemale );
+                block.Text = owned.ToString() + "/" + amount.ToString();
+                if ( owned != amount )
+                    block.Foreground = Brushes.Red;
+                else
+                    this.GenerateTextForCompleteFemale( block );
+            }
+        }
+
+        private void GenerateTextForCompleteFemale( TextBlock block )
+        {
+            block.Foreground = Brushes.Lime;
+            string title =string.Empty;
+            switch ( block.Name )
+            {
+                case "humanFemaleText": title = ""; break;
+                case "draeneiFemaleText": title = ""; break;
+                case "nightElfFemaleText": title = ""; break;
+                case "gnomeFemaleText": title = ""; break;
+                case "dwarfFemaleText": title = ""; break;
+                case "werewolfFemaleText": title = ""; break;
+                case "pandanrenFemaleText": title = ""; break;
+                case "bloodElfFemaleText": title = ""; break;
+                case "trollFemaleText": title = ""; break;
+                case "taurenFemaleText": title = ""; break;
+                case "undeadFemaleText": title = ""; break;
+                case "goblinFemaleText": title = ""; break;
+                case "orcFemaleText": title = ""; break;
+            }
+            block.Text += " " + title;
+        }
     }
 }

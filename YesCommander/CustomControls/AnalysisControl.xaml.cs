@@ -748,7 +748,7 @@ namespace YesCommander.CustomControls
                     traitList.Add( Convert.ToInt16( currentRow[ "特长ID2" ] ) );
 
                 this.AliFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
-                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,
+                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList, row[ "性别" ].ToString() == "1",
                     row[ "英文名字" ].ToString(), row[ "简体名字" ].ToString(), row[ "繁体名字" ].ToString() ) );
             }
             //Hrd
@@ -773,7 +773,7 @@ namespace YesCommander.CustomControls
                     traitList.Add( Convert.ToInt16( currentRow[ "特长ID" ] ) );
 
                 this.HrdFollowers.Add( new Follower( row[ "ID" ].ToString(), row[ "英文名字" ].ToString(), quolaty, Convert.ToInt16( row[ "初始等级" ] ), 600, row[ "种族" ].ToString(),
-                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList,
+                    Follower.GetClassByStr( row[ "职业" ].ToString(), row[ "专精" ].ToString() ), string.Empty, 1, abilityList, traitList, row[ "性别" ].ToString() == "1",
                     row[ "英文名字" ].ToString(), row[ "简体名字" ].ToString(), row[ "繁体名字" ].ToString() ) );
             }
         }

@@ -25,8 +25,9 @@ namespace YesCommander.Classes
         public List<Abilities> AbilityCollection;
         public List<Traits> TraitCollection;
         public string ClassStr;
+        public bool IsFemale;
 
-        public Follower(string ID, string name, int quolaty, int level, int itemLevel, string raceName, Classes classType, string classStr, int isActiveIndex, List<int> abilityIndexes, List<int> traitIndexes, string nameEN = null, string nameCN = null, string nameTCN = null )
+        public Follower(string ID, string name, int quolaty, int level, int itemLevel, string raceName, Classes classType, string classStr, int isActiveIndex, List<int> abilityIndexes, List<int> traitIndexes, bool isFemale, string nameEN = null, string nameCN = null, string nameTCN = null )
         {
             this.ID = ID;
             this.Name = name;
@@ -37,6 +38,7 @@ namespace YesCommander.Classes
             this.Class = classType;
             this.ClassStr = classStr;
             this.IsActive = isActiveIndex == 1 ? true : false;
+            this.IsFemale = isFemale;
             this.NameEN = nameEN;
             this.NameCN = nameCN;
             this.NameTCN = nameTCN;

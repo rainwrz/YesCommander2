@@ -32,6 +32,7 @@ namespace YesCommander.Classes
         public double SucessPerFollower;
         public double SucessPerRaceLover;
         public double SucessPerBurstStamCombatExpSlayer;
+        public double SucessPerAssassin;
         public double SucessPerItemLevel;
         public double TotalSucessChance;
         public float BasicSucessChange;
@@ -94,6 +95,7 @@ namespace YesCommander.Classes
                 this.SucessPerFollower = this.SucessPerAbility * 2 / 3;
                 this.SucessPerRaceLover = this.SucessPerAbility;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility * 2 / 3;
+                this.SucessPerAssassin = this.SucessPerAbility * 2;
                 this.DancerSucessFactor = (float)4 / 3;
                 this.SucessPerItemLevel = 0;
             }
@@ -103,6 +105,7 @@ namespace YesCommander.Classes
                 this.SucessPerFollower = this.SucessPerAbility / 3;
                 this.SucessPerRaceLover = this.SucessPerAbility / 2;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility / 3;
+                this.SucessPerAssassin = this.SucessPerAbility;
                 this.DancerSucessFactor = (float)2 / 3;
                 this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
             }
@@ -280,7 +283,7 @@ namespace YesCommander.Classes
                     numberOfBurstOfPower++;
                 if ( follower.TraitCollection.Contains( Follower.Traits.MasterAssassin ) )
                 {
-                    result += this.SucessPerAbility;
+                    result += this.SucessPerAssassin;
                     this.partyBuffs.Add( Follower.Traits.MasterAssassin );
                 }
             }
