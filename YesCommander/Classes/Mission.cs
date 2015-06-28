@@ -33,6 +33,7 @@ namespace YesCommander.Classes
         public double SucessPerRaceLover;
         public double SucessPerBurstStamCombatExpSlayer;
         public double SucessPerAssassin;
+        public double SucessPerDemonicKnowledge;
         public double SucessPerItemLevel;
         public double TotalSucessChance;
         public float BasicSucessChange;
@@ -96,6 +97,7 @@ namespace YesCommander.Classes
                 this.SucessPerRaceLover = this.SucessPerAbility;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility * 2 / 3;
                 this.SucessPerAssassin = this.SucessPerAbility * 2;
+                this.SucessPerDemonicKnowledge = this.SucessPerAssassin * 2 / 3;
                 this.DancerSucessFactor = (float)4 / 3;
                 this.SucessPerItemLevel = 0;
             }
@@ -106,6 +108,7 @@ namespace YesCommander.Classes
                 this.SucessPerRaceLover = this.SucessPerAbility / 2;
                 this.SucessPerBurstStamCombatExpSlayer = this.SucessPerAbility / 3;
                 this.SucessPerAssassin = this.SucessPerAbility;
+                this.SucessPerDemonicKnowledge = this.SucessPerAssassin * 2 / 3;
                 this.DancerSucessFactor = (float)2 / 3;
                 this.SucessPerItemLevel = this.SucessPerFollower / 30; //max at this.SucessPerFollower/2
             }
@@ -286,6 +289,11 @@ namespace YesCommander.Classes
                     result += this.SucessPerAssassin;
                     this.partyBuffs.Add( Follower.Traits.MasterAssassin );
                 }
+                if ( follower.TraitCollection.Contains( Follower.Traits.DemonicKnowledge ) )
+                {
+                    result += this.SucessPerDemonicKnowledge;
+                    this.partyBuffs.Add( Follower.Traits.DemonicKnowledge );
+                }
             }
 
             float timeNeed = this.MisstionTimeNeed / factorOfEpicMount;
@@ -331,6 +339,12 @@ namespace YesCommander.Classes
             {
                 float reward = Globals.GetGoldRewardFromString( this.MissionReward );
                 this.CurrencyReward = ( this.CalculateCurrencyFactorForGold() + 1 ) * reward;
+            }
+
+            if ( this.MissionReward.Contains( "油" ) && this.FollowersNeed > 1 )
+            {
+                float reward = Convert.ToInt32( Regex.Replace( this.MissionReward, @"[^\d.\d]", "" ) );
+                this.CurrencyReward = ( this.CalculateCurrencyFactorForGarrisonOil() + 1 ) * reward;
             }
             return result;
         }
@@ -380,6 +394,20 @@ namespace YesCommander.Classes
                 foreach ( Follower follower in this.AssignedFollowers )
                 {
                     if ( follower.TraitCollection.Contains( Follower.Traits.TreasureHunter ) )
+                        factor++;
+                }
+            }
+            return factor;
+        }
+
+        private int CalculateCurrencyFactorForGarrisonOil()
+        {
+            int factor = 0;
+            if ( this.MissionReward.Contains( "油" ) && this.FollowersNeed > 1 )
+            {
+                foreach ( Follower follower in this.AssignedFollowers )
+                {
+                    if ( follower.TraitCollection.Contains( Follower.Traits.Greasemonkey ) )
                         factor++;
                 }
             }

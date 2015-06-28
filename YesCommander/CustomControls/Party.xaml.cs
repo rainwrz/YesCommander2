@@ -76,7 +76,7 @@ namespace YesCommander.CustomControls
             this.timeNeed.Foreground = mission.partyBuffs.Contains( Follower.Traits.EpicMount ) ? Brushes.Lime : Brushes.White;
             double sucessChance = 100 * mission.TotalSucessChance;
 
-            if ( ( mission.MissionReward.Contains( "要塞物资" ) || mission.MissionReward.Contains( "G" ) ) && mission.FollowersNeed > 1 )
+            if ( ( mission.MissionReward.Contains( "要塞物资" ) || mission.MissionReward.Contains( "G" ) || mission.MissionReward.Contains( "油" ) ) && mission.FollowersNeed > 1 )
             {
                 this.sucessChance.Text = mission.CurrencyReward.ToString( "#,##0", new CultureInfo( "en-US" ) ) + "(" + sucessChance.ToString( "#,##0.##", new CultureInfo( "en-US" ) ) + "%)";
             }

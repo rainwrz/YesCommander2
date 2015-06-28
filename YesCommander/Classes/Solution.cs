@@ -16,6 +16,7 @@ namespace YesCommander.Classes
         private bool isContainTwoFollowerMissions;
         private bool isContainGarrisonResourceMissions;
         private bool isContainGoldMissions;
+        private bool isContainOilMissions;
         public List<int> uncompleteIDs;
         private Dictionary<int, List<Mission>> dic;
         private List<int> missionIDs;
@@ -30,7 +31,7 @@ namespace YesCommander.Classes
         public List<Follower> suggestedFollowers;
 
         public Solution( bool isContainHighmaul, bool isContainRingStage1, bool isContainRingStage2, bool isContainEquipment645, bool isContainBlackFoundry,
-            bool isContainTwoFollowerMissions, bool isContainGarrisonResourceMissions, bool isContainGoldMissions )
+            bool isContainTwoFollowerMissions, bool isContainGarrisonResourceMissions, bool isContainGoldMissions, bool isContainOilMissions )
         {
             this.isContainHighmaul = isContainHighmaul;
             this.isContainRingStage1 = isContainRingStage1;
@@ -40,6 +41,7 @@ namespace YesCommander.Classes
             this.isContainTwoFollowerMissions = isContainTwoFollowerMissions;
             this.isContainGarrisonResourceMissions = isContainGarrisonResourceMissions;
             this.isContainGoldMissions = isContainGoldMissions;
+            this.isContainOilMissions = isContainOilMissions;
         }
 
         public void CalculateBasicData( Missions allMissions, List<Follower> allFollowers )
@@ -101,6 +103,10 @@ namespace YesCommander.Classes
             }
             if ( this.isContainGoldMissions )
                 foreach ( int i in Globals.missionIdForGold )
+                    if ( !missionIDs.Contains( i ) )
+                        missionIDs.Add( i );
+            if( this.isContainOilMissions)
+                foreach ( int i in Globals.missionIdForGarrisonOil )
                     if ( !missionIDs.Contains( i ) )
                         missionIDs.Add( i );
 
@@ -211,6 +217,10 @@ namespace YesCommander.Classes
             }
             if ( this.isContainGoldMissions )
                 foreach ( int i in Globals.missionIdForGold )
+                    if ( !missionIDs.Contains( i ) )
+                        missionIDs.Add( i );
+            if ( this.isContainOilMissions )
+                foreach ( int i in Globals.missionIdForGarrisonOil )
                     if ( !missionIDs.Contains( i ) )
                         missionIDs.Add( i );
 
@@ -327,6 +337,8 @@ namespace YesCommander.Classes
                 list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Scavenger ) );
             else if ( mission.MissionReward.Contains( "G" ) )
                 list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.TreasureHunter ) );
+            else if ( mission.MissionReward.Contains( "油" ) )
+                list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Greasemonkey ) );
             if ( list.Count >= 3 )
             {
                 for ( int i = 0; i < list.Count; i++ )
@@ -360,6 +372,8 @@ namespace YesCommander.Classes
                 list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Scavenger ) );
             else if ( mission.MissionReward.Contains( "G" ) )
                 list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.TreasureHunter ) );
+            else if ( mission.MissionReward.Contains( "油" ) )
+                list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Greasemonkey ) );
             for ( int j = 0; j < list.Count; j++ )
             {
                 for ( int k = 0; k < list.Count; k++ )

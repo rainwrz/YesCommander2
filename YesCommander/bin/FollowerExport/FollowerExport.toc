@@ -1,7 +1,7 @@
 ﻿﻿## Author: adug 梧桐
-## Interface: 60100
+## Interface: 60200
 ## Title: FollowerExport
-## Version: 1.2.0
+## Version: 1.2.1
 ## Notes: 输出随从信息
 ## SavedVariables: DisplayID_Bool
 ## SavedVariablesPerCharacter: SavedFollowerString

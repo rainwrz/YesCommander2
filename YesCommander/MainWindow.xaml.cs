@@ -61,6 +61,8 @@ namespace YesCommander
                     Globals.missionIdForGold.Add( pair.Key );
                 foreach ( KeyValuePair<int, Mission> pair in this.Missions.GarrisonResourceMissions )
                     Globals.missionIdForGarrisonResource.Add( pair.Key );
+                foreach ( KeyValuePair<int, Mission> pair in this.Missions.OilMissions )
+                    Globals.missionIdForGarrisonOil.Add( pair.Key );
                 //this.FillInMissions( this.Missions.HighmaulMissions );
                 this.missionsComboBox.ComboBoxImageList = Globals.missionIcionList;
                 this.currentMissions = this.Missions.RaidAndRingMissions;
@@ -200,9 +202,12 @@ namespace YesCommander
                         this.currentMissions.Add( pair.Key,pair.Value );
                     foreach ( KeyValuePair<int, Mission> pair in this.Missions.GlodMissions )
                         this.currentMissions.Add( pair.Key,pair.Value );
+                    foreach ( KeyValuePair<int, Mission> pair in this.Missions.OilMissions )
+                        this.currentMissions.Add( pair.Key,pair.Value );
                     List<DataRow> rowList = new List<DataRow>();
                     rowList.AddRange( this.Missions.GarrisonResourceMissionRows );
                     rowList.AddRange( this.Missions.GlodMissionRows );
+                    rowList.AddRange( this.Missions.OilMissionRows );
                     this.FillInMissions( rowList );
                     break;
                 case "titleTwoFollowerMission":
@@ -453,6 +458,8 @@ namespace YesCommander
                 hasCheck = true;
             else if ( this.goldQuestCheckBox.IsChecked == true )
                 hasCheck = true;
+            else if ( this.oilQuestCheckBox.IsChecked == true )
+                hasCheck = true;
             this.simulateButton.IsEnabled = hasCheck;
             this.simulateButtonForCurrentIlevel.IsEnabled = hasCheck;
             this.simulateMyButton.IsEnabled = hasCheck;
@@ -687,6 +694,8 @@ namespace YesCommander
                 list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Scavenger ) );
             else if ( mission.MissionReward.Contains( "G" ) )
                 list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.TreasureHunter ) );
+            else if ( mission.MissionReward.Contains( "油" ) )
+                list = list.FindAll( x => x.TraitCollection.Contains( Follower.Traits.Greasemonkey ) );
 
             if ( list.Count >= 3 )
             {
@@ -778,8 +787,9 @@ namespace YesCommander
             bool isContainTwoFollowerMissions = this.twoFollowerQuestCheckBox.IsChecked == true;
             bool isContainGarrisonResourceMissions = this.garrisonResourceQuestCheckBox.IsChecked == true;
             bool isContainGoldMissions = this.goldQuestCheckBox.IsChecked == true;
+            bool isContainOilMissions = this.oilQuestCheckBox.IsChecked == true;
 
-            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions, isContainGarrisonResourceMissions, isContainGoldMissions );
+            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions, isContainGarrisonResourceMissions, isContainGoldMissions, isContainOilMissions );
             solution.CalculateBasicData( this.Missions, Globals.CurrentValidFollowers );
             solution.ListAllPossiblities();
             solution.ReduceRedundency( this.Missions );
@@ -804,8 +814,9 @@ namespace YesCommander
             bool isContainTwoFollowerMissions = this.twoFollowerQuestCheckBox.IsChecked == true;
             bool isContainGarrisonResourceMissions = this.garrisonResourceQuestCheckBox.IsChecked == true;
             bool isContainGoldMissions = this.goldQuestCheckBox.IsChecked == true;
+            bool isContainOilMissions = this.oilQuestCheckBox.IsChecked == true;
 
-            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions, isContainGarrisonResourceMissions, isContainGoldMissions );
+            Solution solution = new Solution( isContainHighmaul, isContainRingStage1, isContainRingStage2, isContainEquipment645, isContainBlackFoundry, isContainTwoFollowerMissions, isContainGarrisonResourceMissions, isContainGoldMissions, isContainOilMissions );
             solution.CalculateBasicDataSimple( this.Missions, Globals.FavoriteFollowers );
             this.GenerateString( solution.uncompleteIDs );
         }
@@ -876,6 +887,11 @@ namespace YesCommander
             else
                 this.textGoldQuest.Text = string.Empty;
 
+            if ( this.oilQuestCheckBox.IsChecked == true )
+                this.GenerateText( this.textOilQuest, uncompleteIDs, Globals.missionIdForGarrisonOil );
+            else
+                this.textOilQuest.Text = string.Empty;
+
             this.textFollowerCount.Text = "偏好随从数：" + Globals.FavoriteFollowers.Count;
         }
 
@@ -935,7 +951,7 @@ namespace YesCommander
         private void CalculateShowPanel()
         {
             Globals.IsUsingMaxILevelOnSimulateAll = true;
-            Solution solution = new Solution( true, true, true, true, true, true, true,true );
+            Solution solution = new Solution( true, true, true, true, true, true, true,true,true );
             solution.CalculateBasicDataSimple( this.Missions, Globals.AllFollowers );
             this.GenerateText( this.showHighmaulText, solution.uncompleteIDs, 313, 316 );
             this.GenerateText( this.showRing1Text, solution.uncompleteIDs, 403, 407 );
@@ -958,6 +974,7 @@ namespace YesCommander
             this.GenerateText( this.showTwoFollowerMissionText, solution.uncompleteIDs, missionIDs );
             this.GenerateText( this.showGarrisonResourceText, solution.uncompleteIDs, Globals.missionIdForGarrisonResource );
             this.GenerateText( this.showGoldText, solution.uncompleteIDs, Globals.missionIdForGold );
+            this.GenerateText( this.showOilText, solution.uncompleteIDs, Globals.missionIdForGarrisonOil );
 
             int completeNumber = 0;
             if ( this.showBlackFoundryText.Foreground == Brushes.Lime )
@@ -973,6 +990,8 @@ namespace YesCommander
             if ( this.showGarrisonResourceText.Foreground == Brushes.Lime )
                 completeNumber++;
             if ( this.showGoldText.Foreground == Brushes.Lime )
+                completeNumber++;
+            if ( this.showOilText.Foreground == Brushes.Lime )
                 completeNumber++;
 
             this.totalFollowerText.Text = Globals.AllFollowers.Count.ToString();

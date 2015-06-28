@@ -140,7 +140,7 @@
                        VerticalAlignment="Bottom" Margin="2" MouseDown="titleAllFavorite_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
                 </StackPanel>
                 <Image Grid.Row="1" Source="/Resources/gear-bonus-divider_1.jpg" Stretch="None" Width="140"/>
-                <Grid Name="suggestinoTitle" Margin="0,4,50,0" Grid.Row="2" Visibility="Collapsed" Width="850" HorizontalAlignment="Center">
+                <Grid Name="suggestinoTitle" Margin="0,4,10,0" Grid.Row="2" Visibility="Collapsed" Width="920" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>    
@@ -149,6 +149,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -165,14 +166,15 @@
                     <TextBlock Name="textFollowerCount" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="Lime" TextWrapping="Wrap"/>
                     <ComboBox Name="solutionComboBox" Grid.Row="0" Grid.Column="5" Margin="4" Visibility="Collapsed" SelectionChanged="solutionComboBox_SelectionChanged"/>
 
-                    <CheckBox Name="highMaulQuestCheckBox" Content="悬槌堡任务" VerticalContentAlignment="Center" Grid.Column="0" Click="highMaulQuestCheckBox_Click"/>
-                    <CheckBox Name="blackFoundryQuestCheckBox" Content="黑石铸造厂任务" VerticalContentAlignment="Center" Grid.Column="1" Click="highMaulQuestCheckBox_Click"/>
-                    <CheckBox Name="ringQuestStage1CheckBox" Content="消磨之石任务" VerticalContentAlignment="Center" Grid.Column="2" Click="highMaulQuestCheckBox_Click"/>
-                    <CheckBox Name="ringQuestStage2CheckBox" Content="元素符文任务" VerticalContentAlignment="Center" Grid.Column="3" Click="highMaulQuestCheckBox_Click"/>
-                    <CheckBox Name="equipment645CheckBox" Content="645装备任务" VerticalContentAlignment="Center" Grid.Column="4" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="highMaulQuestCheckBox" Content="悬槌堡" VerticalContentAlignment="Center" Grid.Column="0" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="blackFoundryQuestCheckBox" Content="黑石铸造厂" VerticalContentAlignment="Center" Grid.Column="1" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="ringQuestStage1CheckBox" Content="消磨之石" VerticalContentAlignment="Center" Grid.Column="2" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="ringQuestStage2CheckBox" Content="元素符文" VerticalContentAlignment="Center" Grid.Column="3" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="equipment645CheckBox" Content="645装备" VerticalContentAlignment="Center" Grid.Column="4" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="twoFollowerQuestCheckBox" Content="双随从任务" VerticalContentAlignment="Center" Grid.Column="5" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="garrisonResourceQuestCheckBox" Content="资源任务" VerticalContentAlignment="Center" Grid.Column="6" Click="highMaulQuestCheckBox_Click"/>
                     <CheckBox Name="goldQuestCheckBox" Content="金币任务" VerticalContentAlignment="Center" Grid.Column="7" Click="highMaulQuestCheckBox_Click"/>
+                    <CheckBox Name="oilQuestCheckBox" Content="原油任务" VerticalContentAlignment="Center" Grid.Column="8" Click="highMaulQuestCheckBox_Click"/>
 
                     <TextBlock Name="textHighmaulQuest" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap"/>
                     <TextBlock Name="textBlackFoundryQuest" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
@@ -182,6 +184,7 @@
                     <TextBlock Name="textTwoFollowerQuest" Grid.Row="1" Grid.Column="5"  TextWrapping="Wrap"/>
                     <TextBlock Name="textGarrisonResourceQuest" Grid.Row="1" Grid.Column="6"  TextWrapping="Wrap"/>
                     <TextBlock Name="textGoldQuest" Grid.Row="1" Grid.Column="7" Grid.RowSpan="3" TextWrapping="Wrap"/>
+                    <TextBlock Name="textOilQuest" Grid.Row="1" Grid.Column="8" Grid.RowSpan="3" TextWrapping="Wrap"/>
                 </Grid>
                 
                 
@@ -230,10 +233,11 @@
                 </StackPanel>
             </ScrollViewer>
             <ScrollViewer Name="showGrid" Grid.Row="1" Visibility="Hidden" Margin="0,-10,0,0" >
-                <Grid  Height="850">
+                <Grid  Height="880">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -283,20 +287,21 @@
                     <TextBlock Grid.Row="10" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="双随从高装等任务："/>
                     <TextBlock Grid.Row="11" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="资源任务："/>
                     <TextBlock Grid.Row="12" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="金币任务："/>
+                    <TextBlock Grid.Row="13" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="原油任务："/>
 
-                    <TextBlock Grid.Row="13" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="人类后宫："/>
-                    <TextBlock Grid.Row="14" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="德莱尼后宫："/>
-                    <TextBlock Grid.Row="15" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="暗夜精灵后宫："/>
-                    <TextBlock Grid.Row="16" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="侏儒后宫："/>
-                    <TextBlock Grid.Row="17" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="矮人后宫："/>
-                    <TextBlock Grid.Row="18" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="狼人后宫："/>
-                    <TextBlock Grid.Row="19" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="熊猫人后宫："/>
-                    <TextBlock Grid.Row="20" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="血精灵后宫："/>
-                    <TextBlock Grid.Row="21" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="巨魔后宫："/>
-                    <TextBlock Grid.Row="22" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="牛头人后宫："/>
-                    <TextBlock Grid.Row="23" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="亡灵后宫："/>
-                    <TextBlock Grid.Row="24" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="地精后宫："/>
-                    <TextBlock Grid.Row="25" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="兽人后宫："/>
+                    <TextBlock Grid.Row="14" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="人类后宫："/>
+                    <TextBlock Grid.Row="15" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="德莱尼后宫："/>
+                    <TextBlock Grid.Row="16" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="暗夜精灵后宫："/>
+                    <TextBlock Grid.Row="17" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="侏儒后宫："/>
+                    <TextBlock Grid.Row="18" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="矮人后宫："/>
+                    <TextBlock Grid.Row="19" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="狼人后宫："/>
+                    <TextBlock Grid.Row="20" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="熊猫人后宫："/>
+                    <TextBlock Grid.Row="21" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="血精灵后宫："/>
+                    <TextBlock Grid.Row="22" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="巨魔后宫："/>
+                    <TextBlock Grid.Row="23" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="牛头人后宫："/>
+                    <TextBlock Grid.Row="24" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="亡灵后宫："/>
+                    <TextBlock Grid.Row="25" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="地精后宫："/>
+                    <TextBlock Grid.Row="26" Grid.Column="0" Foreground="#ffe8ce" HorizontalAlignment="Right" Text="兽人后宫："/>
 
 
                     <TextBlock Grid.Row="2" Grid.Column="1" Name="totalFollowerText"/>
@@ -311,20 +316,21 @@
                     <TextBlock Grid.Row="10" Grid.Column="1" Name="showTwoFollowerMissionText"/>
                     <TextBlock Grid.Row="11" Grid.Column="1" Name="showGarrisonResourceText"/>
                     <TextBlock Grid.Row="12" Grid.Column="1" Name="showGoldText"/>
+                    <TextBlock Grid.Row="13" Grid.Column="1" Name="showOilText"/>
 
-                    <TextBlock Grid.Row="13" Grid.Column="1" Name="humanFemaleText"/>
-                    <TextBlock Grid.Row="14" Grid.Column="1" Name="draeneiFemaleText"/>
-                    <TextBlock Grid.Row="15" Grid.Column="1" Name="nightElfFemaleText"/>
-                    <TextBlock Grid.Row="16" Grid.Column="1" Name="gnomeFemaleText"/>
-                    <TextBlock Grid.Row="17" Grid.Column="1" Name="dwarfFemaleText"/>
-                    <TextBlock Grid.Row="18" Grid.Column="1" Name="werewolfFemaleText"/>
-                    <TextBlock Grid.Row="19" Grid.Column="1" Name="pandanrenFemaleText"/>
-                    <TextBlock Grid.Row="20" Grid.Column="1" Name="bloodElfFemaleText"/>
-                    <TextBlock Grid.Row="21" Grid.Column="1" Name="trollFemaleText"/>
-                    <TextBlock Grid.Row="22" Grid.Column="1" Name="taurenFemaleText"/>
-                    <TextBlock Grid.Row="23" Grid.Column="1" Name="undeadFemaleText"/>
-                    <TextBlock Grid.Row="24" Grid.Column="1" Name="goblinFemaleText"/>
-                    <TextBlock Grid.Row="25" Grid.Column="1" Name="orcFemaleText"/>
+                    <TextBlock Grid.Row="14" Grid.Column="1" Name="humanFemaleText"/>
+                    <TextBlock Grid.Row="15" Grid.Column="1" Name="draeneiFemaleText"/>
+                    <TextBlock Grid.Row="16" Grid.Column="1" Name="nightElfFemaleText"/>
+                    <TextBlock Grid.Row="17" Grid.Column="1" Name="gnomeFemaleText"/>
+                    <TextBlock Grid.Row="18" Grid.Column="1" Name="dwarfFemaleText"/>
+                    <TextBlock Grid.Row="19" Grid.Column="1" Name="werewolfFemaleText"/>
+                    <TextBlock Grid.Row="20" Grid.Column="1" Name="pandanrenFemaleText"/>
+                    <TextBlock Grid.Row="21" Grid.Column="1" Name="bloodElfFemaleText"/>
+                    <TextBlock Grid.Row="22" Grid.Column="1" Name="trollFemaleText"/>
+                    <TextBlock Grid.Row="23" Grid.Column="1" Name="taurenFemaleText"/>
+                    <TextBlock Grid.Row="24" Grid.Column="1" Name="undeadFemaleText"/>
+                    <TextBlock Grid.Row="25" Grid.Column="1" Name="goblinFemaleText"/>
+                    <TextBlock Grid.Row="26" Grid.Column="1" Name="orcFemaleText"/>
 
 
                 </Grid>

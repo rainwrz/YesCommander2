@@ -143,6 +143,11 @@ namespace YesCommander.CustomControls.Components
                 string reward = Globals.GetGoldRewardFromString( row[ "奖励" ].ToString() ).ToString();
                 item.Name = "(" + reward + ") " + item.Name;
             }
+            else if ( item.Image == this.imageSourceList[ 6 ] )
+            {
+                string reward = Convert.ToInt32( Regex.Replace( row[ "奖励" ].ToString(), @"[^\d.\d]", "" ) ).ToString();
+                item.Name = "(" + reward + ") " + item.Name;
+            }
             return item;
         }
 
@@ -177,6 +182,8 @@ namespace YesCommander.CustomControls.Components
                 return this.imageSourceList[ 4 ];
             else if ( row.Field<string>( "奖励" ).Contains( "G" ) )
                 return this.imageSourceList[ 5 ];
+            else if ( row.Field<string>( "奖励" ).Contains( "油" ) )
+                return this.imageSourceList[ 6 ];
             else
             {
                 return null;

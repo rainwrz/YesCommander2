@@ -38,6 +38,7 @@ namespace YesCommander.Classes
         public static List<Follower> KeptFollowers;
         public static List<int> missionIdForGold = new List<int>();
         public static List<int> missionIdForGarrisonResource = new List<int>();
+        public static List<int> missionIdForGarrisonOil = new List<int>();
         public static Dictionary<Follower.Races, int> AliFemaleRaceAmount;
         public static Dictionary<Follower.Races, int> HrdFemaleRaceAmount;
 
@@ -62,7 +63,7 @@ namespace YesCommander.Classes
                 Follower.Abilities ability = (Follower.Abilities)i;
                 AbilityImageSource.Add( ability, Follower.GetImageFromAbility( ability ) );
             }
-            for ( int i = 0; i < 63; i++ )
+            for ( int i = 0; i < 66; i++ )
             {
                 Follower.Traits trait = (Follower.Traits)i;
                 TraitImageSource.Add( trait, Follower.GetImageFromFromTrait( trait ) );
@@ -77,6 +78,7 @@ namespace YesCommander.Classes
             missionIcionList.Add( Follower.GetImageFromPicName( "Treasures2.jpg" ) );
             missionIcionList.Add( Follower.GetImageFromPicName( "Garrison_resource.jpg" ) );
             missionIcionList.Add( Follower.GetImageFromPicName( "Gold.jpg" ) );
+            missionIcionList.Add( Follower.GetImageFromPicName( "garrison_oil.jpg" ) );
 
             int[] classIndexList = new int[] { 9, 0, 4, 2, 10, 8, 6, 1, 5, 7, 3 };
             foreach ( int classIndex in classIndexList )
@@ -288,6 +290,16 @@ namespace YesCommander.Classes
                     returnValue += ( (float)Convert.ToInt16( Regex.Replace( peice, @"[^\d.\d]", "" ) ) ) / 100;
             }
             return returnValue;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reward"></param>
+        /// <returns></returns>
+        public static float GetGarrisonOilRewardFromString( string reward )
+        {
+            return Convert.ToInt32( Regex.Replace( reward, @"[^\d.\d]", "" ) );
         }
     }
 }

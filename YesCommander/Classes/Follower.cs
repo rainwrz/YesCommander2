@@ -421,7 +421,10 @@ namespace YesCommander.Classes
             BirdWatcher,
             OgreBuddy,//60
             MechanoAffictionado,
-            Wildling
+            Wildling,
+            Greasemonkey,
+            Brute,
+            DemonicKnowledge
         }
         public static string TraitToChinese( Traits trait )
         {
@@ -495,6 +498,9 @@ namespace YesCommander.Classes
                 case Traits.MechanoAffictionado: return "机械狂人";
                 case Traits.Wildling: return "野外生存";
 
+                case Traits.Greasemonkey: return "油猴子";
+                case Traits.DemonicKnowledge: return "恶魔学识";
+                case Traits.Brute: return "蛮横";
                 default: return "Unknow";
             }
         }
@@ -570,6 +576,9 @@ namespace YesCommander.Classes
                 case Traits.MechanoAffictionado: return "提高与构造体或机械一起执行任务的成功率。";
                 case Traits.Wildling: return "提高与动物伙伴一起执行任务的成功率。";
 
+                case Traits.Greasemonkey: return "使完成任务后获得的原油提高100%。";
+                case Traits.DemonicKnowledge: return "大幅提高任务成功率。";
+                case Traits.Brute: return "大幅提高独自执行任务的成功率。";
                 default: return "Unknow";
             }
         }
@@ -670,7 +679,9 @@ namespace YesCommander.Classes
                 case 254: return Traits.BirdWatcher;
                 case 255: return Traits.Wildling;
                 case 256: return Traits.TreasureHunter;
-
+                case 314: return Traits.Greasemonkey;
+                case 303: return Traits.DemonicKnowledge;
+                case 244: return Traits.Brute;
                 default: return Traits.Unknow;
             }
         }
