@@ -63,7 +63,7 @@ namespace YesCommander.Classes
                 Follower.Abilities ability = (Follower.Abilities)i;
                 AbilityImageSource.Add( ability, Follower.GetImageFromAbility( ability ) );
             }
-            for ( int i = 0; i < 66; i++ )
+            for ( int i = 0; i < Enum.GetNames( typeof( Follower.Traits ) ).Length - 1; i++ )
             {
                 Follower.Traits trait = (Follower.Traits)i;
                 TraitImageSource.Add( trait, Follower.GetImageFromFromTrait( trait ) );

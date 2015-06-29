@@ -260,6 +260,11 @@ namespace YesCommander.Classes
                     this.partyBuffs.Add( Follower.Traits.TreasureHunter );
                 }
 
+                if ( this.MissionReward.Contains( "油" ) && follower.TraitCollection.Contains( Follower.Traits.Greasemonkey ) )
+                {
+                    this.partyBuffs.Add( Follower.Traits.Greasemonkey );
+                }
+
                 if ( follower.TraitCollection.Contains( this.SlayerNeed ) )
                 {
                     result += this.SucessPerBurstStamCombatExpSlayer;
@@ -269,6 +274,18 @@ namespace YesCommander.Classes
                 {
                     result += this.SucessPerBurstStamCombatExpSlayer;
                     this.partyBuffs.Add( Follower.Traits.CombatExperience );
+                }
+                if ( follower.TraitCollection.Contains( Follower.Traits.ApexPredator ) &&
+                    ( this.SlayerNeed == Follower.Traits.Beastslayer ||
+                    this.SlayerNeed == Follower.Traits.Orcslayer ||
+                    this.SlayerNeed == Follower.Traits.Ogreslayer ||
+                    this.SlayerNeed == Follower.Traits.Talonslayer ||
+                    this.SlayerNeed == Follower.Traits.Demonslayer ||
+                    this.SlayerNeed == Follower.Traits.Primalslayer ||
+                    this.SlayerNeed == Follower.Traits.Gronnslayer ) )
+                {
+                    result += this.SucessPerBurstStamCombatExpSlayer * 3 / 2;
+                    this.partyBuffs.Add( Follower.Traits.ApexPredator );
                 }
                 if ( follower.TraitCollection.Contains( Follower.Traits.EpicMount ) )
                 {

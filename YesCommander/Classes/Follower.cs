@@ -424,7 +424,9 @@ namespace YesCommander.Classes
             Wildling,
             Greasemonkey,
             Brute,
-            DemonicKnowledge
+            DemonicKnowledge,
+            ApexisAttenuation,
+            ApexPredator
         }
         public static string TraitToChinese( Traits trait )
         {
@@ -501,6 +503,8 @@ namespace YesCommander.Classes
                 case Traits.Greasemonkey: return "油猴子";
                 case Traits.DemonicKnowledge: return "恶魔学识";
                 case Traits.Brute: return "蛮横";
+                case Traits.ApexisAttenuation: return "埃匹希斯共鸣";
+                case Traits.ApexPredator: return "顶级捕食者";
                 default: return "Unknow";
             }
         }
@@ -579,6 +583,8 @@ namespace YesCommander.Classes
                 case Traits.Greasemonkey: return "使完成任务后获得的原油提高100%。";
                 case Traits.DemonicKnowledge: return "大幅提高任务成功率。";
                 case Traits.Brute: return "大幅提高独自执行任务的成功率。";
+                case Traits.ApexisAttenuation: return "使完成任务后获得埃匹希斯水晶提高100%。";
+                case Traits.ApexPredator: return "大幅提高战胜多种生物的几率。";
                 default: return "Unknow";
             }
         }
@@ -682,6 +688,8 @@ namespace YesCommander.Classes
                 case 314: return Traits.Greasemonkey;
                 case 303: return Traits.DemonicKnowledge;
                 case 244: return Traits.Brute;
+                case 324: return Traits.ApexPredator;
+                case 326: return Traits.ApexisAttenuation;
                 default: return Traits.Unknow;
             }
         }
@@ -756,6 +764,11 @@ namespace YesCommander.Classes
                 case "BirdWatcher": return Traits.BirdWatcher;
                 case "Wildling": return Traits.Wildling;
                 case "TreasureHunter": return Traits.TreasureHunter;
+                case "Greasemonkey": return Traits.Greasemonkey;
+                case "DemonicKnowledge": return Traits.DemonicKnowledge;
+                case "Brute": return Traits.Brute;
+                case "ApexPredator": return Traits.ApexPredator;
+                case "ApexisAttenuation": return Traits.ApexisAttenuation;
 
                 default: return Traits.Unknow;
             }
